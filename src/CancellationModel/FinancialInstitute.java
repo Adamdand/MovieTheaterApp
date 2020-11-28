@@ -16,6 +16,8 @@ public class FinancialInstitute {
 		creditCards.add(b);
 	}
 	
+	//TODO add payment method as well as check funds method (or maybe that goes in credit card class)
+	
 	public CreditCard searchCard(String cardNumber) {
 		for (CreditCard card: creditCards) {
 			if (card.getCardNumber().equals(cardNumber)) {
