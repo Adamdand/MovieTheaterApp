@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import TicketReservationModel.movieOfferingAdam;
-import TicketReservationModel.registeredUser;
+import RegisteredUserModel.RegisteredUser;
 import TicketReservationModel.voucher;
 
 
@@ -94,12 +94,12 @@ public class DBEngine {
 	public void createRegisteredUsers()
 	{
 		String sql = "CREATE TABLE registeredUsers" + "(" +
-				     "userID INT(4) NOT NULL, " +
-				     "startDate INT(8) NOT NULL, " + 
+				"email VARCHAR(20) NOT NULL, "+
+				"password VARCHAR(30) NOT NULL, "+
+					"creditCard VARCHAR(16) NOT NULL, "+
+					"startDate INT(8) NOT NULL, " + 
 				     "endDate INT(8) NOT NULL, "+ 
-				     "email VARCHAR(20) NOT NULL, "+
-				     "password VARCHAR(30) NOT NULL, "+
-				     "PRIMARY KEY ( userID ))";
+				     "PRIMARY KEY ( email ))";
 		try{
 			//create prepareStatement
 			statement = jdbc_connection.prepareStatement(sql);
@@ -185,7 +185,7 @@ public class DBEngine {
 	public void fillRegisteredUsersList() {
 		
 		PreparedStatement insertData = null;
-		String insertStatement = "INSERT INTO registeredUsers (userID,startDate,endDate,email,password) VALUES(?,?,?,?,?);";
+		String insertStatement = "INSERT INTO registeredUsers (email,password,creditCard,startDate,endDate) VALUES(?,?,?,?,?);";
 		
 			try{
 				Scanner sc = new Scanner(new FileReader(registeredUsers));
@@ -193,11 +193,11 @@ public class DBEngine {
 				{
 					String userInfo[] = sc.nextLine().split(";");
 					insertData = jdbc_connection.prepareStatement(insertStatement);
-					insertData.setInt(1,Integer.parseInt(userInfo[0]));
-					insertData.setInt(2,Integer.parseInt(userInfo[1]));
-					insertData.setInt(3,Integer.parseInt(userInfo[2]));
-					insertData.setString(4,(userInfo[3]));
-					insertData.setString(5,(userInfo[4]));
+					insertData.setString(1,(userInfo[0]));
+					insertData.setString(2,(userInfo[1]));
+					insertData.setString(3,(userInfo[2]));
+					insertData.setInt(4,Integer.parseInt(userInfo[3]));
+					insertData.setInt(5,Integer.parseInt(userInfo[4]));
 					insertData.executeUpdate();
 					//jdbc_connection.commit();
 				}
@@ -324,21 +324,21 @@ public void fillVoucherList() {
 		return null;
 	}
 	
-	public registeredUser searchUsers(String email, String password)
+	public RegisteredUser searchUsers(String userName, String password)
 	{
 		PreparedStatement getVoucher = null;
-		String sql = "SELECT * FROM registeredusers"  + " WHERE email = ? AND password = ?"; //dont worry, this is set up to take a String in the future, so it can search for toolID or toolName
+		String sql = "SELECT * FROM registeredusers"  + " WHERE userName = ? AND password = ?"; //dont worry, this is set up to take a String in the future, so it can search for toolID or toolName
 		try {
 			//statement = jdbc_connection.createStatement();
 			//tool = statement.executeQuery(sql);
 			if(jdbc_connection != null)
 			{
 				getVoucher = jdbc_connection.prepareStatement(sql);
-				getVoucher.setString(1, email);
+				getVoucher.setString(1, userName);
 				getVoucher.setString(2, password);
 				ResultSet rs = getVoucher.executeQuery();
 				if(rs.next()) {
-					registeredUser thisUser = new registeredUser(rs.getInt("userID"),rs.getInt("startDate"), rs.getInt("endDate"), rs.getString("email"),rs.getString("password"));
+					RegisteredUser thisUser = new RegisteredUser(rs.getString("userName"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
 					//item.linkSupplier(rs.getString("supplier"));
 					return thisUser;
 				}
