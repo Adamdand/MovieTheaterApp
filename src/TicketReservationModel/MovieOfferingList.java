@@ -74,4 +74,12 @@ public class MovieOfferingList {
 	return null;
 	}
 	
+	public MovieOffering searchMovieOfferingTicket(int ticketId) {
+		for (MovieOffering i: movieOfferingList) {
+			if (i.getTicketId() == ticketId)
+				return i;
+		}
+		return null;
+	}
+	
 }
