@@ -11,9 +11,9 @@ public class CancellationReceipt {
 	private double price;
 	private int date;
 	private int voucherId;
-	private String ticketId;
+	private int ticketId;
 	
-	public CancellationReceipt(double price, String ticketId) {
+	public CancellationReceipt(double price, int ticketId) {
 		String today = java.time.LocalDate.now().toString();
 		int date = Integer.parseInt(today.replace("-",""));
 		setPrice(price);
@@ -29,7 +29,7 @@ public class CancellationReceipt {
 		generateReceipt();
 	}
 	
-	public CancellationReceipt(double price, String ticketId, int voucherId) {
+	public CancellationReceipt(double price, int ticketId, int voucherId) {
 		String today = java.time.LocalDate.now().toString();
 		int date = Integer.parseInt(today.replace("-",""));
 		setPrice(price);
@@ -86,10 +86,10 @@ public class CancellationReceipt {
 		this.price = price;
 	}
 
-	public String getTicketId() {
+	public int getTicketId() {
 		return ticketId;
 	}
-	public void setTicketId(String ticketId) {
+	public void setTicketId(int ticketId) {
 		this.ticketId = ticketId;
 	}
 
