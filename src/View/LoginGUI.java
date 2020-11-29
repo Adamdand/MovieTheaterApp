@@ -202,6 +202,30 @@ public class LoginGUI extends JFrame {
 	public JTextField getSearchTime() {
 		return searchTime;
 	}
+	
+	public JTextField getVoucherCodeInput() {
+		return voucherCodeInput;
+	}
+	
+	public JTextField getRegisteredVoucherCodeInput() {
+		return registeredVoucherCodeInput;
+	}
+	
+	public JTextField getUserNameInput() {
+		return userNameInput;
+	}
+	
+	public JTextField getPasswordInput() {
+		return passwordInput;
+	}
+	
+	public JTextField getCreatePasswordInput() {
+		return createPasswordInput;
+	}
+	
+	public JTextField getCreateUserNameInput() {
+		return createUserNameInput;
+	}
 
 
 

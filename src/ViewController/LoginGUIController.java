@@ -36,20 +36,26 @@ public class LoginGUIController implements ActionListener{
 		
 		if(e.getSource() == gui.getCreateLoginBtn()) {
 			//createLogin for non reg user
+			gui.getCreateUserNameInput();
+			gui.getCreatePasswordInput();
 		}
 		
 		if(e.getSource() == gui.getLoginBtn()) {
 			//login if registered user. check username and password
+			gui.getUserNameInput();
+			gui.getPasswordInput();
 		}
 		
 	
 		if(e.getSource() == gui.getVoucherBtn()) {
 			//return discount voucher
+			gui.getVoucherCodeInput();
 
 		}
 		
 		if(e.getSource() == gui.getRefundBtn()) {
 			//return money
+			gui.getRegisteredVoucherCodeInput();
 		}
 		
 	}
