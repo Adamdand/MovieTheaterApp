@@ -1,4 +1,4 @@
-package CancellationModel;
+package PaymentModel;
 
 import java.util.Date;
 import java.util.Random;

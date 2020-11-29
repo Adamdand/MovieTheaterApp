@@ -1,4 +1,4 @@
-package BackEnd;
+package TicketReservationModel;
 
 import View.LoginGUI;
 import ViewController.LoginGUIController;

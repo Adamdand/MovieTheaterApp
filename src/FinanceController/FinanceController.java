@@ -1,4 +1,4 @@
-package CancellationModel;
+package FinanceController;
 
 public class FinanceController {
 	private FinancialInstitute institute;

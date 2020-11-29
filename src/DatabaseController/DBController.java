@@ -1,4 +1,4 @@
-package DataBase;
+package DatabaseController;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,10 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-import BackEnd.movieOfferingAdam;
-import BackEnd.registeredUser;
-import BackEnd.voucher;
+import TicketReservationModel.movieOfferingAdam;
+import TicketReservationModel.registeredUser;
+import TicketReservationModel.voucher;
 
 public class DBController {
 	public String databaseName = "movieTheaterDB";

@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import BackEnd.MovieOffering;
+import TicketReservationModel.MovieOffering;
 
 public class PaymentReceipt {
 	private ArrayList<MovieOffering> soldTickets;

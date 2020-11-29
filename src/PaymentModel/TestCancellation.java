@@ -1,6 +1,9 @@
-package CancellationModel;
+package PaymentModel;
 
 import java.util.Date;
+
+import FinanceController.FinanceController;
+import FinanceController.FinancialInstitute;
 
 public class TestCancellation {
 

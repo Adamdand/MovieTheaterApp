@@ -2,7 +2,7 @@ package PaymentModel;
 
 import java.util.ArrayList;
 
-import BackEnd.MovieOffering;
+import TicketReservationModel.MovieOffering;
 
 public class ProcessPayment {
 	private VoucherIdentifier voucherIdentifier;

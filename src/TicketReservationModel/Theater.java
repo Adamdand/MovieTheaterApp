@@ -1,4 +1,4 @@
-package BackEnd;
+package TicketReservationModel;
 
 public class Theater {
 	private String theaterName;

@@ -1,4 +1,4 @@
-package BackEnd;
+package TicketReservationModel;
 import java.util.Random;
 
 public class MovieOffering {

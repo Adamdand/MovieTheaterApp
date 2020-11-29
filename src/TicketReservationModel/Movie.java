@@ -1,4 +1,4 @@
-package BackEnd;
+package TicketReservationModel;
 
 public class Movie {
 	private String movieName;

@@ -1,4 +1,4 @@
-package DataBase;
+package DatabaseController;
 
 import java.io.FileReader;
 import java.sql.Connection;
@@ -11,9 +11,9 @@ import java.io.FileNotFoundException;
 
 import java.util.Scanner;
 
-import BackEnd.movieOfferingAdam;
-import BackEnd.registeredUser;
-import BackEnd.voucher;
+import TicketReservationModel.movieOfferingAdam;
+import TicketReservationModel.registeredUser;
+import TicketReservationModel.voucher;
 
 
 public class DBEngine {

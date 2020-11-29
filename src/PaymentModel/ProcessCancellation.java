@@ -1,7 +1,9 @@
-package CancellationModel;
+package PaymentModel;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import FinanceController.FinanceController;
 
 public class ProcessCancellation {
 	private ArrayList<CancellationReceipt> receiptList;

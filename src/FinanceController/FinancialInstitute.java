@@ -1,4 +1,4 @@
-package CancellationModel;
+package FinanceController;
 
 import java.util.ArrayList;
 
