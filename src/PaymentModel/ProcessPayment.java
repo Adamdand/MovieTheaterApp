@@ -8,8 +8,9 @@ import TicketReservationModel.MovieOffering;
 public class ProcessPayment {
 	private VoucherIdentifier voucherIdentifier;
 	private FinanceController financeController;
-	//TODO: should receipts be an arraylist?
 	private PaymentReceipt receipt;
+	private PaymentReceiptFee receiptFee;
+	
 	public ProcessPayment(FinanceController finance, VoucherIdentifier v) {
 		this.setFinanceController(finance);
 		this.setVoucherIdentifier(v);
@@ -27,9 +28,14 @@ public class ProcessPayment {
 		return payVoucher(id,price)<=0?true:false;
 	}
 	//potentially want to overload and receive a string instead of movieoffering, pass individual strings
-	public void generateReceipt(ArrayList<MovieOffering> soldTickets,String email, int pricePaid) {
+	public void generateReceipt(ArrayList<MovieOffering> soldTickets,String email, double pricePaid) {
 		receipt = new PaymentReceipt(soldTickets, email, pricePaid);
 	}
+	
+	public void generateReceiptFee(double pricePaid, int endDate, String userName) {
+		receiptFee = new PaymentReceiptFee(pricePaid, endDate, userName);
+	}
+	
 	public void setVoucherIdentifier(VoucherIdentifier voucherIdentifier) {
 		this.voucherIdentifier = voucherIdentifier;
 	}

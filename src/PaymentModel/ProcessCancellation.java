@@ -18,30 +18,29 @@ public class ProcessCancellation {
 	
 	public String refundTicketRegistered(double price, int time, String ticketId, String cardNumber) {
 		if (financeController.makeCancellation(cardNumber, price)) {
-			CancellationReceipt receipt = new CancellationReceipt(price, time, ticketId);
+			CancellationReceipt receipt = new CancellationReceipt(price, ticketId);
 			addReceipt(receipt);
-			return receipt.toString() + cardNumber + " refunded " + price;
+			return "Refunded ticket: " + ticketId;
 		} else {
 			return "Invalid credit card number";
 		}
 	}
 	
 	public String refundTicketRegular(double price, int time, String ticketId, String type) {
-		CancellationReceipt receipt = new CancellationReceipt(price, time, ticketId);
-		addReceipt(receipt);
-
 		Random rand = new Random();
 		int x = -1;
 		while (true) {
 			x = rand.nextInt(89999) + 10000;
 			if (voucherIdentifier.addVoucher(x, price)) {
+				CancellationReceipt receipt = new CancellationReceipt(price, ticketId, x);
+				addReceipt(receipt);
 				break;
 			}
 		}
 		
 		
 		//TODO: add voucher string to return as well
-		return receipt.toString();
+		return "Refunded ticket: " + ticketId;
 	}
 
 	public FinanceController getFinanceController() {
