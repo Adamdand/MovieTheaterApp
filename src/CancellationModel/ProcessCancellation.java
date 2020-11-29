@@ -15,7 +15,7 @@ public class ProcessCancellation {
 		receiptList = new ArrayList<CancellationReceipt>();
 	}
 	
-	public String refundTicketRegistered(double price, Date time, String ticketId, String cardNumber) {
+	public String refundTicketRegistered(double price, int time, String ticketId, String cardNumber) {
 		if (financeController.makeCancellation(cardNumber, price)) {
 			CancellationReceipt receipt = new CancellationReceipt(price, time, ticketId);
 			addReceipt(receipt);
@@ -25,7 +25,7 @@ public class ProcessCancellation {
 		}
 	}
 	
-	public String refundTicketRegular(double price, Date time, String ticketId, String type) {
+	public String refundTicketRegular(double price, int time, String ticketId, String type) {
 		CancellationReceipt receipt = new CancellationReceipt(price, time, ticketId);
 		addReceipt(receipt);
 		//TODO: create new voucher

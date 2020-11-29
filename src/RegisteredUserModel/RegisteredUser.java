@@ -4,10 +4,10 @@ public class RegisteredUser {
 	private String userName;
 	private String password;
 	private String creditCard;
-	private String subStart;
-	private String subEnd;
+	private int subStart;
+	private int subEnd;
 	
-	public RegisteredUser(String userName, String password, String creditCard, String subStart, String subEnd) {
+	public RegisteredUser(String userName, String password, String creditCard, int subStart, int subEnd) {
 		setUserName(userName);
 		setPassword(password);
 		setCreditCard(creditCard);
@@ -39,20 +39,22 @@ public class RegisteredUser {
 		this.creditCard = creditCard;
 	}
 
-	public String getSubStart() {
+	public int getSubStart() {
 		return subStart;
 	}
 
-	public void setSubStart(String subStart) {
+	public void setSubStart(int subStart) {
 		this.subStart = subStart;
 	}
 
-	public String getSubEnd() {
+	public int getSubEnd() {
 		return subEnd;
 	}
 
-	public void setSubEnd(String subEnd) {
+	public void setSubEnd(int subEnd) {
 		this.subEnd = subEnd;
 	}
+
+	
 
 }

@@ -6,12 +6,12 @@ import java.util.Random;
 public class CancellationReceipt {
 	private String receiptNumber;
 	private double price;
-	private Date time;
+	private int date;
 	private String ticketId;
 	
-	public CancellationReceipt(double price, Date time, String ticketId) {
+	public CancellationReceipt(double price, int date, String ticketId) {
 		setPrice(price);
-		setTime(time);
+		setDate(date);
 		setTicketId(ticketId);
 		String today = java.time.LocalDate.now().toString();
 		Random rand = new Random();
@@ -26,7 +26,7 @@ public class CancellationReceipt {
 	public String toString() {
 		return "Receipt number: " + receiptNumber + "\n" + 
 			   "Refunded/credit : " + price + "\n" + 
-			   "Time: " + time + "\n";
+			   "Date: " + date + "\n";
 	}
 	
 	public String getReceiptNumber() {
@@ -41,17 +41,20 @@ public class CancellationReceipt {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	public Date getTime() {
-		return time;
-	}
-	public void setTime(Date time) {
-		this.time = time;
-	}
+
 	public String getTicketId() {
 		return ticketId;
 	}
 	public void setTicketId(String ticketId) {
 		this.ticketId = ticketId;
+	}
+
+	public int getDate() {
+		return date;
+	}
+
+	public void setDate(int date) {
+		this.date = date;
 	}
 	
 	

@@ -25,7 +25,7 @@ public class RegisteredUserList {
 		userList.add(user);
 	}
 	
-	public void addUser(String userName, String password, String creditCard, String subStart, String subEnd) {
+	public void addUser(String userName, String password, String creditCard, int subStart, int subEnd) {
 		RegisteredUser user = new RegisteredUser(userName, password, creditCard, subStart, subEnd);
 		userList.add(user);
 	}

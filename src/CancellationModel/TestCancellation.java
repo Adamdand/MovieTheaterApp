@@ -9,9 +9,9 @@ public class TestCancellation {
 		FinanceController fc = new FinanceController(f);
 		ProcessCancellation pc = new ProcessCancellation(fc);
 		
-		Date time = new Date();
+		int date = 20201128;
 		//test for registered user cancellation with valid credit card
-		String response = pc.refundTicketRegistered(10, time, "123abc", "0000111122223333");
+		String response = pc.refundTicketRegistered(10, date, "123abc", "0000111122223333");
 		System.out.println(response);
 		
 		System.out.println("checking if financial institute updated card funds");
@@ -20,7 +20,7 @@ public class TestCancellation {
 		System.out.println("----");
 		
 		//test for registered user cancellation with invalid credit card
-		response = pc.refundTicketRegistered(10, time, "123abc", "1111222233334444");
+		response = pc.refundTicketRegistered(10, date, "123abc", "1111222233334444");
 		System.out.println(response);
 	}
 
