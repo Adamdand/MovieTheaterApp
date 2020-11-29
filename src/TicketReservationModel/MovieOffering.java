@@ -66,6 +66,14 @@ public class MovieOffering {
 		this.booked = booked;
 	}
 	
+	public int getTicketId() {
+		return ticketId;
+	}
+	
+	public double getPrice() {
+		return price;
+	}
+	
 
 }
 
