@@ -2,6 +2,8 @@ package PaymentModel;
 
 import java.util.ArrayList;
 
+import BackEnd.MovieOffering;
+
 public class ProcessPayment {
 	private VoucherIdentifier voucherIdentifier;
 	private PaymentReceipt receipt;

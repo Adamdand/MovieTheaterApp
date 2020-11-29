@@ -4,13 +4,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import BackEnd.MovieOffering;
+
 public class PaymentReceipt {
 	private ArrayList<MovieOffering> soldTickets;
 	private double pricePaid;
 	
 	public PaymentReceipt(ArrayList<MovieOffering> soldTickets, double pricePaid) {
 		this.setSoldTickets(soldTickets);
-		this.setPricePaid(pricePaid)
+		this.setPricePaid(pricePaid);
 		generateReceipt();
 	}
 	private void generateReceipt() {
@@ -21,7 +23,7 @@ public class PaymentReceipt {
 				myWriter.write(m+"\n");
 			}
 			myWriter.write("Paid: $"+pricePaid);
-			myWriter.close()
+			myWriter.close();
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -39,5 +41,7 @@ public class PaymentReceipt {
 			printReceipt+=(m+"\n");
 		}
 		printReceipt+=("TOTAL: $ "+pricePaid);
+		
+		return printReceipt;
 	}
 }

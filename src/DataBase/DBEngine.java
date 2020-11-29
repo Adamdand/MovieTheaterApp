@@ -20,9 +20,9 @@ public class DBEngine {
 	
 	public Connection jdbc_connection;
 	public Statement statement;
-	public String databaseName = "movieTheaterDB", tableName = "movieOfferings", dataFile = "C:/Users/adamd/Desktop/ENSF 619/movieTheater/movieOfferings.txt";
-	public String voucherListFile = "C:/Users/adamd/Desktop/ENSF 619/movieTheater/voucherList.txt";
-	public String registeredUsers = "C:/Users/adamd/Desktop/ENSF 619/movieTheater/registeredUsers.txt";
+	public String databaseName = "movieTheaterDB", tableName = "movieOfferings", dataFile = "movieOfferings.txt";
+	public String voucherListFile = "voucherList.txt";
+	public String registeredUsers = "registeredUsers.txt";
 	
 	// Students should configure these variables for their own MySQL environment
 	// If you have not created your first database in mySQL yet, you can leave the 
