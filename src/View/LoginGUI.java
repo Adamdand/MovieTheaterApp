@@ -36,6 +36,7 @@ public class LoginGUI extends JFrame {
 	private JTextField passwordInput=null;
 	private JTextField createPasswordInput=null;
 	private JTextField createUserNameInput=null;
+	private JTextField voucherCodeInput=null;
 
 
 	public LoginGUI() {
@@ -65,7 +66,7 @@ public class LoginGUI extends JFrame {
 		leftPanel.add(registerTxt);
 		
 		
-		JLabel createUserNameTxt=new JLabel("Create UserName:");
+		JLabel createUserNameTxt=new JLabel("Input Email:");
 		createUserNameTxt.setFont(new Font("Courier New", Font.BOLD, 15));
 		createUserNameTxt.setBounds(50, 115, 150, 30);
 		leftPanel.add(createUserNameTxt);
@@ -90,11 +91,21 @@ public class LoginGUI extends JFrame {
 		voucherTxt.setFont(new Font("Courier New", Font.BOLD, 16));
 		voucherTxt.setBounds(50, 390, 250, 30);
 		this.add(voucherTxt);
-		this.add(leftPanel);
+
+		
+		JLabel voucherInput=new JLabel("Voucher Code");
+		voucherInput.setFont(new Font("Courier New", Font.BOLD, 13));
+		voucherInput.setBounds(50, 390, 250, 30);
+		this.add(voucherInput);
+		voucherCodeInput=new JTextField();
+		voucherCodeInput.setBounds(260, 330, 120, 30);
+		leftPanel.add(voucherCodeInput);
+		
 		
 		voucherBtn = new JButton("Refund");
 		voucherBtn.setBounds(260, 330, 80, 30);
 		leftPanel.add(voucherBtn);
+		this.add(leftPanel);
 
 		
 		JPanel rightPanel=new JPanel(); 
@@ -111,7 +122,7 @@ public class LoginGUI extends JFrame {
 		loginTxt.setBounds(170, 90, 200, 30);
 		rightPanel.add(loginTxt);
 		
-		JLabel userNameTxt=new JLabel("UserName:");
+		JLabel userNameTxt=new JLabel("Email:");
 		userNameTxt.setFont(new Font("Courier New", Font.BOLD, 15));
 		userNameTxt.setBounds(50, 115, 120, 30);
 		rightPanel.add(userNameTxt);
