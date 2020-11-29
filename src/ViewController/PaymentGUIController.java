@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import Controller.ModelController;
 import View.PaymentGUI;
-import ViewModel.PaymentGUIModel;
 
 
 public class PaymentGUIController implements ActionListener {
