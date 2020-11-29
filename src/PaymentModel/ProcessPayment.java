@@ -27,8 +27,8 @@ public class ProcessPayment {
 		return payVoucher(id,price)<=0?true:false;
 	}
 	//potentially want to overload and receive a string instead of movieoffering, pass individual strings
-	public void generateReceipt(ArrayList<MovieOffering> soldTickets, int pricePaid) {
-		receipt = new PaymentReceipt(soldTickets, pricePaid);
+	public void generateReceipt(ArrayList<MovieOffering> soldTickets,String email, int pricePaid) {
+		receipt = new PaymentReceipt(soldTickets, email, pricePaid);
 	}
 	public void setVoucherIdentifier(VoucherIdentifier voucherIdentifier) {
 		this.voucherIdentifier = voucherIdentifier;
