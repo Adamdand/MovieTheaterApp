@@ -94,21 +94,21 @@ public class DBController {
 		return null;
 	}
 	
-	public RegisteredUser searchUsers(String userName, String password)
+	public RegisteredUser searchUsers(String email, String password)
 	{
 		PreparedStatement getVoucher = null;
-		String sql = "SELECT * FROM registeredusers"  + " WHERE userName = ? AND password = ?"; //dont worry, this is set up to take a String in the future, so it can search for toolID or toolName
+		String sql = "SELECT * FROM registeredusers"  + " WHERE email = ? AND password = ?"; //dont worry, this is set up to take a String in the future, so it can search for toolID or toolName
 		try {
 			//statement = jdbc_connection.createStatement();
 			//tool = statement.executeQuery(sql);
 			if(jdbc_connection != null)
 			{
 				getVoucher = jdbc_connection.prepareStatement(sql);
-				getVoucher.setString(1, userName);
+				getVoucher.setString(1, email);
 				getVoucher.setString(2, password);
 				ResultSet rs = getVoucher.executeQuery();
 				if(rs.next()) {
-					RegisteredUser thisUser = new RegisteredUser(rs.getString("userName"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
+					RegisteredUser thisUser = new RegisteredUser(rs.getString("email"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
 					//item.linkSupplier(rs.getString("supplier"));
 					return thisUser;
 				}
@@ -165,11 +165,12 @@ public class DBController {
 			String sql = "INSERT INTO voucherlist" + " VALUES (?,?,?,?,?);"; 
 					try {
 						addUser = jdbc_connection.prepareStatement(sql);
-						addUser.setInt(1, thisRegisteredUser.getuserID());
-						addUser.setInt(2, thisRegisteredUser.getStartDate());
-						addUser.setInt(2, thisRegisteredUser.getEndDate());
-						addUser.setString(2, thisRegisteredUser.getEmail());
+						addUser.setString(1, thisRegisteredUser.getUserName());
 						addUser.setString(2, thisRegisteredUser.getPassword());
+						addUser.setString(3, thisRegisteredUser.getCreditCard());
+						addUser.setInt(4, thisRegisteredUser.getSubStart());
+						addUser.setInt(5, thisRegisteredUser.getSubEnd());
+						addUser.executeUpdate();
 
 					}catch(SQLException ex) {
 						ex.printStackTrace();
@@ -186,15 +187,14 @@ public class DBController {
 					"endDate =  ? ," +
 					"email =  ? ," +
 					"password =  ? ," +
-					"WHERE email = " + thisUser.getEmail() + ";"; 
+					"WHERE email = " + thisUser.getUserName() + ";"; 
 					try {
 						renewUser = jdbc_connection.prepareStatement(sql);
-						renewUser = jdbc_connection.prepareStatement(sql);
-						renewUser.setInt(1, thisUser.getuserID());
-						renewUser.setInt(2, thisUser.getStartDate());
-						renewUser.setInt(2, thisUser.getEndDate());
-						renewUser.setString(2, thisUser.getEmail());
+						renewUser.setString(1, thisUser.getUserName());
 						renewUser.setString(2, thisUser.getPassword());
+						renewUser.setString(3, thisUser.getCreditCard());
+						renewUser.setInt(4, thisUser.getSubStart());
+						renewUser.setInt(5, thisUser.getSubEnd());
 						renewUser.executeUpdate();
 					}catch(SQLException ex) {
 						ex.printStackTrace();
@@ -216,7 +216,7 @@ public class DBController {
 			}
 		}
 		
-		public RegisteredUser searchUsersforRenewalorAddition(int userID, int startDate, int endDate, String email, String password)
+		public RegisteredUser searchUsersforRenewalorAddition(String userName, String password, String creditCard, int startDate, int endDate)
 		{
 			PreparedStatement getUser = null;
 			String sql = "SELECT * FROM registeredusers " + " WHERE email = ? OR email = ?"; //dont worry, this is set up to take a String in the future, so it can search for toolID or toolName
@@ -226,13 +226,13 @@ public class DBController {
 				if(jdbc_connection != null)
 				{
 					getUser = jdbc_connection.prepareStatement(sql);
-					getUser.setInt(1, userID);
-					getUser.setInt(2, userID);
+					getUser.setString(1, userName);
+					getUser.setString(2, userName);
 					ResultSet rs = getUser.executeQuery();
 					if(rs.next()) {
-						RegisteredUser supp = new RegisteredUser(rs.getInt("userID"),rs.getInt("startDate"), rs.getInt("endDate"), rs.getString("email"), rs.getString("password"));
+						RegisteredUser supp = new RegisteredUser(rs.getString("userName"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
 						//item.linkSupplier(rs.getString("supplier"));
-						RegisteredUser thisUser = new RegisteredUser(userID, startDate, endDate, email, password);
+						RegisteredUser thisUser = new RegisteredUser(userName, password, creditCard, startDate, endDate);
 						updateUser(thisUser);
 						System.out.println("Found Customer");
 						return thisUser;
@@ -241,7 +241,7 @@ public class DBController {
 			
 			} catch (SQLException e) { e.printStackTrace(); }
 			System.out.println("registeredUser NOT FOUND, creating new registeredUser.....");
-			RegisteredUser thisUser = new RegisteredUser(userID, startDate, endDate, email, password);
+			RegisteredUser thisUser = new RegisteredUser(userName, password, creditCard, startDate, endDate);
 			addRegisteredUser(thisUser);
 			return null;
 		}
@@ -289,7 +289,7 @@ public class DBController {
 			System.out.println("Search Result: " + myVoucher.toString());
 		
 		//test search for username and password combo in DB
-		RegisteredUser myUser = dataBase.RegisteredUser("junwoo@123.com","123");
+		RegisteredUser myUser = dataBase.searchUsers("junwoo@123.com","123");
 		if(myUser == null)
 			System.out.println("Search Failed to a user with email junwoo@123.com and password 123");
 		else
