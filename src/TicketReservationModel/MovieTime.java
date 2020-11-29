@@ -1,6 +1,5 @@
 package TicketReservationModel;
 
-import java.util.Date;
 
 public class MovieTime {
 	private int day;

@@ -1,6 +1,5 @@
 package PaymentModel;
 
-import java.util.Date;
 import java.util.Random;
 
 public class CancellationReceipt {
