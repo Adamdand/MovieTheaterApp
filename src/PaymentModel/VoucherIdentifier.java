@@ -34,7 +34,13 @@ public class VoucherIdentifier {
 		double remain = price;
 		if(voucherMap.containsKey(id)) { 
 			 remain = price - voucherMap.get(id).getWorth();
-			 voucherMap.remove(id);
+			 if(remain<0) {
+				 voucherMap.get(id).setWorth(Math.abs(remain));
+				 remain =0;
+			 }
+			 else {
+				 voucherMap.remove(id); 
+			 }
 		}
 		return remain;
 	}
