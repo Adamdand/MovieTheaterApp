@@ -2,6 +2,9 @@ package ViewController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 
@@ -14,6 +17,7 @@ public class TheaterGUIController implements ActionListener {
 	
 	private TheaterGUI gui;
 	private TheaterGUIModel model;
+	private MouseListener mouse;
 	
 	public TheaterGUIController (TheaterGUI gui, TheaterGUIModel model) {
 		this.setGui(gui);
@@ -23,6 +27,17 @@ public class TheaterGUIController implements ActionListener {
 		gui.getSearchBtn().addActionListener(this);
 		gui.getSelectBtn().addActionListener(this);
 		//gui.getResultScroll().addActionListener(this); //can we put this in here?
+		
+		mouse = new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if(e.getClickCount() ==1) {
+					movieOffering thisOffiering = gui.getMovieOffering().getSelectedValue();
+					gui.getMovieNameTxt().setText(thisOffering.getMovieName());
+					gui.getTheaterTxt().setText(thisOffering.getTheaterName());
+					gui.getTimeTxt().setText(thisOffering.getMovieTime());
+				}
+			}
+		}
 
 
 	}
