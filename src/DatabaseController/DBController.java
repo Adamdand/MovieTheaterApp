@@ -15,6 +15,7 @@ import RegisteredUserModel.RegisteredUser;
 import PaymentModel.Voucher;
 import TicketReservationModel.Movie;
 import TicketReservationModel.MovieOffering;
+import TicketReservationModel.MovieTime;
 import TicketReservationModel.voucher;
 
 public class DBController {
@@ -343,17 +344,13 @@ public class DBController {
 						 for(int col = 1; col < 6; col++){
 							 Seats mySeat = new Seats(row,col);
 							 Movie thisMovie = new Movie(rs.getString("movieName"));
-							 Theater thisTheater = new Theater(rs.getString("theaterName"));
-							 MovieOffering t = new MovieOffering(rs.getString("theaterName"),thisMovie, rs.getString("movieTime"), mySeat, rs.getInt("offeringID"));
+							 Theater thisTheater = new Theater(rs.getString("theaterName"),rs.getString("theaterLoc"));
+							 MovieTime thisTime = new MovieTime(rs.getString("movieTime"));
+							 
+							 MovieOffering t = new MovieOffering(thisTheater,thisMovie, thisTime, mySeat, rs.getInt("offeringID"));
 							 temp.add(t);
 							 }
 					    }
-					
-					
-					
-					//t.linkSupplier(rs.getString("supplier"));
-					//t.display();
-					temp.add(t);
 				}
 				return temp;
 			}

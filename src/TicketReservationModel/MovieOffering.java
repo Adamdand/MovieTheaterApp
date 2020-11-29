@@ -11,7 +11,7 @@ public class MovieOffering {
 	private boolean booked;
 	
 	
-	public MovieOffering(Theater theater, Movie movie, MovieTime time, Seats seating, String ticketId) {
+	public MovieOffering(Theater theater, Movie movie, MovieTime time, Seats seating, int ticketId) {
 		Random rand = new Random();
 		this.theater = theater;
 		this.movie= movie;
