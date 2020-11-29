@@ -32,5 +32,12 @@ public class PaymentReceipt {
 	public void setPricePaid(double pricePaid) {
 		this.pricePaid = pricePaid;
 	}
-
+	@Override
+	public String toString() {
+		String printReceipt ="";
+		for(MovieOffering m: soldTickets) {
+			printReceipt+=(m+"\n");
+		}
+		printReceipt+=("TOTAL: $ "+pricePaid);
+	}
 }

@@ -1,12 +1,21 @@
 package PaymentModel;
+import java.time.*;
+
 public class Voucher {
 	
 	private double worth;
+	private int expirationDate;
 	
 	public Voucher(double worth) {
 		this.setWorth(worth);
+		calculateExpiration();
 	}
-
+	
+	private void calculateExpiration() {
+		String today = LocalDate.now()+"";
+		today.replaceAll("-","");
+		expirationDate = Integer.parseInt(today);
+	}
 	public double getWorth() {
 		return worth;
 	}
@@ -17,5 +26,9 @@ public class Voucher {
 	
 	public String toString() {
 		return "$"+worth;
+	}
+
+	public int getExpirationDate() {
+		return expirationDate;
 	}
 }

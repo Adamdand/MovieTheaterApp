@@ -8,7 +8,8 @@ public class ProcessPayment {
 	public ProcessPayment(VoucherIdentifier v) {
 		this.setVoucherIdentifier(v);
 	}
-	public double payCard(String method, double price) {
+	//return payment receipt if successful
+	public double payCard(String cardNumber, double price) {
 		//May change later but assuming always have enough to cover balance
 		double remain = 0;
 		return remain;
@@ -19,6 +20,7 @@ public class ProcessPayment {
 	public boolean fullfilledAmount(int id, double price) {
 		return payVoucher(id,price)<=0?true:false;
 	}
+	//potentially want to overload and receive a string instead of movieoffering, pass individual strings
 	public PaymentReceipt returnReceipt(ArrayList<MovieOffering> soldTickets, int pricePaid) {
 		receipt = new PaymentReceipt(soldTickets, pricePaid);
 		return receipt;
