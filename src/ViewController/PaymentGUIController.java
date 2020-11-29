@@ -3,6 +3,7 @@ package ViewController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Controller.ModelController;
 import View.PaymentGUI;
 import ViewModel.PaymentGUIModel;
 
@@ -10,7 +11,7 @@ import ViewModel.PaymentGUIModel;
 public class PaymentGUIController implements ActionListener {
 	
 	private PaymentGUI gui;
-	private PaymentGUIModel model;
+	private ModelController model;
 	
 	public PaymentGUIController(PaymentGUI gui, PaymentGUIModel model) {
 		this.setGui(gui);
@@ -32,7 +33,10 @@ public class PaymentGUIController implements ActionListener {
 			//make voucher no longer useable if used (delete from list of usable voucher codes)
 			//print receipt
 			//AND print ticket
-			
+			double price = gui.getTotalCost();
+			String card = gui.getCreditCardTxt().getText();
+			String email = gui.getEmailTxt().getText();
+			model.makeCardPayment(card, email, price);
 		}
 		
 		if(e.getSource() == gui.getCancelBtn()) {
@@ -56,11 +60,7 @@ public class PaymentGUIController implements ActionListener {
 		
 	}
 
-	public PaymentGUIModel getModel() {
-		return model;
-	}
-
-	public void setModel(PaymentGUIModel model) {
+	public void setModel(ModelController model) {
 		this.model = model;
 	}
 
@@ -71,7 +71,4 @@ public class PaymentGUIController implements ActionListener {
 	public void setGui(PaymentGUI gui) {
 		this.gui = gui;
 	}
-
-
-
 }
