@@ -28,6 +28,7 @@ public class TheaterGUIController implements ActionListener {
 		gui.getSelectBtn().addActionListener(this);
 		//gui.getResultScroll().addActionListener(this); //can we put this in here?
 		
+		/*
 		mouse = new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
 				if(e.getClickCount() ==1) {
@@ -37,7 +38,7 @@ public class TheaterGUIController implements ActionListener {
 					gui.getTimeTxt().setText(thisOffering.getMovieTime());
 				}
 			}
-		}
+		}*/
 
 
 	}
