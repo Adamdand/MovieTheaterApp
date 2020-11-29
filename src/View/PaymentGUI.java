@@ -14,6 +14,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JScrollPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.SwingConstants;
@@ -157,6 +158,10 @@ public class PaymentGUI extends JFrame{
 		}else {
 			thisButton.setEnabled(true);
 		}
+	}
+	
+	public void displayMessage(String message) {
+		JOptionPane.showMessageDialog(this, message);
 	}
 	
 	public JButton getCancelBtn() {
