@@ -6,7 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Hashtable;
 
+import PaymentModel.Voucher;
+import RegisteredUserModel.RegisteredUser;
+import TicketReservationModel.MovieOffering;
 import TicketReservationModel.movieOfferingAdam;
 import TicketReservationModel.registeredUser;
 import TicketReservationModel.voucher;
@@ -308,6 +313,21 @@ public class DBController {
 		
 		
 		
+	}
+	
+	//TODO: implement method
+	public ArrayList<MovieOffering> loadMovies() {
+		return null;
+	}
+	
+	//TODO: implement method
+	public ArrayList<RegisteredUser> loadUsers() {
+		return null;
+	}
+	
+	//TODO: implement method
+	public Hashtable<Integer, Voucher> loadVouchers() {
+		return null;
 	}
 	
 	
