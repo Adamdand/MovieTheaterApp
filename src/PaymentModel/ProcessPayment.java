@@ -39,5 +39,8 @@ public class ProcessPayment {
 	public void setFinanceController(FinanceController financeController) {
 		this.financeController = financeController;
 	}
+	public PaymentReceipt getReceipt() {
+		return receipt;
+	}
 
 }
