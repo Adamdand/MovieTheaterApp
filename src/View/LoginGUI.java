@@ -235,6 +235,10 @@ public class LoginGUI extends JFrame {
 	public JTextField getCreateUserNameInput() {
 		return createUserNameInput;
 	}
+	
+	public JTextField getCreditCardInput() {
+		return creditCardInput;
+	}
 
 
 

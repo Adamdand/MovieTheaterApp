@@ -22,7 +22,6 @@ public class LoginGUIController implements ActionListener{
 		
 		gui.getBrowseMovies().addActionListener(this);
 		
-		//gui.init();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -38,6 +37,7 @@ public class LoginGUIController implements ActionListener{
 			//createLogin for non reg user
 			gui.getCreateUserNameInput();
 			gui.getCreatePasswordInput();
+			gui.getCreditCardInput();
 		}
 		
 		if(e.getSource() == gui.getLoginBtn()) {

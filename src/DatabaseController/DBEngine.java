@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 
 import java.util.Scanner;
 
-import TicketReservationModel.movieOfferingAdam;
 import RegisteredUserModel.RegisteredUser;
 import TicketReservationModel.voucher;
 
