@@ -37,6 +37,7 @@ public class LoginGUI extends JFrame {
 	private JTextField createPasswordInput=null;
 	private JTextField createUserNameInput=null;
 	private JTextField voucherCodeInput=null;
+	private JTextField registeredVoucherCodeInput=null;
 
 
 	public LoginGUI() {
@@ -95,10 +96,10 @@ public class LoginGUI extends JFrame {
 		
 		JLabel voucherInput=new JLabel("Voucher Code");
 		voucherInput.setFont(new Font("Courier New", Font.BOLD, 13));
-		voucherInput.setBounds(50, 390, 250, 30);
-		this.add(voucherInput);
+		voucherInput.setBounds(370, 305, 250, 30);
+		leftPanel.add(voucherInput);
 		voucherCodeInput=new JTextField();
-		voucherCodeInput.setBounds(260, 330, 120, 30);
+		voucherCodeInput.setBounds(380, 330, 80, 30);
 		leftPanel.add(voucherCodeInput);
 		
 		
@@ -151,6 +152,14 @@ public class LoginGUI extends JFrame {
 		refundBtn = new JButton("Refund");
 		refundBtn.setBounds(195, 330, 80, 30);
 		rightPanel.add(refundBtn);
+		
+		JLabel registeredVoucherInput=new JLabel("Voucher Code");
+		registeredVoucherInput.setFont(new Font("Courier New", Font.BOLD, 13));
+		registeredVoucherInput.setBounds(305, 305, 250, 30);
+		rightPanel.add(registeredVoucherInput);
+		registeredVoucherCodeInput=new JTextField();
+		registeredVoucherCodeInput.setBounds(315, 330, 80, 30);
+		rightPanel.add(registeredVoucherCodeInput);
 		
 		this.add(rightPanel);
 		
