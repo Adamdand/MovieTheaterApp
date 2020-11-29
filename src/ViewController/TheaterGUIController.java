@@ -8,18 +8,18 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 
+import Controller.ModelController;
 import View.SeatSelectionGUI;
 import View.TheaterGUI;
-import ViewModel.LoginGUIModel;
-import ViewModel.TheaterGUIModel;
+
 
 public class TheaterGUIController implements ActionListener {
 	
 	private TheaterGUI gui;
-	private TheaterGUIModel model;
+	private ModelController model;
 	private MouseListener mouse;
 	
-	public TheaterGUIController (TheaterGUI gui, TheaterGUIModel model) {
+	public TheaterGUIController (TheaterGUI gui, ModelController model) {
 		this.setGui(gui);
 		this.setModel(model);
 		
@@ -63,7 +63,7 @@ public class TheaterGUIController implements ActionListener {
 		if(e.getSource() == gui.getSelectBtn()) {
 			//go to next GUI
 			SeatSelectionGUI seatView = new SeatSelectionGUI();
-			SeatGUIController seatController = new SeatGUIController(seatView, null);
+			SeatGUIController seatController = new SeatGUIController(seatView, model);
 			seatView.setVisible(true);
 		}
 
@@ -83,11 +83,11 @@ public class TheaterGUIController implements ActionListener {
 		this.gui = gui;
 	}
 
-	public TheaterGUIModel getModel() {
+	public ModelController getModel() {
 		return model;
 	}
 
-	public void setModel(TheaterGUIModel model) {
+	public void setModel(ModelController model) {
 		this.model = model;
 	}
 

@@ -9,12 +9,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import TicketReservationModel.Seats;
+import RegisteredUserModel.RegisteredUser;
 import PaymentModel.Voucher;
-import RegisteredUserModel.RegisteredUser;
-import RetailStoreApp.Items;
 import TicketReservationModel.MovieOffering;
-import TicketReservationModel.movieOfferingAdam;
-import RegisteredUserModel.RegisteredUser;
 import TicketReservationModel.voucher;
 
 public class DBController {
@@ -45,6 +43,7 @@ public class DBController {
 	 * @param offeringID
 	 * @return
 	 */
+	/**
 	public movieOfferingAdam searchOfferings(String theaterName, String movieName, String movieTime)
 	{
 		PreparedStatement getOffering = null;
@@ -59,9 +58,6 @@ public class DBController {
 				getOffering.setString(2, movieName);
 				getOffering.setString(3, movieTime);
 				ResultSet rs = getOffering.executeQuery();
-				/**
-				 * NEED ADVICE
-				 */
 				if(rs.next()) {
 					movieOfferingAdam offering = new movieOfferingAdam(rs.getString("theaterName"), rs.getString("movieName"), rs.getString("movieTime"));
 					//item.linkSupplier(rs.getString("supplier"));
@@ -72,7 +68,7 @@ public class DBController {
 		} catch (SQLException e) { e.printStackTrace(); }
 		
 		return null;
-	}
+	}*/
 	
 	public voucher searchVouchers(int code)
 	{
@@ -256,6 +252,7 @@ public class DBController {
 	 * Static Main
 	 * @param args
 	 */
+		/**
 	public static void main(String args[])
 	{
 		DBController dataBase = new DBController();
@@ -273,7 +270,7 @@ public class DBController {
 		else
 			System.out.println("Search Result: " + searchResult.toString());
 
-		/**
+
 		System.out.println("\nSearching table for tool 9000: should fail to find a tool");
 		toolID = 9000;
 		searchResult = inventory.searchTool(toolID);
@@ -285,6 +282,7 @@ public class DBController {
 
 		
 		//TEST search for voucher in DB
+		/**
 		System.out.println("\nSearching voucher codes for voucher 53398");
 		voucher myVoucher = dataBase.searchVouchers(53398);
 		if(myVoucher == null)
@@ -317,9 +315,10 @@ public class DBController {
 			System.out.println("\nThe program is finished running");
 		}
 		
+		
 	
 		
-	}
+	}*/
 	
 	
 
@@ -327,8 +326,38 @@ public class DBController {
 	
 	//TODO: implement method
 	public ArrayList<MovieOffering> loadMovies() {
+		PreparedStatement getAllMovies = null;
+		String getAllMoviesString = "select * from registeredusers";
+		ArrayList<MovieOffering> temp = new ArrayList<MovieOffering>();
+		try {
+			if (jdbc_connection != null) {
+				getAllMovies = jdbc_connection.prepareStatement(getAllMoviesString);
+				ResultSet rs = getAllMovies.executeQuery();
+
+				while (rs.next()) {
+					for(char row = 'A'; row < 'E'; row++){
+						 //ArrayList<Seats> seatRow = new ArrayList<Seats>();
+						 for(int col = 1; col < 6; col++){
+							 Seats mySeat = new Seats(row,col);
+							 seatRow.add(mySeat);
+					        }
+						 allSeats.add(seatRow);
+					    }
+					
+					
+					MovieOffering t = new MovieOffering(rs.getString("userName"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
+					//t.linkSupplier(rs.getString("supplier"));
+					//t.display();
+					temp.add(t);
+				}
+				return temp;
+			}
+		} catch ( SQLException ex) {
+			ex.printStackTrace();
+		}
 		return null;
 	}
+
 	
 	public ArrayList<RegisteredUser> loadUsers() {
 		PreparedStatement getAllUsers = null;
@@ -363,10 +392,10 @@ public class DBController {
 				ResultSet rs = getAllVouchers.executeQuery();
 
 				while (rs.next()) {
-					RegisteredUser t = new RegisteredUser(rs.getString("userName"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
+					Voucher t = new Voucher(13,rs.getInt("endDate"));
 					//t.linkSupplier(rs.getString("supplier"));
 					//t.display();
-					temp.add(t);
+					temp.put(rs.getInt("voucherCode"),t);
 				}
 				return temp;
 			}

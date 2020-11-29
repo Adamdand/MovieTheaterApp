@@ -3,16 +3,16 @@ package ViewController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Controller.ModelController;
 import View.PaymentGUI;
 import View.SeatSelectionGUI;
-import ViewModel.SeatGUIModel;
 
 public class SeatGUIController implements ActionListener {
 	
 	private SeatSelectionGUI gui;
-	private SeatGUIModel model;
+	private ModelController model;
 	
-	public SeatGUIController (SeatSelectionGUI gui, SeatGUIModel model) {
+	public SeatGUIController (SeatSelectionGUI gui, ModelController model) {
 		
 		this.setGui(gui);
 		this.setModel(model);
@@ -54,7 +54,7 @@ public void actionPerformed(ActionEvent e) {
 	if(e.getSource() == gui.getCheckOutBtn()) {
 		//start up next Payment GUI if clicked
 		PaymentGUI paymentView = new PaymentGUI(gui.getTotalCost());
-		PaymentGUIController paymentController = new PaymentGUIController(paymentView, null);
+		PaymentGUIController paymentController = new PaymentGUIController(paymentView, model);
 		paymentView.setVisible(true); 
 		
 	}
@@ -176,11 +176,11 @@ public void actionPerformed(ActionEvent e) {
 
 }
 
-	public SeatGUIModel getModel() {
+	public ModelController getModel() {
 		return model;
 	}
 
-	public void setModel(SeatGUIModel model) {
+	public void setModel(ModelController model) {
 		this.model = model;
 	}
 

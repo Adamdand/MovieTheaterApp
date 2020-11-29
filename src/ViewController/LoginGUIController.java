@@ -5,17 +5,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.WindowConstants;
 
+import Controller.ModelController;
 import View.LoginGUI;
 import View.TheaterGUI;
-import ViewModel.LoginGUIModel;
 
 
 public class LoginGUIController implements ActionListener{
 	private LoginGUI gui;
-	private LoginGUIModel model;
+	private ModelController model;
 	
 	//make aggregation relationship
-	public LoginGUIController(LoginGUI gui, LoginGUIModel model) {
+	public LoginGUIController(LoginGUI gui, ModelController model) {
 		this.gui = gui;
 		this.setModel(model);
 		
@@ -29,7 +29,7 @@ public class LoginGUIController implements ActionListener{
 		if(e.getSource() == gui.getBrowseMovies()) {
 			//start up next GUI if clicked
 			TheaterGUI theaterView = new TheaterGUI();
-			TheaterGUIController theaterController = new TheaterGUIController(theaterView, null);
+			TheaterGUIController theaterController = new TheaterGUIController(theaterView, model);
 			theaterView.setVisible(true);
 		}
 		
@@ -60,11 +60,11 @@ public class LoginGUIController implements ActionListener{
 		
 	}
 
-	public LoginGUIModel getModel() {
+	public ModelController getModel() {
 		return model;
 	}
 
-	public void setModel(LoginGUIModel model) {
+	public void setModel(ModelController model) {
 		this.model = model;
 	}
 }
