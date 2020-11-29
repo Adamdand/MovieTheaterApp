@@ -371,6 +371,18 @@ public void fillVoucherList() {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}	
+	}
+	
+	public static void main(String[] args) {
+		DBEngine db = new DBEngine();
+		db.createDB();
+		db.createTable();
+		db.createRegisteredUsers();
+		db.createVoucherList();
+		db.fillTable();
+		db.fillRegisteredUsersList();
+		db.fillVoucherList();
+		
+	}
 	
 }
