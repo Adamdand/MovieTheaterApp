@@ -9,10 +9,12 @@ import TicketReservationModel.MovieOffering;
 public class PaymentReceipt {
 	private ArrayList<MovieOffering> soldTickets;
 	private double pricePaid;
+	private String email;
 	
-	public PaymentReceipt(ArrayList<MovieOffering> soldTickets, double pricePaid) {
+	public PaymentReceipt(ArrayList<MovieOffering> soldTickets,String email, double pricePaid) {
 		this.setSoldTickets(soldTickets);
 		this.setPricePaid(pricePaid);
+		this.setEmail(email);
 		generateReceipt();
 	}
 	private void generateReceipt() {
@@ -35,7 +37,7 @@ public class PaymentReceipt {
 		this.pricePaid = pricePaid;
 	}
 	//Method to send receipt to user's email
-	public void emailReceipt(String email) {}
+	public void emailReceipt() {}
 	@Override
 	public String toString() {
 		String printReceipt ="";
@@ -45,5 +47,11 @@ public class PaymentReceipt {
 		printReceipt+=("TOTAL: $ "+pricePaid);
 		
 		return printReceipt;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
