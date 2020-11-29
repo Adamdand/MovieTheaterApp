@@ -2,12 +2,16 @@ package PaymentModel;
 
 import java.util.ArrayList;
 
+import FinanceController.FinanceController;
 import TicketReservationModel.MovieOffering;
 
 public class ProcessPayment {
 	private VoucherIdentifier voucherIdentifier;
+	private FinanceController financeController;
+	//TODO: should receipts be an arraylist?
 	private PaymentReceipt receipt;
-	public ProcessPayment(VoucherIdentifier v) {
+	public ProcessPayment(FinanceController finance, VoucherIdentifier v) {
+		this.setFinanceController(finance);
 		this.setVoucherIdentifier(v);
 	}
 	//return payment receipt if successful
@@ -29,6 +33,12 @@ public class ProcessPayment {
 	}
 	public void setVoucherIdentifier(VoucherIdentifier voucherIdentifier) {
 		this.voucherIdentifier = voucherIdentifier;
+	}
+	public FinanceController getFinanceController() {
+		return financeController;
+	}
+	public void setFinanceController(FinanceController financeController) {
+		this.financeController = financeController;
 	}
 
 }

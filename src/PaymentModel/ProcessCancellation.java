@@ -7,13 +7,12 @@ import FinanceController.FinanceController;
 
 public class ProcessCancellation {
 	private ArrayList<CancellationReceipt> receiptList;
-	//TODO: add voucher identifier
-	//private VoucherIdentifier voucher;
+	private VoucherIdentifier voucherIdentifier;
 	private FinanceController financeController;
 	
-	public ProcessCancellation(FinanceController finance) {
+	public ProcessCancellation(FinanceController finance, VoucherIdentifier v) {
 		setFinanceController(finance);
-		//TODO: add setter for voucher identifier
+		setVoucherIdentifier(v);
 		receiptList = new ArrayList<CancellationReceipt>();
 	}
 	
@@ -54,5 +53,13 @@ public class ProcessCancellation {
 	
 	public void addReceipt(CancellationReceipt receipt) {
 		receiptList.add(receipt);
+	}
+
+	public VoucherIdentifier getVoucherIdentifier() {
+		return voucherIdentifier;
+	}
+
+	public void setVoucherIdentifier(VoucherIdentifier voucherIdentifier) {
+		this.voucherIdentifier = voucherIdentifier;
 	}
 }
