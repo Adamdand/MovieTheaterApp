@@ -16,6 +16,7 @@ public class PaymentReceipt {
 		this.setPricePaid(pricePaid);
 		this.setEmail(email);
 		generateReceipt();
+		emailReceipt();
 	}
 	private void generateReceipt() {
 		try {
