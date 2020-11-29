@@ -11,6 +11,7 @@ import java.util.Hashtable;
 
 import PaymentModel.Voucher;
 import RegisteredUserModel.RegisteredUser;
+import RetailStoreApp.Items;
 import TicketReservationModel.MovieOffering;
 import TicketReservationModel.movieOfferingAdam;
 import RegisteredUserModel.RegisteredUser;
@@ -320,20 +321,61 @@ public class DBController {
 		
 	}
 	
+	
+
+	
+	
 	//TODO: implement method
 	public ArrayList<MovieOffering> loadMovies() {
 		return null;
 	}
 	
-	//TODO: implement method
 	public ArrayList<RegisteredUser> loadUsers() {
+		PreparedStatement getAllUsers = null;
+		String getAllUsersString = "select * from registeredusers";
+		ArrayList<RegisteredUser> temp = new ArrayList<RegisteredUser>();
+		try {
+			if (jdbc_connection != null) {
+				getAllUsers = jdbc_connection.prepareStatement(getAllUsersString);
+				ResultSet rs = getAllUsers.executeQuery();
+
+				while (rs.next()) {
+					RegisteredUser t = new RegisteredUser(rs.getString("userName"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
+					//t.linkSupplier(rs.getString("supplier"));
+					//t.display();
+					temp.add(t);
+				}
+				return temp;
+			}
+		} catch ( SQLException ex) {
+			ex.printStackTrace();
+		}
 		return null;
 	}
 	
-	//TODO: implement method
 	public Hashtable<Integer, Voucher> loadVouchers() {
+		PreparedStatement getAllVouchers = null;
+		String getAllVoucherString = "select * from voucherlist";
+		Hashtable<Integer, Voucher> temp = new Hashtable<Integer, Voucher>();
+		try {
+			if (jdbc_connection != null) {
+				getAllVouchers = jdbc_connection.prepareStatement(getAllVoucherString);
+				ResultSet rs = getAllVouchers.executeQuery();
+
+				while (rs.next()) {
+					RegisteredUser t = new RegisteredUser(rs.getString("userName"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
+					//t.linkSupplier(rs.getString("supplier"));
+					//t.display();
+					temp.add(t);
+				}
+				return temp;
+			}
+		} catch ( SQLException ex) {
+			ex.printStackTrace();
+		}
 		return null;
 	}
+	
 	
 	
 

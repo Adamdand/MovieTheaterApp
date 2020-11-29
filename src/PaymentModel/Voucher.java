@@ -3,7 +3,8 @@ import java.time.*;
 
 public class Voucher {
 	
-	private double worth;
+	private double worth = 13.5;
+	private int voucherCode;
 	private int expirationDate;
 	
 	public Voucher(double worth) {
@@ -11,7 +12,8 @@ public class Voucher {
 		calculateExpiration();
 	}
 	
-	public Voucher(double worth, int expirationDate) {
+	public Voucher(int voucherCode , int expirationDate) {
+		this.voucherCode = voucherCode;
 		this.setWorth(worth);
 		this.expirationDate = expirationDate;
 	}
@@ -35,5 +37,13 @@ public class Voucher {
 
 	public int getExpirationDate() {
 		return expirationDate;
+	}
+
+	public int getVoucherCode() {
+		return voucherCode;
+	}
+
+	public void setVoucherCode(int voucherCode) {
+		this.voucherCode = voucherCode;
 	}
 }
