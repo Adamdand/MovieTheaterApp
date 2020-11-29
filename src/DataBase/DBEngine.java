@@ -271,7 +271,7 @@ public void fillVoucherList() {
 
 	/**
 	 * Search for a movieOffering from the SQL DataBase given its IDNumber
-	 * @param toolID
+	 * @param offeringID
 	 * @return
 	 */
 	public movieOffering searchOfferings(int offeringID)
@@ -371,90 +371,6 @@ public void fillVoucherList() {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	/**
-	 * Static Main
-	 * @param args
-	 */
-	public static void main(String args[])
-	{
-		DBEngine dataBase = new DBEngine();
-		
-		// You should comment this line out once the first database is created (either here or in MySQL workbench)
-		dataBase.createDB();
-		dataBase.createTable();
-		
-		System.out.println("\nFilling the table with movieOfferings");
-		dataBase.fillTable();
-
-		System.out.println("Reading all offerings from the table:");
-		dataBase.printTable();
-
-		System.out.println("\nSearching table for tool 2: should return 'shawnacy theater - Freaky Movie'");
-		int offeringID = 2;
-		movieOffering searchResult = dataBase.searchOfferings(offeringID);
-		if(searchResult == null)
-			System.out.println("Search Failed to find a tool matching ID: " + offeringID);
-		else
-			System.out.println("Search Result: " + searchResult.toString());
-
-		/**
-		System.out.println("\nSearching table for tool 9000: should fail to find a tool");
-		toolID = 9000;
-		searchResult = inventory.searchTool(toolID);
-		if(searchResult == null)
-			System.out.println("Search Failed to find a tool matching ID: " + toolID);
-		else
-			System.out.println("Search Result: " + searchResult.toString());
-		*/
-		//System.out.println("\nTrying to remove the table");
-		//dataBase.removeTable();
-		
-		System.out.println("\ncreating RegisteredUser List");
-		dataBase.createRegisteredUsers();
-		System.out.println("\nfilling RegisteredUser List");
-		dataBase.fillRegisteredUsersList();
-		
-		System.out.println("\ncreating voucher List");
-		dataBase.createVoucherList();
-		System.out.println("\nfilling voucher List");
-		dataBase.fillVoucherList();
-		
-		//TEST search for voucher in DB
-		System.out.println("\nSearching voucher codes for voucher 53398");
-		voucher myVoucher = dataBase.searchVouchers(53398);
-		if(myVoucher == null)
-			System.out.println("Search Failed to find a tool matching ID: " + 53398);
-		else
-			System.out.println("Search Result: " + myVoucher.toString());
-		
-		//test search for username and password combo in DB
-		registeredUser myUser = dataBase.searchUsers("junwoo@123.com","123");
-		if(myUser == null)
-			System.out.println("Search Failed to a user with email junwoo@123.com and password 123");
-		else
-			System.out.println("Search Result: " + myUser.toString());
-
-		
-		
-		
-		
-		try {
-			dataBase.statement.close();
-			dataBase.jdbc_connection.close();
-		} 
-		catch (SQLException e) { e.printStackTrace(); }
-		finally
-		{
-			System.out.println("\nThe program is finished running");
-		}
-		
-		
-		
-		
-		
-	}
-	
+	}	
 	
 }
