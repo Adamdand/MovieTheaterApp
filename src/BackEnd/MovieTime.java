@@ -3,13 +3,14 @@ package BackEnd;
 import java.util.Date;
 
 public class MovieTime {
-	private Date time;
+	private int day;
+	private String time;
 
-	public Date getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 	
@@ -21,5 +22,13 @@ public class MovieTime {
 	@Override
 	public String toString() {
 		return "at " + time;
+	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
 	}
 }

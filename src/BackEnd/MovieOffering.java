@@ -1,4 +1,5 @@
 package BackEnd;
+import java.util.Random;
 
 public class MovieOffering {
 	private Theater theater;
@@ -7,14 +8,18 @@ public class MovieOffering {
 	private Seats seating;
 	private double price;
 	private String ticketId;
+	private boolean booked;
 	
-	public MovieOffering(Theater theater, Movie movie, MovieTime time, Seats seating, double price, String ticketId) {
+	
+	public MovieOffering(Theater theater, Movie movie, MovieTime time, Seats seating, String ticketId) {
+		Random rand = new Random();
 		this.theater = theater;
 		this.movie= movie;
 		this.setTime(time);
 		this.seating = seating;
-		this.price = price;
-		this.ticketId = ticketId;
+		this.price = (13.50)*1.05;
+		this.booked = true;
+		this.ticketId = Integer.toString(rand.nextInt(1000000));
 	}
 	
 	public String printTicket() {
@@ -51,6 +56,14 @@ public class MovieOffering {
 
 	public void setTheater(Seats seating) {
 		this.seating = seating;
+	}
+
+	public boolean isBooked() {
+		return booked;
+	}
+
+	public void setBooked(boolean booked) {
+		this.booked = booked;
 	}
 	
 
