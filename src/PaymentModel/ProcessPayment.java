@@ -15,10 +15,9 @@ public class ProcessPayment {
 		this.setVoucherIdentifier(v);
 	}
 	//return payment receipt if successful
-	public double payCard(String cardNumber, double price) {
+	public void payCard(String cardNumber, double price) {
 		//May change later but assuming always have enough to cover balance
 		double remain = 0;
-		return remain;
 	}
 	public double payVoucher(int id, double price) {
 		return voucherIdentifier.useVoucher(id, price);
