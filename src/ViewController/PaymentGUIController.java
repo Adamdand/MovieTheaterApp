@@ -48,9 +48,14 @@ public class PaymentGUIController implements ActionListener {
 		
 		if(e.getSource() == gui.getRedeemBtn()) {
 			//give discount to totalcost (15%)
-			gui.setTotalCost(gui.getTotalCost()*0.85);
+			//gui.setTotalCost(gui.getTotalCost()*0.85);
+			//gui.updateTotalCost(gui.getTotalCostLabel());
+			int voucherId = Integer.parseInt(gui.getvoucherTxt().getText());
+			double price = gui.getTotalCost();
+			String email = gui.getEmailTxt().getText();
+			double remain = model.redeemVoucher(voucherId, email,price);
+			gui.setTotalCost(remain);
 			gui.updateTotalCost(gui.getTotalCostLabel());
-			
 		}	
 
 		if(e.getSource() == gui.getCheckBox()) {
