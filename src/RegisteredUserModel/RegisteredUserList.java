@@ -11,6 +11,11 @@ public class RegisteredUserList {
 		userList = new ArrayList<RegisteredUser>();
 	}
 	
+	public RegisteredUserList(ArrayList<RegisteredUser> users) {
+		setMovieNews("Heres your weekly movie news: ");
+		setUserList(users);
+	}
+	
 	public RegisteredUser verifyUser(String userName, String password) {
 		for (RegisteredUser user: userList) {
 			if (user.getPassword().equals(password) && user.getUserName().equals(userName)) {

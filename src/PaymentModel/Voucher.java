@@ -11,6 +11,11 @@ public class Voucher {
 		calculateExpiration();
 	}
 	
+	public Voucher(double worth, int expirationDate) {
+		this.setWorth(worth);
+		this.expirationDate = expirationDate;
+	}
+	
 	private void calculateExpiration() {
 		String today = LocalDate.now()+"";
 		today.replaceAll("-","");

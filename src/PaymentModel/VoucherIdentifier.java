@@ -10,6 +10,10 @@ public class VoucherIdentifier {
 		voucherMap=new Hashtable<Integer, Voucher>();
 	}
 	
+	public VoucherIdentifier(Hashtable<Integer, Voucher> voucherList) {
+		setVoucherMap(voucherList);
+	}
+
 	public boolean addVoucher(int id, double worth) {
 		Voucher newVoucher = new Voucher(worth);
 		boolean success = false;
@@ -19,6 +23,7 @@ public class VoucherIdentifier {
 		}
 		return success;
 	}
+	
 	public double getWorth(int id) {
 		if(voucherMap.containsKey(id)) {
 			return voucherMap.get(id).getWorth();
