@@ -13,7 +13,7 @@ public class PaymentGUIController implements ActionListener {
 	private PaymentGUI gui;
 	private ModelController model;
 	
-	public PaymentGUIController(PaymentGUI gui, PaymentGUIModel model) {
+	public PaymentGUIController(PaymentGUI gui, ModelController model) {
 		this.setGui(gui);
 		this.setModel(model);
 		
@@ -36,7 +36,10 @@ public class PaymentGUIController implements ActionListener {
 			double price = gui.getTotalCost();
 			String card = gui.getCreditCardTxt().getText();
 			String email = gui.getEmailTxt().getText();
-			model.makeCardPayment(card, email, price);
+			boolean paymentFullfilled = model.makeCardPayment(card, email, price);
+			if(!paymentFullfilled) {
+				gui.displayMessage("Card payment failed");
+			}
 		}
 		
 		if(e.getSource() == gui.getCancelBtn()) {
