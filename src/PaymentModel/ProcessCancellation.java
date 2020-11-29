@@ -16,7 +16,7 @@ public class ProcessCancellation {
 		receiptList = new ArrayList<CancellationReceipt>();
 	}
 	
-	public String refundTicketRegistered(double price, int time, String ticketId, String cardNumber) {
+	public String refundTicketRegistered(double price, String ticketId, String cardNumber) {
 		if (financeController.makeCancellation(cardNumber, price)) {
 			CancellationReceipt receipt = new CancellationReceipt(price, ticketId);
 			addReceipt(receipt);
@@ -26,7 +26,7 @@ public class ProcessCancellation {
 		}
 	}
 	
-	public String refundTicketRegular(double price, int time, String ticketId, String type) {
+	public String refundTicketRegular(double price, String ticketId) {
 		Random rand = new Random();
 		int x = -1;
 		while (true) {
