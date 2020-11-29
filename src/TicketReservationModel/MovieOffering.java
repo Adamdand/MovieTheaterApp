@@ -7,7 +7,7 @@ public class MovieOffering {
 	private MovieTime time;
 	private Seats seating;
 	private double price;
-	private String ticketId;
+	private int ticketId;
 	private boolean booked;
 	
 	
@@ -19,7 +19,7 @@ public class MovieOffering {
 		this.seating = seating;
 		this.price = (13.50)*1.05;
 		this.booked = true;
-		this.ticketId = Integer.toString(rand.nextInt(1000000));
+		this.ticketId = rand.nextInt(1000);
 	}
 	
 	public String printTicket() {

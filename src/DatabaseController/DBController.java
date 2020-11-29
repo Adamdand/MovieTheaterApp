@@ -10,8 +10,10 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import TicketReservationModel.Seats;
+import TicketReservationModel.Theater;
 import RegisteredUserModel.RegisteredUser;
 import PaymentModel.Voucher;
+import TicketReservationModel.Movie;
 import TicketReservationModel.MovieOffering;
 import TicketReservationModel.voucher;
 
@@ -339,13 +341,15 @@ public class DBController {
 						 //ArrayList<Seats> seatRow = new ArrayList<Seats>();
 						 for(int col = 1; col < 6; col++){
 							 Seats mySeat = new Seats(row,col);
-							 seatRow.add(mySeat);
-					        }
-						 allSeats.add(seatRow);
+							 Movie thisMovie = new Movie(rs.getString("movieName"));
+							 Theater thisTheater = new Theater(rs.getString("theaterName"));
+							 MovieOffering t = new MovieOffering(rs.getString("theaterName"),thisMovie, rs.getString("movieTime"), mySeat, rs.getInt("offeringID"));
+							 temp.add(t);
+							 }
 					    }
 					
 					
-					MovieOffering t = new MovieOffering(rs.getString("userName"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
+					
 					//t.linkSupplier(rs.getString("supplier"));
 					//t.display();
 					temp.add(t);

@@ -2,11 +2,11 @@ package TicketReservationModel;
 
 
 public class MovieTime {
-	private int day;
+	//private int day;
 	private String time;
 	
-	public MovieTime(int day, String time) {
-		setDay(day);
+	public MovieTime(String time) {
+		//setDay(day);
 		setTime(time);
 	}
 
@@ -27,12 +27,12 @@ public class MovieTime {
 	public String toString() {
 		return "at " + time;
 	}
-
+/**
 	public int getDay() {
 		return day;
 	}
 
 	public void setDay(int day) {
 		this.day = day;
-	}
+	}*/
 }
