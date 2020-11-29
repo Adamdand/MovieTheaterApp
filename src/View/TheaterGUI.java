@@ -305,9 +305,7 @@ public class TheaterGUI extends JFrame {
 		JOptionPane.showMessageDialog(this, errorMessage);
 	}
 	
-	public static void main(String[] args) {
-		new TheaterGUI();
-	}
+	
 
 	public JButton getSelectBtn() {
 		return selectBtn;
@@ -346,6 +344,10 @@ public class TheaterGUI extends JFrame {
 
 	public void setResultScroll(JScrollPane resultScroll) {
 		this.resultScroll = resultScroll;
+	}
+	
+	public static void main(String[] args) {
+		new TheaterGUI();
 	}
 
 
