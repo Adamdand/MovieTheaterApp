@@ -1,7 +1,7 @@
 package PaymentModel;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Random;
 
 import FinanceController.FinanceController;
 
@@ -29,7 +29,16 @@ public class ProcessCancellation {
 	public String refundTicketRegular(double price, int time, String ticketId, String type) {
 		CancellationReceipt receipt = new CancellationReceipt(price, time, ticketId);
 		addReceipt(receipt);
-		//TODO: create new voucher
+
+		Random rand = new Random();
+		int x = -1;
+		while (true) {
+			x = rand.nextInt(89999) + 10000;
+			if (voucherIdentifier.addVoucher(x, price)) {
+				break;
+			}
+		}
+		
 		
 		//TODO: add voucher string to return as well
 		return receipt.toString();
