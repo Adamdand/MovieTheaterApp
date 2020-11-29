@@ -2,13 +2,11 @@ package TicketReservationModel;
 
 public class movieOfferingAdam {
 	
-	private int offeringID;
 	private String theaterName;
 	private String movieName;
 	private String movieTime;
 	
-	public movieOfferingAdam(int ID, String theater, String movie, String time) {
-		setOfferingID(ID);
+	public movieOfferingAdam(String theater, String movie, String time) {
 		setTheaterName(theater);
 		setMovieName(movie);
 		setMovieTime(time);
@@ -49,7 +47,7 @@ public class movieOfferingAdam {
 	}
 	
 	public String toString() {
-		return ("Offering ID: " + offeringID + ", theater Name: " + theaterName + ", movie Name" + movieName + ", movie Time " + movieTime + "\n");
+		return ("theater Name: " + theaterName + ", movie Name" + movieName + ", movie Time " + movieTime + "\n");
 	}
 
 }

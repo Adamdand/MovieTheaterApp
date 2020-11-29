@@ -44,21 +44,25 @@ public class DBController {
 	 * @param offeringID
 	 * @return
 	 */
-	public movieOfferingAdam searchOfferings(int offeringID)
+	public movieOfferingAdam searchOfferings(String theaterName, String movieName, String movieTime)
 	{
 		PreparedStatement getOffering = null;
-		String sql = "SELECT * FROM " + "movieOfferings" + " WHERE offeringID = ? OR offeringID = ?"; //dont worry, this is set up to take a String in the future, so it can search for toolID or toolName
+		String sql = "SELECT * FROM " + "movieOfferings" + " WHERE theaterName = ? AND movieName = ?  AND movieTime = ?"; //dont worry, this is set up to take a String in the future, so it can search for toolID or toolName
 		try {
 			//statement = jdbc_connection.createStatement();
 			//tool = statement.executeQuery(sql);
 			if(jdbc_connection != null)
 			{
 				getOffering = jdbc_connection.prepareStatement(sql);
-				getOffering.setInt(1, offeringID);
-				getOffering.setInt(2, offeringID);
+				getOffering.setString(1, theaterName);
+				getOffering.setString(2, movieName);
+				getOffering.setString(3, movieTime);
 				ResultSet rs = getOffering.executeQuery();
+				/**
+				 * NEED ADVICE
+				 */
 				if(rs.next()) {
-					movieOfferingAdam offering = new movieOfferingAdam(rs.getInt("offeringID"), rs.getString("theaterName"), rs.getString("movieName"), rs.getString("movieTime"));
+					movieOfferingAdam offering = new movieOfferingAdam(rs.getString("theaterName"), rs.getString("movieName"), rs.getString("movieTime"));
 					//item.linkSupplier(rs.getString("supplier"));
 					return offering;
 				}
@@ -262,10 +266,9 @@ public class DBController {
 		dataBase.printTable();
 
 		System.out.println("\nSearching table for tool 2: should return 'shawnacy theater - Freaky Movie'");
-		int offeringID = 2;
-		movieOfferingAdam searchResult = dataBase.searchOfferings(offeringID);
+		movieOfferingAdam searchResult = dataBase.searchOfferings("Shawnacy Theater","Freaky","6:30 PM");
 		if(searchResult == null)
-			System.out.println("Search Failed to find a tool matching ID: " + offeringID);
+			System.out.println("Search Failed to find a tool matching ID: " + searchResult);
 		else
 			System.out.println("Search Result: " + searchResult.toString());
 
@@ -294,10 +297,14 @@ public class DBController {
 			System.out.println("Search Failed to a user with email junwoo@123.com and password 123");
 		else
 			System.out.println("Search Result: " + myUser.toString());
+		
+		movieOfferingAdam thisOffering = dataBase.searchOfferings("Shawnacy Theater","Freaky","6:30 PM");
+		if(myUser == null)
+			System.out.println("Search Failed find movie offering");
+		else
+			System.out.println("Search Result: " + thisOffering.toString());
 
-		
-		
-		
+
 		
 		try {
 			dataBase.statement.close();
@@ -309,9 +316,7 @@ public class DBController {
 			System.out.println("\nThe program is finished running");
 		}
 		
-		
-		
-		
+	
 		
 	}
 	
