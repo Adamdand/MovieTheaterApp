@@ -54,6 +54,12 @@ public class RegisteredUser {
 	public void setSubEnd(int subEnd) {
 		this.subEnd = subEnd;
 	}
+	
+	public String toString() {
+		String str = "";
+		str += "welcome " +userName;
+		return str;
+	}
 
 	
 
