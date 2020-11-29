@@ -4,6 +4,11 @@ public class Theater {
 	private String theaterName;
 	private String theaterLocation;
 	
+	public Theater (String theaterName, String theaterLocation) {
+		setTheaterName(theaterName);
+		setTheaterLocation(theaterLocation);
+	}
+	
 	public String printTheater() {
 		String test="";
 		return test;

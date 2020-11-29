@@ -3,6 +3,10 @@ package TicketReservationModel;
 public class Movie {
 	private String movieName;
 	
+	public Movie(String movieName) {
+		setMovieName(movieName);
+	}
+	
 	public String printMovie() {
 		String test="";
 		return test;

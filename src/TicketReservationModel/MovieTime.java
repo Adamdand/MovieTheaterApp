@@ -4,6 +4,11 @@ package TicketReservationModel;
 public class MovieTime {
 	private int day;
 	private String time;
+	
+	public MovieTime(int day, String time) {
+		setDay(day);
+		setTime(time);
+	}
 
 	public String getTime() {
 		return time;
