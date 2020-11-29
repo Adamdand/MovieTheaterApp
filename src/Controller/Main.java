@@ -12,12 +12,13 @@ import RegisteredUserModel.*;
 /**
  * 
  * TODO:
- * 1. voucher sql table needs "worths", registered user needs credit cards in sql
+ * 1. voucher sql table needs "worths", registered user table needs credit cards in sql
  * 2. registered user 4 needs start date fixed
  * 3. implement methods to load from DB (in DBController)
  * 4. implement methods in model controller
  * 5. check if processpayment should hold an arraylist of payment receipts
  * 6. overloaded constructors in voucher and voucheridentifier for easier loading, Karlen double check if its ok
+ * 7. should vouchers hold the id as well in an instance variable?
  *
  */
 
