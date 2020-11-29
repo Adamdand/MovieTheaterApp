@@ -34,6 +34,8 @@ public class PaymentReceipt {
 	public void setPricePaid(double pricePaid) {
 		this.pricePaid = pricePaid;
 	}
+	//Method to send receipt to user's email
+	public void emailReceipt(String email) {}
 	@Override
 	public String toString() {
 		String printReceipt ="";
