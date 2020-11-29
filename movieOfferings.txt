@@ -1,44 +1,44 @@
-1;Shawnacy Theater;Freaky;6:30 PM
-2;Shawnacy Theater;Freaky;9:00 PM
-3;Shawnacy Theater;Let Him Go;5:45 PM
-4;Shawnacy Theater;Come Play;8:30 PM
-5;Shawnacy Theater;The Santa Clause;5:00 PM
-6;Shawnacy Theater;The War with Grandpa;5:50 PM
-7;Shawnacy Theater;The War with Grandpa;9:00 PM
-8;Shawnacy Theater;Come Play;6:00 PM
-9;Shawnacy Theater;Come Play;9:00 PM
-10;Shawnacy Theater;Honest Thief;9:00 PM
-11;Shawnacy Theater;Vanguard;5:30 PM
-12;Shawnacy Theater;Vanguard;8:45 PM
-13;Shawnacy Theater;The Last Vermeer;5:00 PM
-14;Shawnacy Theater;The Last Vermeer;8:00 PM
-15;Shawnacy Theater;Tenet;8:00 PM
-16;Shawnacy Theater;Goldfiner;8:15 PM
-17;Shawnacy Theater;Guardians of the Galaxy;5:15 PM
-18;Chinook Mall Theater;Freaky;2:35 PM
-19;Chinook Mall Theater;Freaky;5:00 PM
-20;Chinook Mall Theater;Freaky;8:00 PM
-21;Chinook Mall Theater;Let Him Go;3:30 PM
-22;Chinook Mall Theater;Let Him Go;6:20 PM
-23;Chinook Mall Theater;Let Him Go;9:10 PM
-24;Chinook Mall Theater;Tenet;3:15 PM
-25;Chinook Mall Theater;Tenet;5:55 PM
-26;Chinook Mall Theater;Come Play;3:00 PM
-27;Chinook Mall Theater;Come Play;6:00 PM
-28;Chinook Mall Theater;Honest Thief;2:00 PM
-29;Chinook Mall Theater;Honest Thief;5:00 PM
-30;Chinook Mall Theater;Honest Thief;8:00 PM
-31;Chinook Mall Theater;Mank;5:40 PM
-32;Chinook Mall Theater;The Last Vermerr;2:00 PM
-33;Chinook Mall Theater;The Last Vermerr;5:00 PM
-34;Chinook Mall Theater;The Last Vermerr;8:00 PM
-35;Market Mall Theater;Freaky;6:00 PM
-36;Market Mall Theater;Freaky;8:00 PM
-37;Market Mall Theater;Let Him Go;6:00 PM
-38;Market Mall Theater;Let Him Go;8:00 PM
-39;Market Mall Theater;The Santa Clause;6:00 PM
-40;Market Mall Theater;Honest Thief;8:30 PM
-41;Market Mall Theater;Vanguard;6:00 PM
-42;Market Mall Theater;Vanguard;8:30 PM
-43;Market Mall Theater;Mank;5:30 PM
-44;Market Mall Theater;Mank;8:35 PM
+1;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;Freaky;6:30 PM
+2;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;Freaky;9:00 PM
+3;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;Let Him Go;5:45 PM
+4;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;Come Play;8:30 PM
+5;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;The Santa Clause;5:00 PM
+6;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;The War with Grandpa;5:50 PM
+7;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;The War with Grandpa;9:00 PM
+8;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;Come Play;6:00 PM
+9;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;Come Play;9:00 PM
+10;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;Honest Thief;9:00 PM
+11;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;Vanguard;5:30 PM
+12;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;Vanguard;8:45 PM
+13;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;The Last Vermeer;5:00 PM
+14;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;The Last Vermeer;8:00 PM
+15;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;Tenet;8:00 PM
+16;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;Goldfiner;8:15 PM
+17;Shawnacy Theater;16061 Macleod Trail SE #100, Calgary, AB;Guardians of the Galaxy;5:15 PM
+18;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Freaky;2:35 PM
+19;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Freaky;5:00 PM
+20;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Freaky;8:00 PM
+21;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Let Him Go;3:30 PM
+22;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Let Him Go;6:20 PM
+23;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Let Him Go;9:10 PM
+24;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Tenet;3:15 PM
+25;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Tenet;5:55 PM
+26;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Come Play;3:00 PM
+27;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Come Play;6:00 PM
+28;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Honest Thief;2:00 PM
+29;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Honest Thief;5:00 PM
+30;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Honest Thief;8:00 PM
+31;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;Mank;5:40 PM
+32;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;The Last Vermerr;2:00 PM
+33;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;The Last Vermerr;5:00 PM
+34;Chinook Mall Theater;6455 Macleod Trail SW, Calgary, AB;The Last Vermerr;8:00 PM
+35;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;Freaky;6:00 PM
+36;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;Freaky;8:00 PM
+37;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;Let Him Go;6:00 PM
+38;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;Let Him Go;8:00 PM
+39;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;The Santa Clause;6:00 PM
+40;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;Honest Thief;8:30 PM
+41;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;Vanguard;6:00 PM
+42;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;Vanguard;8:30 PM
+43;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;Mank;5:30 PM
+44;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;Mank;8:35 PM

@@ -131,16 +131,17 @@ public class DBController {
 			String sql = "SELECT * FROM movieOfferings";
 			//create prepared statement
 			statement = jdbc_connection.prepareStatement(sql);
-			ResultSet tools = statement.executeQuery(sql);
+			ResultSet theaters = statement.executeQuery(sql);
 			System.out.println("Tools:");
-			while(tools.next())
+			while(theaters.next())
 			{
-				System.out.println(tools.getInt("offeringID") + " " + 
-								   tools.getString("theaterName") + " " + 
-								   tools.getString("movieName") + " " + 
-								   tools.getString("movieTime"));
+				System.out.println(theaters.getInt("offeringID") + " " + 
+						theaters.getString("theaterName") + " " + 
+						theaters.getString("theaterLoc") + " " + 
+						theaters.getString("movieName") + " " + 
+						theaters.getString("movieTime"));
 			}
-			tools.close();
+			theaters.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

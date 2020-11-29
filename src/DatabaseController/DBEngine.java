@@ -75,6 +75,7 @@ public class DBEngine {
 		String sql = "CREATE TABLE " + tableName + "(" +
 				     "offeringID INT(4) NOT NULL, " +
 				     "theaterName VARCHAR(30) NOT NULL, " + 
+				     "theaterLoc VARCHAR(45) NOT NULL, " + 
 				     "movieName VARCHAR(30) NOT NULL, " + 
 				     "movieTime VARCHAR(10) NOT NULL, " + 
 				     "PRIMARY KEY ( offeringID ))";
@@ -132,7 +133,7 @@ public class DBEngine {
 	public void fillTable() {
 	
 	PreparedStatement insertData = null;
-	String insertStatement = "INSERT INTO movieOfferings (offeringID,theaterName,movieName,movieTime) VALUES(?,?,?,?);";
+	String insertStatement = "INSERT INTO movieOfferings (offeringID,theaterName,theaterLoc,movieName,movieTime) VALUES(?,?,?,?,?);";
 	
 		try{
 			Scanner sc = new Scanner(new FileReader(dataFile));
@@ -142,8 +143,9 @@ public class DBEngine {
 				insertData = jdbc_connection.prepareStatement(insertStatement);
 				insertData.setInt(1,Integer.parseInt(offeringInfo[0]));
 				insertData.setString(2,offeringInfo[1]);
-				insertData.setString(3,(offeringInfo[2]));
+				insertData.setString(3,offeringInfo[2]);
 				insertData.setString(4,(offeringInfo[3]));
+				insertData.setString(5,(offeringInfo[4]));
 				insertData.executeUpdate();
 				//jdbc_connection.commit();
 			}
