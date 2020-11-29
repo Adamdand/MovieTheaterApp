@@ -95,8 +95,8 @@ public class DBEngine {
 	{
 		String sql = "CREATE TABLE registeredUsers" + "(" +
 				     "userID INT(4) NOT NULL, " +
-				     "startDate VARCHAR(20) NOT NULL, " + 
-				     "endDate VARCHAR(20) NOT NULL, "+ 
+				     "startDate INT(8) NOT NULL, " + 
+				     "endDate INT(8) NOT NULL, "+ 
 				     "email VARCHAR(20) NOT NULL, "+
 				     "password VARCHAR(30) NOT NULL, "+
 				     "PRIMARY KEY ( userID ))";
@@ -116,7 +116,7 @@ public class DBEngine {
 	{
 		String sql = "CREATE TABLE voucherList" + "(" +
 				     "voucherCode INT(5) NOT NULL, " +
-				     "valid INT(2) NOT NULL, " +
+				     "endDate INT(8) NOT NULL, " +
 				     "PRIMARY KEY ( voucherCode ))";
 		try{
 			//create prepareStatement
@@ -194,8 +194,8 @@ public class DBEngine {
 					String userInfo[] = sc.nextLine().split(";");
 					insertData = jdbc_connection.prepareStatement(insertStatement);
 					insertData.setInt(1,Integer.parseInt(userInfo[0]));
-					insertData.setString(2,(userInfo[1]));
-					insertData.setString(3,(userInfo[2]));
+					insertData.setInt(2,Integer.parseInt(userInfo[1]));
+					insertData.setInt(3,Integer.parseInt(userInfo[2]));
 					insertData.setString(4,(userInfo[3]));
 					insertData.setString(5,(userInfo[4]));
 					insertData.executeUpdate();
@@ -217,7 +217,7 @@ public class DBEngine {
 public void fillVoucherList() {
 		
 		PreparedStatement insertData = null;
-		String insertStatement = "INSERT INTO voucherList (voucherCode, valid) VALUES(?,?);";
+		String insertStatement = "INSERT INTO voucherList (voucherCode, endDate) VALUES(?,?);";
 		
 			try{
 				Scanner sc = new Scanner(new FileReader(voucherListFile));
@@ -313,7 +313,7 @@ public void fillVoucherList() {
 				getVoucher.setInt(2, code);
 				ResultSet rs = getVoucher.executeQuery();
 				if(rs.next()) {
-					voucher thisvoucher = new voucher(rs.getInt("voucherCode"),rs.getInt("valid"));
+					voucher thisvoucher = new voucher(rs.getInt("voucherCode"),rs.getInt("endDate"));
 					//item.linkSupplier(rs.getString("supplier"));
 					return thisvoucher;
 				}
@@ -338,7 +338,7 @@ public void fillVoucherList() {
 				getVoucher.setString(2, password);
 				ResultSet rs = getVoucher.executeQuery();
 				if(rs.next()) {
-					registeredUser thisUser = new registeredUser(rs.getInt("userID"),rs.getString("startDate"), rs.getString("endDate"), rs.getString("email"),rs.getString("password"));
+					registeredUser thisUser = new registeredUser(rs.getInt("userID"),rs.getInt("startDate"), rs.getInt("endDate"), rs.getString("email"),rs.getString("password"));
 					//item.linkSupplier(rs.getString("supplier"));
 					return thisUser;
 				}

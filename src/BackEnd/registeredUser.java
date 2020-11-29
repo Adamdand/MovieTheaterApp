@@ -3,12 +3,12 @@ package BackEnd;
 public class registeredUser {
 	
 	private int userID;
-	private String startDate;
-	private String endDate;
+	private int startDate;
+	private int endDate;
 	private String email;
 	private String password;
 	
-	public registeredUser(int ID, String startDate, String endDate, String email, String password) {
+	public registeredUser(int ID, int startDate, int endDate, String email, String password) {
 		
 		this.setuserID(ID);
 		this.setStartDate(startDate);
@@ -23,22 +23,22 @@ public class registeredUser {
 	}
 
 	public void setuserID(int userID) {
-		userID = userID;
+		this.userID = userID;
 	}
 
-	public String getStartDate() {
+	public int getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(String startDate) {
+	public void setStartDate(int startDate) {
 		this.startDate = startDate;
 	}
 
-	public String getEndDate() {
+	public int getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(String endDate) {
+	public void setEndDate(int endDate) {
 		this.endDate = endDate;
 	}
 

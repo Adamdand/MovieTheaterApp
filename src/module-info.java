@@ -4,4 +4,5 @@ module MovieTheater {
 	exports PaymentModel;
 
 	requires java.desktop;
+	requires java.sql;
 }
