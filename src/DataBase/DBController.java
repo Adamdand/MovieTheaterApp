@@ -7,7 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import BackEnd.movieOffering;
+
+import BackEnd.movieOfferingAdam;
 import BackEnd.registeredUser;
 import BackEnd.voucher;
 
@@ -39,7 +40,7 @@ public class DBController {
 	 * @param offeringID
 	 * @return
 	 */
-	public movieOffering searchOfferings(int offeringID)
+	public movieOfferingAdam searchOfferings(int offeringID)
 	{
 		PreparedStatement getOffering = null;
 		String sql = "SELECT * FROM " + "movieOfferings" + " WHERE offeringID = ? OR offeringID = ?"; //dont worry, this is set up to take a String in the future, so it can search for toolID or toolName
@@ -53,7 +54,7 @@ public class DBController {
 				getOffering.setInt(2, offeringID);
 				ResultSet rs = getOffering.executeQuery();
 				if(rs.next()) {
-					movieOffering offering = new movieOffering(rs.getInt("offeringID"), rs.getString("theaterName"), rs.getString("movieName"), rs.getString("movieTime"));
+					movieOfferingAdam offering = new movieOfferingAdam(rs.getInt("offeringID"), rs.getString("theaterName"), rs.getString("movieName"), rs.getString("movieTime"));
 					//item.linkSupplier(rs.getString("supplier"));
 					return offering;
 				}
@@ -258,7 +259,7 @@ public class DBController {
 
 		System.out.println("\nSearching table for tool 2: should return 'shawnacy theater - Freaky Movie'");
 		int offeringID = 2;
-		movieOffering searchResult = dataBase.searchOfferings(offeringID);
+		movieOfferingAdam searchResult = dataBase.searchOfferings(offeringID);
 		if(searchResult == null)
 			System.out.println("Search Failed to find a tool matching ID: " + offeringID);
 		else

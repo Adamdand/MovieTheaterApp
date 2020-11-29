@@ -3,12 +3,12 @@ package BackEnd;
 public class voucher {
 	
 	private int voucherCode;
-	private int valid;
+	private int endDate;
 	
-	public voucher(int voucherCode, int valid) {
+	public voucher(int voucherCode, int endDate) {
 		
 		this.setVoucherCode(voucherCode);
-		this.setValid(valid);
+		this.setEndDate(endDate);
 	}
 
 	public int getVoucherCode() {
@@ -27,12 +27,12 @@ public class voucher {
 		return str;
 	}
 
-	public int getValid() {
-		return valid;
+	public int getEndDate() {
+		return endDate;
 	}
 
-	public void setValid(int valid) {
-		this.valid = valid;
+	public void setEndDate(int endDate) {
+		this.endDate = endDate;
 	}
 
 }

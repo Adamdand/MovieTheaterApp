@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 
 import java.util.Scanner;
 
-import BackEnd.movieOffering;
+import BackEnd.movieOfferingAdam;
 import BackEnd.registeredUser;
 import BackEnd.voucher;
 
@@ -274,7 +274,7 @@ public void fillVoucherList() {
 	 * @param offeringID
 	 * @return
 	 */
-	public movieOffering searchOfferings(int offeringID)
+	public movieOfferingAdam searchOfferings(int offeringID)
 	{
 		PreparedStatement getOffering = null;
 		String sql = "SELECT * FROM " + tableName + " WHERE offeringID = ? OR offeringID = ?"; //dont worry, this is set up to take a String in the future, so it can search for toolID or toolName
@@ -288,7 +288,7 @@ public void fillVoucherList() {
 				getOffering.setInt(2, offeringID);
 				ResultSet rs = getOffering.executeQuery();
 				if(rs.next()) {
-					movieOffering offering = new movieOffering(rs.getInt("offeringID"), rs.getString("theaterName"), rs.getString("movieName"), rs.getString("movieTime"));
+					movieOfferingAdam offering = new movieOfferingAdam(rs.getInt("offeringID"), rs.getString("theaterName"), rs.getString("movieName"), rs.getString("movieTime"));
 					//item.linkSupplier(rs.getString("supplier"));
 					return offering;
 				}
