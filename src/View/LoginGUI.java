@@ -38,6 +38,7 @@ public class LoginGUI extends JFrame {
 	private JTextField createUserNameInput=null;
 	private JTextField voucherCodeInput=null;
 	private JTextField registeredVoucherCodeInput=null;
+	private JTextField creditCardInput=null;
 
 
 	public LoginGUI() {
@@ -83,28 +84,36 @@ public class LoginGUI extends JFrame {
 		createPasswordInput.setBounds(215, 165, 220, 27);
 		leftPanel.add(createPasswordInput);
 		
+		JLabel registerCreditCardTxt=new JLabel("Input Credit Card:");
+		registerCreditCardTxt.setFont(new Font("Courier New", Font.BOLD, 15));
+		registerCreditCardTxt.setBounds(50, 215, 180, 30);
+		leftPanel.add(registerCreditCardTxt);
+		creditCardInput=new JTextField();
+		creditCardInput.setBounds(215, 215, 220, 27);
+		leftPanel.add(creditCardInput);
+		
 		createLoginBtn = new JButton("Create");
-		createLoginBtn.setBounds(355, 215, 80, 30);
+		createLoginBtn.setBounds(355, 265, 80, 30);
 		leftPanel.add(createLoginBtn);
 
 		
 		JLabel voucherTxt=new JLabel("Get Refund (Voucher):");
 		voucherTxt.setFont(new Font("Courier New", Font.BOLD, 16));
-		voucherTxt.setBounds(50, 390, 250, 30);
+		voucherTxt.setBounds(50, 415, 250, 30);
 		this.add(voucherTxt);
 
 		
 		JLabel voucherInput=new JLabel("Voucher Code");
 		voucherInput.setFont(new Font("Courier New", Font.BOLD, 13));
-		voucherInput.setBounds(370, 305, 250, 30);
+		voucherInput.setBounds(370, 330, 250, 30);
 		leftPanel.add(voucherInput);
 		voucherCodeInput=new JTextField();
-		voucherCodeInput.setBounds(380, 330, 80, 30);
+		voucherCodeInput.setBounds(380, 355, 80, 30);
 		leftPanel.add(voucherCodeInput);
 		
 		
 		voucherBtn = new JButton("Refund");
-		voucherBtn.setBounds(260, 330, 80, 30);
+		voucherBtn.setBounds(260, 355, 80, 30);
 		leftPanel.add(voucherBtn);
 		this.add(leftPanel);
 
@@ -147,18 +156,18 @@ public class LoginGUI extends JFrame {
 
 		JLabel getRefund=new JLabel("Get Full Refund:");
 		getRefund.setFont(new Font("Courier New", Font.BOLD, 15));
-		getRefund.setBounds(50, 330, 250, 30);
+		getRefund.setBounds(50, 355, 250, 30);
 		rightPanel.add(getRefund);
 		refundBtn = new JButton("Refund");
-		refundBtn.setBounds(195, 330, 80, 30);
+		refundBtn.setBounds(195, 355, 80, 30);
 		rightPanel.add(refundBtn);
 		
 		JLabel registeredVoucherInput=new JLabel("Voucher Code");
 		registeredVoucherInput.setFont(new Font("Courier New", Font.BOLD, 13));
-		registeredVoucherInput.setBounds(305, 305, 250, 30);
+		registeredVoucherInput.setBounds(305, 330, 250, 30);
 		rightPanel.add(registeredVoucherInput);
 		registeredVoucherCodeInput=new JTextField();
-		registeredVoucherCodeInput.setBounds(315, 330, 80, 30);
+		registeredVoucherCodeInput.setBounds(315, 355, 80, 30);
 		rightPanel.add(registeredVoucherCodeInput);
 		
 		this.add(rightPanel);

@@ -130,27 +130,6 @@ public class DBEngine {
 		}
 	}
 
-	/**
-	 * function used to remove the table "ToolTable"
-	 */
-	/**
-	public void removeTable()
-	{
-		String sql = "DROP TABLE " + tableName;
-		try{
-			statement = jdbc_connection.prepareStatement(sql);
-			statement.executeUpdate(sql);
-			System.out.println("Removed Table " + tableName);
-		}
-		catch(SQLException e)
-		{
-			e.printStackTrace();
-		}
-	}*/
-
-	/**
-	 * Fills ToolTable with data from text file
-	 */
 	public void fillTable() {
 	
 	PreparedStatement insertData = null;
