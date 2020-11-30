@@ -22,7 +22,7 @@ import javax.swing.event.ListSelectionListener;
 public class LoginGUI extends JFrame {
 	
 	private boolean loggedin = false;
-	private String membershipExpiration = "YYY/MM/DD";
+	private String membershipExpiration = "YYYY/MM/DD";
 	//need to update
 	
 	private static final long serialVersionUID = 1L;
@@ -196,7 +196,7 @@ public class LoginGUI extends JFrame {
 		bottomPanel.setBounds(0, 459, 985, 103);
 		bottomPanel.setBorder(BorderFactory.createEtchedBorder());
 		
-		JLabel BrowseMovies=new JLabel("Browese Movies:");
+		JLabel BrowseMovies=new JLabel("Browse Movies:");
 		BrowseMovies.setFont(new Font("Courier New", Font.BOLD, 20));
 		BrowseMovies.setBounds(250, 50, 250, 30);
 		bottomPanel.add(BrowseMovies);
@@ -224,7 +224,11 @@ public class LoginGUI extends JFrame {
 	}
 
 
-
+	public void displayMessage(String message) {
+		JOptionPane.showMessageDialog(this, message);
+	}
+	
+	
 	public JTextField getSearchTime() {
 		return searchTime;
 	}
@@ -305,7 +309,7 @@ public class LoginGUI extends JFrame {
 		return loginBtn;
 	}
 	
-	public JButton getLotOutBtn() {
+	public JButton getLogoutBtn() {
 		return logoutBtn;
 	}
 
@@ -349,5 +353,13 @@ public class LoginGUI extends JFrame {
 
 	public void setMembershipExpiration(String membershipExpiration) {
 		this.membershipExpiration = membershipExpiration;
+	}
+
+	public JButton getRenewBtn() {
+		return renewBtn;
+	}
+
+	public void setRenewBtn(JButton renewBtn) {
+		this.renewBtn = renewBtn;
 	}
 }
