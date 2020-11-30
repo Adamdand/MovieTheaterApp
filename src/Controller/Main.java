@@ -7,6 +7,8 @@ import DatabaseController.DBController;
 import FinanceController.*;
 import PaymentModel.*;
 import TicketReservationModel.*;
+import View.LoginGUI;
+import ViewController.LoginGUIController;
 import RegisteredUserModel.*;
 
 /**
@@ -27,7 +29,8 @@ public class Main {
 	
 	private static MovieOfferingList loadMovies() {
 		ArrayList<MovieOffering> movieList = database.loadMovies();
-		MovieOfferingList movies = new MovieOfferingList(movieList);
+		ArrayList<MovieOffering> movieListNoSeats = database.loadMoviesNoSeats();
+		MovieOfferingList movies = new MovieOfferingList(movieList, movieListNoSeats);
 		
 		return movies;
 	}
@@ -56,10 +59,15 @@ public class Main {
 		
 		ProcessPayment payment = new ProcessPayment(finance, vouchers);
 		ProcessCancellation cancel = new ProcessCancellation(finance, vouchers);
-		
+
 		ModelController model = new ModelController(movies, cancel, payment, users, database);
-		
+
 		//TODO: load guis
+		LoginGUI theView = new LoginGUI();
+
+		LoginGUIController loginStart = new LoginGUIController(theView, model);
+		//TheaterGUIController theaterStart = new TheaterGUIController(theView, null);
+		theView.setVisible(true);
 		
 		//TODO: load view controllers
 		
