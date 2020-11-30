@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.AbstractButton;
 import javax.swing.BorderFactory;
@@ -20,17 +22,19 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import TicketReservationModel.MovieOffering;
+
 public class TheaterGUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JRadioButton searchTheatersAdo =null;
 	private JRadioButton searchMoviesAdo=null;
 	private JRadioButton searchTimesAdo=null;
-	private JTextField searchTime=null;
 	private JButton searchBtn =null;
 	private JButton updateBtn =null;
 	private JButton queryAllBtn=null;
 	private JButton selectBtn=null;
 	private JButton searchClearBtn=null;
+	private JButton checkoutButton=null;
 	private JTextField theaterTxt=null;
 	private JTextField movieNameTxt=null;
 	private JTextField timeTxt=null;
@@ -39,11 +43,12 @@ public class TheaterGUI extends JFrame {
 	private JTextField sidTxt=null;
 	private JLabel dataCountTip=null;
 	private JScrollPane resultScroll;
-	private JList<String> dataListBox = null;
+	private JList<MovieOffering> dataListBox = null;
+	private JTextField searchParameterField;
 
 	public TheaterGUI() {
 		this.setSize(1000, 600);
-		this.setLayout(null);
+		getContentPane().setLayout(null);
 		this.setLocation(217, 69);
 		JPanel titlePanel=new JPanel();
 		JLabel title=new JLabel("Choose Your Movie!!!");
@@ -52,7 +57,7 @@ public class TheaterGUI extends JFrame {
 		titlePanel.setBounds(0, 0, 1000, 60);
 		titlePanel.setBackground(Color.DARK_GRAY);
 		titlePanel.add(title,JLabel.CENTER);
-		this.add(titlePanel);
+		getContentPane().add(titlePanel);
 		JPanel leftPanel=new JPanel();
 		leftPanel.setLayout(null);
 		leftPanel.setBounds(0, 60, 500, 240);
@@ -86,10 +91,6 @@ public class TheaterGUI extends JFrame {
 		radioGrupu.add(searchMoviesAdo);
 		radioGrupu.add(searchTimesAdo);
 		
-		setSearchTime(new JTextField());
-		getSearchTime().setBounds(15, 180, 150, 20);
-		leftPanel.add(getSearchTime());
-		
 		searchBtn = new JButton("Search");
 		searchBtn.setBounds(170, 180, 100, 20);
 		leftPanel.add(searchBtn);
@@ -101,14 +102,14 @@ public class TheaterGUI extends JFrame {
 		JLabel resultTip=new JLabel("Movies at Time Selected:");
 		resultTip.setFont(new Font("Courier New", Font.BOLD, 16));
 		resultTip.setBounds(15,300, 250, 30);
-		this.add(resultTip);
+		getContentPane().add(resultTip);
 		
 		
 		resultScroll = new JScrollPane();
 		resultScroll.setBounds(5, 330, 492, 225);
 		
 		
-		dataListBox = new JList<String>();
+		dataListBox = new JList<MovieOffering>();
 		dataListBox.setBounds(5, 0, 500, 237);
 		/**
 		dataListBox.addListSelectionListener(new ListSelectionListener() {
@@ -125,10 +126,15 @@ public class TheaterGUI extends JFrame {
 				
 			}
 		});*/
-		resultScroll.getViewport().add(dataListBox, null);
+		resultScroll.setViewportView(dataListBox);
 
-		this.add(leftPanel);
-		this.add(resultScroll);
+		getContentPane().add(leftPanel);
+		
+		searchParameterField = new JTextField();
+		searchParameterField.setBounds(20, 181, 142, 19);
+		leftPanel.add(searchParameterField);
+		searchParameterField.setColumns(10);
+		getContentPane().add(resultScroll);
 		JPanel rightPanel=new JPanel(); 
 		rightPanel.setLayout(null);
 		rightPanel.setBounds(502, 60, 500, 540);
@@ -166,23 +172,37 @@ public class TheaterGUI extends JFrame {
 		selectBtn.setBounds(355, 215, 80, 30);
 		rightPanel.add(selectBtn);
 		
-		this.add(rightPanel);
+		getContentPane().add(rightPanel);
 		
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
-	 
+	public String searchSelection() {
+		if(searchTheatersAdo.isSelected()) {
+			return "Theater";
+		}else if(searchMoviesAdo.isSelected()) {
+			return "Movie";
+		}else if(searchTimesAdo.isSelected()) {
+			return "Time";
+		}else{
+			return null;
+		}
+	}
+	public void displayMovieOfferings(ArrayList<MovieOffering> offerings) {
+		dataListBox.setListData((MovieOffering[]) offerings.toArray());
+	}
 	public void searchListener(ActionListener actionListener) {
 		searchBtn.addActionListener(actionListener);
 	}
-	
+	public void selectListener(ActionListener actionListener) {
+		selectBtn.addActionListener(actionListener);
+	}
 	public void addQueryAllListener(ActionListener actionListener) {
 		queryAllBtn.addActionListener(actionListener);
 	}
-
-    public void updateItemListener(ActionListener actionListener) {
-    	updateBtn.addActionListener(actionListener);
+    public void addListListener(MouseListener listenForClick) {
+    	dataListBox.addMouseListener(listenForClick);
 	}
     
 /**
@@ -220,11 +240,11 @@ public class TheaterGUI extends JFrame {
 		this.dataCountTip = dataCountTip;
 	}
 
-	public JList<String> getDataListBox() {
+	public JList<MovieOffering> getDataListBox() {
 		return dataListBox;
 	}
 
-	public void setDataListBox(JList<String> dataListBox) {
+	public void setDataListBox(JList<MovieOffering> dataListBox) {
 		this.dataListBox = dataListBox;
 	}
 /**
@@ -318,7 +338,6 @@ public class TheaterGUI extends JFrame {
 	public JButton getSearchBtn() {
 		return searchBtn;
 	}
-
 	public void setSearchBtn(JButton searchBtn) {
 		this.searchBtn = searchBtn;
 	}	
@@ -330,12 +349,12 @@ public class TheaterGUI extends JFrame {
 		this.searchClearBtn = searchClearBtn;
 	}
 
-	public JTextField getSearchTime() {
-		return searchTime;
+	public JTextField getSearchParameter() {
+		return searchParameterField;
 	}
 
-	public void setSearchTime(JTextField searchTime) {
-		this.searchTime = searchTime;
+	public void setSearchParameter(JTextField searchParameter) {
+		this.searchParameterField = searchParameter;
 	}
 
 	public JScrollPane getResultScroll() {
@@ -349,6 +368,4 @@ public class TheaterGUI extends JFrame {
 	public static void main(String[] args) {
 		new TheaterGUI();
 	}
-
-
 }
