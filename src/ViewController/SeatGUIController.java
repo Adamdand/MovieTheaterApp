@@ -50,15 +50,17 @@ public class SeatGUIController implements ActionListener {
 		gui.getCheckOutBtn().addActionListener(this);
 		gui.getResetBtn().addActionListener(this);
 		
-		
-		
+		allSeats = new ArrayList<MovieOffering>();
+		getAllSeats();
+		selectedSeats = new ArrayList<MovieOffering>();
 	}
 	
 	public void getAllSeats() {
 		for(MovieOffering o:model.viewAllOfferings()) {
-			if(o.getMovie().equals(offering.getMovie())&&o.getTheater().equals(offering.getTheater())&&o.getTime().equals(offering.getTime()))
+			if(o.getMovie().getMovieName().equals(offering.getMovie().getMovieName())&&o.getTheater().getTheaterName().equals(offering.getTheater().getTheaterName())&&o.getTime().equals(offering.getTime()))
 				allSeats.add(o);
 		}
+		System.out.println(allSeats.size());
 	}
 	public void selectSeat(char row, int col) {
 		for(MovieOffering o:allSeats) {
@@ -66,6 +68,8 @@ public class SeatGUIController implements ActionListener {
 				selectedSeats.add(o);
 			}
 		}
+		
+		System.out.println(selectedSeats.size());
 	}
 public void actionPerformed(ActionEvent e) {
 	

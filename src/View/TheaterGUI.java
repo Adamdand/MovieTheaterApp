@@ -190,7 +190,8 @@ public class TheaterGUI extends JFrame {
 		}
 	}
 	public void displayMovieOfferings(ArrayList<MovieOffering> offerings) {
-		dataListBox.setListData((MovieOffering[]) offerings.toArray());
+		MovieOffering[] movieOfferings = offerings.toArray(new MovieOffering[offerings.size()]);
+		dataListBox.setListData(movieOfferings);
 	}
 	public void searchListener(ActionListener actionListener) {
 		searchBtn.addActionListener(actionListener);

@@ -64,6 +64,13 @@ public class PaymentGUIController implements ActionListener {
 			double price = gui.getTotalCost();
 			String email = gui.getEmailTxt().getText();
 			double remain = model.redeemVoucher(voucherId, email,price);
+			
+			if (!(price == remain)) {
+				gui.changeTextFieldVisibility(gui.getvoucherTxt());
+				gui.changeButtonVisibility(gui.getRedeemBtn());
+				gui.getCheckBox().setEnabled(false);
+			}
+			
 			gui.setTotalCost(remain);
 			gui.updateTotalCost(gui.getTotalCostLabel());
 			if(remain ==0) {
