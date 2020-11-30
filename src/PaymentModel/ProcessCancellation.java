@@ -17,13 +17,20 @@ public class ProcessCancellation {
 	}
 	
 	public String refundTicketRegistered(double price, int ticketId, String cardNumber) {
-		if (financeController.makeCancellation(cardNumber, price)) {
-			CancellationReceipt receipt = new CancellationReceipt(price, ticketId);
-			addReceipt(receipt);
-			return receipt.toString();
-		} else {
-			return "Invalid credit card number";
-		}
+		
+		//if finance controller is setup, use this
+//		if (financeController.makeCancellation(cardNumber, price)) {
+//			CancellationReceipt receipt = new CancellationReceipt(price, ticketId, cardNumber);
+//			addReceipt(receipt);
+//			return receipt.toString();
+//		} else {
+//			return "Invalid credit card number";
+//		}
+		
+		//temporary method to accept all refunds (i.e. doesnt check credit card number)
+		CancellationReceipt receipt = new CancellationReceipt(price, ticketId, cardNumber);
+		addReceipt(receipt);
+		return receipt.toString();
 	}
 	
 	public String refundTicketRegular(double price, int ticketId) {

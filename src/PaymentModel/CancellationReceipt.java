@@ -12,13 +12,15 @@ public class CancellationReceipt {
 	private int date;
 	private int voucherId;
 	private int ticketId;
+	private String creditCard;
 	
-	public CancellationReceipt(double price, int ticketId) {
+	public CancellationReceipt(double price, int ticketId, String creditCard) {
 		String today = java.time.LocalDate.now().toString();
 		int date = Integer.parseInt(today.replace("-",""));
 		setPrice(price);
 		setDate(date);
 		setTicketId(ticketId);
+		setCreditCard(creditCard);
 		
 		Random rand = new Random();
 		
@@ -48,22 +50,26 @@ public class CancellationReceipt {
 	
 	@Override
 	public String toString() {
-		int endDate = date;
-		String year = Integer.toString(endDate).substring(0, 4);
-		String month = Integer.toString(endDate).substring(4, 6);
-		String day = Integer.toString(endDate).substring(6, 8);
-		String endDateString = year + "/" + month + "/" + day;
+		int currentDate = date;
+		String year = Integer.toString(currentDate).substring(0, 4);
+		String month = Integer.toString(currentDate).substring(4, 6);
+		String day = Integer.toString(currentDate).substring(6, 8);
+		String currentDateString = year + "-" + month + "-" + day;
+		
+		String endDate = java.time.LocalDate.now().plusDays(365).toString();
 		
 		if (voucherId == 0) {
 			return "Receipt number: " + receiptNumber + "\n" + 
 					   "Refunded/credit : " + price + "\n" + 
-					   "Date: " + endDateString + "\n" +
-					   "Ticket id: " + ticketId + "\n";
+					   "Date: " + currentDateString + "\n" +
+					   "Ticket id: " + ticketId + "\n" +
+					   "Credit card: " + creditCard + "\n";
 		} else {
 			return "Receipt number: " + receiptNumber + "\n" + 
 					   "Refunded/credit : " + price + "\n" + 
-					   "Date: " + endDateString + "\n" +
+					   "Date: " + currentDateString + "\n" +
 					   "Voucher code: " + voucherId + "\n" +
+					   "Voucher expiration: " + endDate + "\n" +
 					   "Ticket id: " + ticketId + "\n";
 		}
 		
@@ -115,6 +121,14 @@ public class CancellationReceipt {
 
 	public void setVoucherId(int voucherId) {
 		this.voucherId = voucherId;
+	}
+
+	public String getCreditCard() {
+		return creditCard;
+	}
+
+	public void setCreditCard(String creditCard) {
+		this.creditCard = creditCard;
 	}
 	
 	

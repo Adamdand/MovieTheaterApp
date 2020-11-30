@@ -74,7 +74,7 @@ public class LoginGUIController implements ActionListener{
 				String year = Integer.toString(endDate).substring(0, 4);
 				String month = Integer.toString(endDate).substring(4, 6);
 				String day = Integer.toString(endDate).substring(6, 8);
-				String date = year + "/" + month + "/" + day;
+				String date = year + "-" + month + "-" + day;
 				
 				gui.getMembershipEndDate().setText("Membership Expires: " + date);
 			}

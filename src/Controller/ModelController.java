@@ -110,7 +110,7 @@ public class ModelController {
 			return response;
 		}
 		
-		if (!creditCard.matches("[0-9]+") || creditCard.length() != 12) {
+		if (!creditCard.matches("[0-9]+") || creditCard.length() != 16) {
 			response = "Credit card format is incorrect";
 			return response;
 		}

@@ -19,9 +19,9 @@ public class Voucher {
 	}
 	
 	private void calculateExpiration() {
-		String today = LocalDate.now()+"";
-		today = today.replaceAll("-","");
-		expirationDate = Integer.parseInt(today);
+		String end = java.time.LocalDate.now().plusDays(365).toString();
+		int endDate = Integer.parseInt(end.replace("-",""));
+		expirationDate = endDate;
 	}
 	public double getWorth() {
 		return worth;
