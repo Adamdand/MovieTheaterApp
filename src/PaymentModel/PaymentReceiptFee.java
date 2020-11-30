@@ -27,10 +27,9 @@ public class PaymentReceiptFee {
 		String day = Integer.toString(end).substring(6, 8);
 		String endString = year + "-" + month + "-" + day;
 		
-		DecimalFormat df = new DecimalFormat("####.##");
 		
 		return userName + " subscription extended until: " + endString + "\n" +
-				"Paid: $" +  df.format(pricePaid);
+				"Paid: $" +  pricePaid;
 	}
 	
 	private void generateReceipt() {
@@ -58,7 +57,13 @@ public class PaymentReceiptFee {
 	}
 
 	public void setPricePaid(double pricePaid) {
-		this.pricePaid = pricePaid;
+		double myNumber = pricePaid;
+		DecimalFormat df = new DecimalFormat("####.##");
+		
+		String numberString = df.format(myNumber);
+		Double myNumber2 = Double.parseDouble(numberString);
+		
+		this.pricePaid = myNumber2;
 	}
 
 	public String getUserName() {

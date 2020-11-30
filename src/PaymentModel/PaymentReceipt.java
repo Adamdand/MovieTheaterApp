@@ -27,8 +27,7 @@ public class PaymentReceipt {
 				myWriter.write(m + " Ticket id: " + m.getTicketId() + ", Seat: " + m.getSeating().toString() +"\n");
 			}
 			
-			DecimalFormat df = new DecimalFormat("####.##");
-			myWriter.write("Paid: $"+ df.format(pricePaid));
+			myWriter.write("Paid: $"+ pricePaid);
 			myWriter.close();
 		}catch(IOException e) {
 			e.printStackTrace();
@@ -38,7 +37,13 @@ public class PaymentReceipt {
 		this.soldTickets = soldTickets;
 	}
 	public void setPricePaid(double pricePaid) {
-		this.pricePaid = pricePaid;
+		double myNumber = pricePaid;
+		DecimalFormat df = new DecimalFormat("####.##");
+		
+		String numberString = df.format(myNumber);
+		Double myNumber2 = Double.parseDouble(numberString);
+		
+		this.pricePaid = myNumber2;
 	}
 	//Method to send receipt to user's email
 	public void emailReceipt() {}
@@ -49,8 +54,7 @@ public class PaymentReceipt {
 			printReceipt+=(m+"\n");
 		}
 		
-		DecimalFormat df = new DecimalFormat("####.##");
-		printReceipt+=("TOTAL: $ "+ df.format(pricePaid));
+		printReceipt+=("TOTAL: $ "+ pricePaid);
 		
 		return printReceipt;
 	}
