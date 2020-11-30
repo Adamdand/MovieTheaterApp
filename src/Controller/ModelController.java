@@ -14,6 +14,7 @@ public class ModelController {
 	private RegisteredUserList users;
 	private DBController database;
 	private ArrayList<MovieOffering> soldTickets;
+	private RegisteredUser user;
 	
 	public ModelController(MovieOfferingList movies, ProcessCancellation cancel, ProcessPayment payment, RegisteredUserList users, DBController database) {
 		setMovies(movies);
@@ -106,7 +107,7 @@ public class ModelController {
 				users.addUser(user);
 				payment.generateReceiptFee(10, endDate, userName);
 				
-				response = "User sucessfully added";
+				response = "User successfully added";
 			} else {
 				response = "Insufficient funds";
 			}
@@ -114,6 +115,20 @@ public class ModelController {
 		
 		return response;
 	}
+	
+	public String verifyLogin(String userName, String password) {
+		RegisteredUser user = users.verifyUser(userName, password);
+		
+		
+		if (user == null) {
+			return "Login failed. Please check your username and password.";
+		} else {
+			setUser(user);
+			return "Welcome " + user.getUserName();
+		}
+		
+	}
+	
 	public boolean addNewVoucher(int id, double value) {
 		return payment.getVoucherIdentifier().addVoucher(id, value);
 	}
@@ -170,6 +185,12 @@ public class ModelController {
 
 	public void setMovies(MovieOfferingList movies) {
 		this.movies = movies;
+	}
+	public RegisteredUser getUser() {
+		return user;
+	}
+	public void setUser(RegisteredUser user) {
+		this.user = user;
 	}
 
 }

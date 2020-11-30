@@ -47,13 +47,34 @@ public class LoginGUIController implements ActionListener{
 			String userName = gui.getCreateUserNameInput().getText();
 			String password = gui.getCreatePasswordInput().getText();
 			String creditCard = gui.getCreditCardInput().getText();
-//			createNewUser(userName,password,creditCard);
+			String response = model.register(userName, password, creditCard);
+			gui.displayMessage(response);
+			
+			
 		}
 		
 		if(e.getSource() == gui.getLoginBtn()) {
 			//login if registered user. check username and password
-			gui.getUserNameInput();
-			gui.getPasswordInput();
+			String userName = gui.getUserNameInput().getText();
+			String password = gui.getPasswordInput().getText();
+			String response = model.verifyLogin(userName, password);
+			
+			if (response.contains("Welcome")) {
+				gui.getUserNameInput().setEditable(false);
+				gui.getPasswordInput().setEditable(false);
+				gui.getLoginBtn().setEnabled(false);
+				gui.getRefundBtn().setEnabled(true);
+				gui.getRenewBtn().setEnabled(true);
+				
+				int endDate = model.getUser().getSubEnd();
+				String year = Integer.toString(endDate).substring(0, 4);
+				String month = Integer.toString(endDate).substring(4, 6);
+				String day = Integer.toString(endDate).substring(6, 8);
+				
+				gui.getMembershipEndDate().setText("Membership Expires: " + year + "/" + month + "/" + day + "/");
+			}
+			
+			gui.displayMessage(response);
 		}
 		
 	
@@ -67,6 +88,16 @@ public class LoginGUIController implements ActionListener{
 		if(e.getSource() == gui.getRefundBtn()) {
 			//return money
 			gui.getRegisteredVoucherCodeInput();
+		}
+		
+		if(e.getSource() == gui.getLogoutBtn()) {
+			gui.getUserNameInput().setEditable(true);
+			gui.getPasswordInput().setEditable(true);
+			gui.getLoginBtn().setEnabled(true);
+			gui.getRefundBtn().setEnabled(false);
+			gui.getRenewBtn().setEnabled(false);;
+			gui.getMembershipEndDate().setText("Membership Expires: YYYY/MM/DD");
+			model.setUser(null);
 		}
 		
 	}
