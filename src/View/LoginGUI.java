@@ -22,6 +22,7 @@ import javax.swing.event.ListSelectionListener;
 public class LoginGUI extends JFrame {
 	
 	private boolean loggedin = false;
+	private String membershipExpiration = "YYY/MM/DD";
 	//need to update
 	
 	private static final long serialVersionUID = 1L;
@@ -31,6 +32,8 @@ public class LoginGUI extends JFrame {
 	private JButton voucherBtn=null;
 	private JButton loginBtn=null;
 	private JButton refundBtn=null;
+	private JButton logoutBtn=null;
+	private JButton renewBtn=null;
 	
 	private JTextField userNameInput=null;
 	private JTextField passwordInput=null;
@@ -103,9 +106,9 @@ public class LoginGUI extends JFrame {
 		this.add(voucherTxt);
 
 		
-		JLabel voucherInput=new JLabel("Voucher Code");
+		JLabel voucherInput=new JLabel("Ticket Id");
 		voucherInput.setFont(new Font("Courier New", Font.BOLD, 13));
-		voucherInput.setBounds(370, 330, 250, 30);
+		voucherInput.setBounds(385, 330, 250, 30);
 		leftPanel.add(voucherInput);
 		voucherCodeInput=new JTextField();
 		voucherCodeInput.setBounds(380, 355, 80, 30);
@@ -148,9 +151,23 @@ public class LoginGUI extends JFrame {
 		passwordInput.setBounds(150, 165, 220, 27);
 		rightPanel.add(passwordInput);
 		
+		JLabel memberShipEndDate = new JLabel("Membership Expires: " + getMembershipExpiration());
+		memberShipEndDate.setFont(new Font("Courier New", Font.PLAIN, 13));
+		memberShipEndDate.setBounds(50, 265, 250, 30);
+		rightPanel.add(memberShipEndDate);
+		
+		renewBtn = new JButton("Renew");
+		renewBtn.setBounds(290, 265, 80, 30);
+		rightPanel.add(renewBtn);
+		
+		
+		logoutBtn = new JButton("Logout");
+		logoutBtn.setBounds(290, 215, 80, 30);
+		rightPanel.add(logoutBtn);
+		
 		
 		loginBtn = new JButton("Login");
-		loginBtn.setBounds(290, 215, 80, 30);
+		loginBtn.setBounds(150, 215, 80, 30);
 		rightPanel.add(loginBtn);
 
 
@@ -162,9 +179,9 @@ public class LoginGUI extends JFrame {
 		refundBtn.setBounds(195, 355, 80, 30);
 		rightPanel.add(refundBtn);
 		
-		JLabel registeredVoucherInput=new JLabel("Voucher Code");
+		JLabel registeredVoucherInput=new JLabel("Ticket Id");
 		registeredVoucherInput.setFont(new Font("Courier New", Font.BOLD, 13));
-		registeredVoucherInput.setBounds(305, 330, 250, 30);
+		registeredVoucherInput.setBounds(320, 330, 250, 30);
 		rightPanel.add(registeredVoucherInput);
 		registeredVoucherCodeInput=new JTextField();
 		registeredVoucherCodeInput.setBounds(315, 355, 80, 30);
@@ -287,6 +304,10 @@ public class LoginGUI extends JFrame {
 	public JButton getLoginBtn() {
 		return loginBtn;
 	}
+	
+	public JButton getLotOutBtn() {
+		return logoutBtn;
+	}
 
 
 
@@ -316,5 +337,17 @@ public class LoginGUI extends JFrame {
 
 	public void setRefundBtn(JButton refundBtn) {
 		this.refundBtn = refundBtn;
+	}
+
+
+
+	public String getMembershipExpiration() {
+		return membershipExpiration;
+	}
+
+
+
+	public void setMembershipExpiration(String membershipExpiration) {
+		this.membershipExpiration = membershipExpiration;
 	}
 }
