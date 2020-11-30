@@ -27,7 +27,8 @@ public class SeatSelectionGUI extends JFrame {
 	
 	
 	private double totalCost = 0;
-	private double priceOfSeat = (13.50)*1.05;
+//	private double priceOfSeat = (13.50)*1.05;
+	private double priceOfSeat = 14.18;
 	
 	private static final long serialVersionUID = 1L;
 	private JTextField searchTime=null;
