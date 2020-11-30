@@ -2,6 +2,7 @@ package PaymentModel;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import TicketReservationModel.MovieOffering;
@@ -25,7 +26,9 @@ public class PaymentReceipt {
 			for(MovieOffering m: soldTickets) {
 				myWriter.write(m + " Ticket id: " + m.getTicketId() + ", Seat: " + m.getSeating().toString() +"\n");
 			}
-			myWriter.write("Paid: $"+pricePaid);
+			
+			DecimalFormat df = new DecimalFormat("####.##");
+			myWriter.write("Paid: $"+ df.format(pricePaid));
 			myWriter.close();
 		}catch(IOException e) {
 			e.printStackTrace();
@@ -45,7 +48,9 @@ public class PaymentReceipt {
 		for(MovieOffering m: soldTickets) {
 			printReceipt+=(m+"\n");
 		}
-		printReceipt+=("TOTAL: $ "+pricePaid);
+		
+		DecimalFormat df = new DecimalFormat("####.##");
+		printReceipt+=("TOTAL: $ "+ df.format(pricePaid));
 		
 		return printReceipt;
 	}
