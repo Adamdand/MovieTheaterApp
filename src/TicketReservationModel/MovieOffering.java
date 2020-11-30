@@ -22,6 +22,7 @@ public class MovieOffering {
 		this.price = (13.50)*1.05;
 		this.booked = true;
 		this.ticketId = rand.nextInt(1000);
+		this.ticketId = ticketId;
 	}
 	
 	public MovieOffering(Theater theater, Movie movie, int movieDate, String time, int ticketId) {
@@ -32,7 +33,8 @@ public class MovieOffering {
 		this.setTime(time);
 		this.price = (13.50)*1.05;
 		this.booked = true;
-		this.ticketId = rand.nextInt(1000);
+//		this.ticketId = rand.nextInt(1000);
+		this.ticketId = ticketId;
 	}
 	
 	@Override

@@ -21,26 +21,26 @@ import TicketReservationModel.voucher;
 public class DBController {
 	public String databaseName = "movieTheaterDB";
 	public String connectionInfo2 = "jdbc:mysql://localhost:3306/movieTheaterDB",  
-			  login          = "root",
-			  password       = "password";
-	
+			login          = "root",
+			password       = "password";
+
 	public Connection jdbc_connection;
 	public Statement statement;
-	
+
 	public DBController(){
-		
+
 		try{
 			//try to connect to DataBase
 			jdbc_connection = DriverManager.getConnection(connectionInfo2, login, password);
 			System.out.println("Connected to: " + connectionInfo2 + "\n");
-			
+
 		}
 		catch(SQLException e) { e.printStackTrace(); }
 		catch(Exception e) { e.printStackTrace(); }
-		
-		
+
+
 	}
-	
+
 	/**
 	 * Search for a movieOffering from the SQL DataBase given its IDNumber
 	 * @param offeringID
@@ -67,12 +67,12 @@ public class DBController {
 					return offering;
 				}
 			}
-		
+
 		} catch (SQLException e) { e.printStackTrace(); }
-		
+
 		return null;
 	}*/
-	
+
 	public voucher searchVouchers(int code)
 	{
 		PreparedStatement getVoucher = null;
@@ -92,12 +92,12 @@ public class DBController {
 					return thisvoucher;
 				}
 			}
-		
+
 		} catch (SQLException e) { e.printStackTrace(); }
-		
+
 		return null;
 	}
-	
+
 	public RegisteredUser searchUsers(String email, String password)
 	{
 		PreparedStatement getVoucher = null;
@@ -117,9 +117,9 @@ public class DBController {
 					return thisUser;
 				}
 			}
-		
+
 		} catch (SQLException e) { e.printStackTrace(); }
-		
+
 		return null;
 	}
 
@@ -148,120 +148,120 @@ public class DBController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	// Add a voucher to voucherList
-		public void addVoucher(voucher thisVoucher)
-		{
-			PreparedStatement addVoucher = null;
-			String sql = "INSERT INTO voucherlist" + " VALUES (?,?);"; 
-					try {
-						addVoucher = jdbc_connection.prepareStatement(sql);
-						addVoucher.setInt(1, thisVoucher.getVoucherCode());
-						addVoucher.setInt(2, thisVoucher.getEndDate());
+	public void addVoucher(voucher thisVoucher)
+	{
+		PreparedStatement addVoucher = null;
+		String sql = "INSERT INTO voucherlist" + " VALUES (?,?);"; 
+		try {
+			addVoucher = jdbc_connection.prepareStatement(sql);
+			addVoucher.setInt(1, thisVoucher.getVoucherCode());
+			addVoucher.setInt(2, thisVoucher.getEndDate());
 
-					}catch(SQLException ex) {
-						ex.printStackTrace();
-					}		
-		}
-		
-		// Add a registeredUser
-		public void addRegisteredUser(RegisteredUser thisRegisteredUser)
-		{
-			PreparedStatement addUser = null;
-			String sql = "INSERT INTO voucherlist" + " VALUES (?,?,?,?,?);"; 
-					try {
-						addUser = jdbc_connection.prepareStatement(sql);
-						addUser.setString(1, thisRegisteredUser.getUserName());
-						addUser.setString(2, thisRegisteredUser.getPassword());
-						addUser.setString(3, thisRegisteredUser.getCreditCard());
-						addUser.setInt(4, thisRegisteredUser.getSubStart());
-						addUser.setInt(5, thisRegisteredUser.getSubEnd());
-						addUser.executeUpdate();
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+		}		
+	}
 
-					}catch(SQLException ex) {
-						ex.printStackTrace();
-					}		
-		}
-		
-		
-		public void updateUser(RegisteredUser thisUser)
-		{
-			PreparedStatement renewUser = null;
-			String sql = "UPDATE registeredusers SET " + 
-					"userID =  ? ," +
-					"startDate =  ? ," +
-					"endDate =  ? ," +
-					"email =  ? ," +
-					"password =  ? ," +
-					"WHERE email = " + thisUser.getUserName() + ";"; 
-					try {
-						renewUser = jdbc_connection.prepareStatement(sql);
-						renewUser.setString(1, thisUser.getUserName());
-						renewUser.setString(2, thisUser.getPassword());
-						renewUser.setString(3, thisUser.getCreditCard());
-						renewUser.setInt(4, thisUser.getSubStart());
-						renewUser.setInt(5, thisUser.getSubEnd());
-						renewUser.executeUpdate();
-					}catch(SQLException ex) {
-						ex.printStackTrace();
-					}		
-		}
-		
-		public void deleteVoucher(int voucherCode) {
-			PreparedStatement deleteVoucher = null;
-			String sql = "DELETE FROM voucherlist WHERE voucherCode = ? OR voucherCode = ?";
-			try {
-				deleteVoucher = jdbc_connection.prepareStatement(sql);
-				deleteVoucher = jdbc_connection.prepareStatement(sql);
-				deleteVoucher.setInt(1, voucherCode);
-				deleteVoucher.setInt(2, voucherCode);
-				deleteVoucher.executeUpdate();
+	// Add a registeredUser
+	public void addRegisteredUser(RegisteredUser thisRegisteredUser)
+	{
+		PreparedStatement addUser = null;
+		String sql = "INSERT INTO voucherlist" + " VALUES (?,?,?,?,?);"; 
+		try {
+			addUser = jdbc_connection.prepareStatement(sql);
+			addUser.setString(1, thisRegisteredUser.getUserName());
+			addUser.setString(2, thisRegisteredUser.getPassword());
+			addUser.setString(3, thisRegisteredUser.getCreditCard());
+			addUser.setInt(4, thisRegisteredUser.getSubStart());
+			addUser.setInt(5, thisRegisteredUser.getSubEnd());
+			addUser.executeUpdate();
 
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-			}
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+		}		
+	}
+
+
+	public void updateUser(RegisteredUser thisUser)
+	{
+		PreparedStatement renewUser = null;
+		String sql = "UPDATE registeredusers SET " + 
+				"userID =  ? ," +
+				"startDate =  ? ," +
+				"endDate =  ? ," +
+				"email =  ? ," +
+				"password =  ? ," +
+				"WHERE email = " + thisUser.getUserName() + ";"; 
+		try {
+			renewUser = jdbc_connection.prepareStatement(sql);
+			renewUser.setString(1, thisUser.getUserName());
+			renewUser.setString(2, thisUser.getPassword());
+			renewUser.setString(3, thisUser.getCreditCard());
+			renewUser.setInt(4, thisUser.getSubStart());
+			renewUser.setInt(5, thisUser.getSubEnd());
+			renewUser.executeUpdate();
+		}catch(SQLException ex) {
+			ex.printStackTrace();
+		}		
+	}
+
+	public void deleteVoucher(int voucherCode) {
+		PreparedStatement deleteVoucher = null;
+		String sql = "DELETE FROM voucherlist WHERE voucherCode = ? OR voucherCode = ?";
+		try {
+			deleteVoucher = jdbc_connection.prepareStatement(sql);
+			deleteVoucher = jdbc_connection.prepareStatement(sql);
+			deleteVoucher.setInt(1, voucherCode);
+			deleteVoucher.setInt(2, voucherCode);
+			deleteVoucher.executeUpdate();
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
 		}
-		
-		public RegisteredUser searchUsersforRenewalorAddition(String userName, String password, String creditCard, int startDate, int endDate)
-		{
-			PreparedStatement getUser = null;
-			String sql = "SELECT * FROM registeredusers " + " WHERE email = ? OR email = ?"; //dont worry, this is set up to take a String in the future, so it can search for toolID or toolName
-			try {
-				//statement = jdbc_connection.createStatement();
-				//tool = statement.executeQuery(sql);
-				if(jdbc_connection != null)
-				{
-					getUser = jdbc_connection.prepareStatement(sql);
-					getUser.setString(1, userName);
-					getUser.setString(2, userName);
-					ResultSet rs = getUser.executeQuery();
-					if(rs.next()) {
-						RegisteredUser supp = new RegisteredUser(rs.getString("userName"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
-						//item.linkSupplier(rs.getString("supplier"));
-						RegisteredUser thisUser = new RegisteredUser(userName, password, creditCard, startDate, endDate);
-						updateUser(thisUser);
-						System.out.println("Found Customer");
-						return thisUser;
-					}
+	}
+
+	public RegisteredUser searchUsersforRenewalorAddition(String userName, String password, String creditCard, int startDate, int endDate)
+	{
+		PreparedStatement getUser = null;
+		String sql = "SELECT * FROM registeredusers " + " WHERE email = ? OR email = ?"; //dont worry, this is set up to take a String in the future, so it can search for toolID or toolName
+		try {
+			//statement = jdbc_connection.createStatement();
+			//tool = statement.executeQuery(sql);
+			if(jdbc_connection != null)
+			{
+				getUser = jdbc_connection.prepareStatement(sql);
+				getUser.setString(1, userName);
+				getUser.setString(2, userName);
+				ResultSet rs = getUser.executeQuery();
+				if(rs.next()) {
+					RegisteredUser supp = new RegisteredUser(rs.getString("userName"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
+					//item.linkSupplier(rs.getString("supplier"));
+					RegisteredUser thisUser = new RegisteredUser(userName, password, creditCard, startDate, endDate);
+					updateUser(thisUser);
+					System.out.println("Found Customer");
+					return thisUser;
 				}
-			
-			} catch (SQLException e) { e.printStackTrace(); }
-			System.out.println("registeredUser NOT FOUND, creating new registeredUser.....");
-			RegisteredUser thisUser = new RegisteredUser(userName, password, creditCard, startDate, endDate);
-			addRegisteredUser(thisUser);
-			return null;
-		}
-		
-	
+			}
+
+		} catch (SQLException e) { e.printStackTrace(); }
+		System.out.println("registeredUser NOT FOUND, creating new registeredUser.....");
+		RegisteredUser thisUser = new RegisteredUser(userName, password, creditCard, startDate, endDate);
+		addRegisteredUser(thisUser);
+		return null;
+	}
+
+
 	/**
 	 * Static Main
 	 * @param args
 	 */
-		
+
 	public static void main(String args[])
 	{
 		DBController dataBase = new DBController();
-		
+
 		// You should comment this line out once the first database is created (either here or in MySQL workbench)
 
 
@@ -275,22 +275,22 @@ public class DBController {
 			System.out.println("Search Failed to find a tool matching ID: " + searchResult);
 		else
 			System.out.println("Search Result: " + searchResult.toString());
-*/
+		 */
 
 		System.out.println("\nSearching table for tool 9000: should fail to find a tool");
 
-		
 
-		
+
+
 		//TEST search for voucher in DB
-		
+
 		System.out.println("\nSearching voucher codes for voucher 53398");
 		voucher myVoucher = dataBase.searchVouchers(53398);
 		if(myVoucher == null)
 			System.out.println("Search Failed to find a tool matching ID: " + 53398);
 		else
 			System.out.println("Search Result: " + myVoucher.toString());
-		
+
 		//test search for username and password combo in DB
 		RegisteredUser myUser = dataBase.searchUsers("junwoo@123.com","123");
 		if(myUser == null)
@@ -303,9 +303,9 @@ public class DBController {
 			System.out.println("Search Failed find movie offering");
 		else
 			System.out.println("Search Result: " + thisOffering.toString());
-*/
+		 */
 
-		
+
 		try {
 			dataBase.statement.close();
 			dataBase.jdbc_connection.close();
@@ -315,16 +315,16 @@ public class DBController {
 		{
 			System.out.println("\nThe program is finished running");
 		}
-		
-		
-	
-		
-	}
-	
-	
 
-	
-	
+
+
+
+	}
+
+
+
+
+
 	//TODO: implement method
 	public ArrayList<MovieOffering> loadMovies() {
 		PreparedStatement getAllMovies = null;
@@ -334,20 +334,21 @@ public class DBController {
 			if (jdbc_connection != null) {
 				getAllMovies = jdbc_connection.prepareStatement(getAllMoviesString);
 				ResultSet rs = getAllMovies.executeQuery();
-
+				int counter = 1;
 				while (rs.next()) {
 					for(char row = 'A'; row < 'E'; row++){
-						 //ArrayList<Seats> seatRow = new ArrayList<Seats>();
-						 for(int col = 1; col < 6; col++){
-							 Seats mySeat = new Seats(row,col);
-							 Movie thisMovie = new Movie(rs.getString("movieName"));
-							 Theater thisTheater = new Theater(rs.getString("theaterName"),rs.getString("theaterLoc"));
-							 String thisTime = rs.getString("movieTime");
-							 
-							 MovieOffering t = new MovieOffering(thisTheater,thisMovie,rs.getInt("movieDate"), thisTime, mySeat, rs.getInt("offeringID"));
-							 temp.add(t);
-							 }
-					    }
+						//ArrayList<Seats> seatRow = new ArrayList<Seats>();
+						for(int col = 1; col < 6; col++){
+							Seats mySeat = new Seats(row,col);
+							Movie thisMovie = new Movie(rs.getString("movieName"));
+							Theater thisTheater = new Theater(rs.getString("theaterName"),rs.getString("theaterLoc"));
+							String thisTime = rs.getString("movieTime");
+
+							MovieOffering t = new MovieOffering(thisTheater,thisMovie,rs.getInt("movieDate"), thisTime, mySeat, counter);
+							temp.add(t);
+							counter++;
+						}
+					}
 				}
 				return temp;
 			}
@@ -356,7 +357,7 @@ public class DBController {
 		}
 		return null;
 	}
-	
+
 	public ArrayList<MovieOffering> loadMoviesNoSeats() {
 		PreparedStatement getAllMovies = null;
 		String getAllMoviesString = "select * from movieofferings";
@@ -365,14 +366,13 @@ public class DBController {
 			if (jdbc_connection != null) {
 				getAllMovies = jdbc_connection.prepareStatement(getAllMoviesString);
 				ResultSet rs = getAllMovies.executeQuery();
-
 				while (rs.next()) {
-						Movie thisMovie = new Movie(rs.getString("movieName"));
-						Theater thisTheater = new Theater(rs.getString("theaterName"),rs.getString("theaterLoc"));
-						String thisTime = rs.getString("movieTime");
-							 
-						MovieOffering t = new MovieOffering(thisTheater,thisMovie, rs.getInt("movieDate"), thisTime, rs.getInt("offeringID"));
-						temp.add(t);
+					Movie thisMovie = new Movie(rs.getString("movieName"));
+					Theater thisTheater = new Theater(rs.getString("theaterName"),rs.getString("theaterLoc"));
+					String thisTime = rs.getString("movieTime");
+
+					MovieOffering t = new MovieOffering(thisTheater,thisMovie, rs.getInt("movieDate"), thisTime, rs.getInt("offeringID"));
+					temp.add(t);
 
 				}
 				return temp;
@@ -383,7 +383,7 @@ public class DBController {
 		return null;
 	}
 
-	
+
 	public ArrayList<RegisteredUser> loadUsers() {
 		PreparedStatement getAllUsers = null;
 		String getAllUsersString = "select * from registeredusers";
@@ -406,9 +406,9 @@ public class DBController {
 		}
 		return null;
 	}
-	
-	
-	
+
+
+
 	public Hashtable<Integer, Voucher> loadVouchers() {
 		PreparedStatement getAllVouchers = null;
 		String getAllVoucherString = "select * from voucherlist";
@@ -431,8 +431,8 @@ public class DBController {
 		}
 		return null;
 	}
-	
-	
-	
+
+
+
 
 }
