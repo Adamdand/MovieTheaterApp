@@ -47,13 +47,14 @@ public class PaymentGUIController implements ActionListener {
 				gui.displayMessage("Payment successful");
 				gui.setTotalCost(0);
 				gui.updateTotalCost(gui.getTotalCostLabel());
+				model.checkoutSeats(selectedSeats);
 				gui.dispose();
 			}
 		}
 		
 		if(e.getSource() == gui.getCancelBtn()) {
 			//exit program, unless better idea
-			System.exit(0);
+			gui.dispose();
 			
 			
 		}

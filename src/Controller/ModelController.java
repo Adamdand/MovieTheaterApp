@@ -24,6 +24,11 @@ public class ModelController {
 		setUsers(users);
 		setDatabase(database);
 	}
+	
+	public void loadSeats(ArrayList<MovieOffering> seats) {
+		this.soldTickets = seats;
+	}
+	
 	public void checkoutSeats(ArrayList<MovieOffering> soldTickets) {
 		this.soldTickets = soldTickets;
 		for(MovieOffering o:soldTickets) {

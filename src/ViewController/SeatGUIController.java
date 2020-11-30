@@ -132,7 +132,9 @@ public void actionPerformed(ActionEvent e) {
 	if(e.getSource() == gui.getCheckOutBtn()) {
 		//start up next Payment GUI if clicked
 		if(selectedSeats.size()>0) {
-			model.checkoutSeats(selectedSeats);
+//			model.checkoutSeats(selectedSeats);
+			model.loadSeats(selectedSeats);
+			
 			PaymentGUI paymentView = new PaymentGUI(gui.getTotalCost());
 			PaymentGUIController paymentController = new PaymentGUIController(selectedSeats, paymentView, model);
 			
