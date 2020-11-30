@@ -124,6 +124,7 @@ public class SeatGUIController implements ActionListener {
 			gui.dissableButton(gui.getD4());
 		if(!checkSeat('D',5))
 			gui.dissableButton(gui.getD5());
+		gui.setTotalCost(0);
 	}
 public void actionPerformed(ActionEvent e) {
 	
