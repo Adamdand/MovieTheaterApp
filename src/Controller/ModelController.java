@@ -1,5 +1,7 @@
 package Controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import DatabaseController.*;
@@ -63,10 +65,13 @@ public class ModelController {
 				return response;
 			}
 			
-			//72 hrs refund requirement
-			String today = java.time.LocalDate.now().toString();
-			int date = Integer.parseInt(today.replace("-",""));
-			if ((ticket.getMovieDate() - date > 2)) {
+			String endDate = java.time.LocalDate.now().toString();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+			LocalDate date = LocalDate.parse(endDate, formatter);
+			endDate = date.plusDays(3).toString();
+			int refundDay = Integer.parseInt(endDate.replace("-",""));
+			
+			if ((ticket.getMovieDate() < refundDay)) {
 				response = "You can only refund within 72 hours";
 				return response;
 			}
@@ -93,10 +98,13 @@ public class ModelController {
 				return response;
 			}
 			
-			//72 hrs refund requirement
-			String today = java.time.LocalDate.now().toString();
-			int date = Integer.parseInt(today.replace("-",""));
-			if ((ticket.getMovieDate() - date > 2)) {
+			String endDate = java.time.LocalDate.now().toString();
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+			LocalDate date = LocalDate.parse(endDate, formatter);
+			endDate = date.plusDays(3).toString();
+			int refundDay = Integer.parseInt(endDate.replace("-",""));
+			
+			if ((ticket.getMovieDate() < refundDay)) {
 				response = "You can only refund within 72 hours";
 				return response;
 			}
