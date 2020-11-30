@@ -55,14 +55,17 @@ public class ModelController {
 	}
 	public String makeCancellationRegistered(int ticketId, String cardNumber) {
 		String response = "";
-		//need a ticket search method
 		MovieOffering ticket = movies.searchMovieOfferingTicket(ticketId);
 		
 		if (ticket != null) {
+			if (!ticket.isBooked()) {
+				response = "Ticket has not been booked";
+				return response;
+			}
+			
 			//need to add date to cancellation receipts
-			//need a getter for price
 			response = cancel.refundTicketRegistered(ticket.getPrice(), ticketId, cardNumber);
-			if (response.contains("refunded")) {
+			if (response.contains("Refunded")) {
 				ticket.setBooked(false);
 			}
 		} else {
@@ -74,13 +77,19 @@ public class ModelController {
 	
 	public String makeCancellationRegular(int ticketId) {
 		String response = "";
-		//need a ticket search method
 		MovieOffering ticket = movies.searchMovieOfferingTicket(ticketId);
 		
 		if (ticket != null) {
+			if (!ticket.isBooked()) {
+				response = "Ticket has not been booked";
+				return response;
+			}
+			
 			//need to add date to cancellation receipts
-			//need a getter for price
-			response = cancel.refundTicketRegular(ticket.getPrice(), ticketId);
+			response = cancel.refundTicketRegular(ticket.getPrice()*0.85, ticketId);
+			if (response.contains("Refunded")) {
+				ticket.setBooked(false);
+			}
 		} else {
 			response = "Ticket does not exist";
 		}

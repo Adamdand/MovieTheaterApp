@@ -48,15 +48,23 @@ public class CancellationReceipt {
 	
 	@Override
 	public String toString() {
+		int endDate = date;
+		String year = Integer.toString(endDate).substring(0, 4);
+		String month = Integer.toString(endDate).substring(4, 6);
+		String day = Integer.toString(endDate).substring(6, 8);
+		String endDateString = year + "/" + month + "/" + day;
+		
 		if (voucherId == 0) {
 			return "Receipt number: " + receiptNumber + "\n" + 
 					   "Refunded/credit : " + price + "\n" + 
-					   "Date: " + date + "\n";
+					   "Date: " + endDateString + "\n" +
+					   "Ticket id: " + ticketId + "\n";
 		} else {
 			return "Receipt number: " + receiptNumber + "\n" + 
 					   "Refunded/credit : " + price + "\n" + 
-					   "Date: " + date + "\n" +
-					   "Voucher code: " + voucherId;
+					   "Date: " + endDateString + "\n" +
+					   "Voucher code: " + voucherId + "\n" +
+					   "Ticket id: " + ticketId + "\n";
 		}
 		
 	}

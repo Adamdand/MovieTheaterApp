@@ -74,8 +74,9 @@ public class LoginGUIController implements ActionListener{
 				String year = Integer.toString(endDate).substring(0, 4);
 				String month = Integer.toString(endDate).substring(4, 6);
 				String day = Integer.toString(endDate).substring(6, 8);
+				String date = year + "/" + month + "/" + day;
 				
-				gui.getMembershipEndDate().setText("Membership Expires: " + year + "/" + month + "/" + day + "/");
+				gui.getMembershipEndDate().setText("Membership Expires: " + date);
 			}
 			
 			gui.displayMessage(response);
@@ -83,15 +84,29 @@ public class LoginGUIController implements ActionListener{
 		
 	
 		if(e.getSource() == gui.getVoucherBtn()) {
-			//return discount voucher
-			//we either need to connect to SQL here and add it to SQL, or make a voucherList in java to add to *****
-			gui.getVoucherCodeInput();
+			String ticketId = gui.getVoucherCodeInput().getText();
+			String response = "";
+			if (!ticketId.matches("[0-9]+")) {
+				response = "Please input digits only";
+			} else {
+				int ticketIdInt = Integer.parseInt(ticketId);
+				response = model.makeCancellationRegular(ticketIdInt);
+			}
 
+			gui.displayMessage(response);
 		}
 		
 		if(e.getSource() == gui.getRefundBtn()) {
-			//return money
-			gui.getRegisteredVoucherCodeInput();
+			String ticketId = gui.getRegisteredVoucherCodeInput().getText();
+			String response = "";
+			if (!ticketId.matches("[0-9]+")) {
+				response = "Please input digits only";
+			} else {
+				int ticketIdInt = Integer.parseInt(ticketId);
+				response = model.makeCancellationRegistered(ticketIdInt, model.getUser().getCreditCard());
+			}
+
+			gui.displayMessage(response);
 		}
 		
 		if(e.getSource() == gui.getLogoutBtn()) {

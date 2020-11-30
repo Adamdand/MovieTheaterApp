@@ -20,7 +20,7 @@ public class Voucher {
 	
 	private void calculateExpiration() {
 		String today = LocalDate.now()+"";
-		today.replaceAll("-","");
+		today = today.replaceAll("-","");
 		expirationDate = Integer.parseInt(today);
 	}
 	public double getWorth() {

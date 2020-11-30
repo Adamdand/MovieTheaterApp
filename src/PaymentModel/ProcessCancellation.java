@@ -20,7 +20,7 @@ public class ProcessCancellation {
 		if (financeController.makeCancellation(cardNumber, price)) {
 			CancellationReceipt receipt = new CancellationReceipt(price, ticketId);
 			addReceipt(receipt);
-			return "Refunded ticket: " + ticketId;
+			return receipt.toString();
 		} else {
 			return "Invalid credit card number";
 		}
@@ -34,13 +34,9 @@ public class ProcessCancellation {
 			if (voucherIdentifier.addVoucher(x, price)) {
 				CancellationReceipt receipt = new CancellationReceipt(price, ticketId, x);
 				addReceipt(receipt);
-				break;
+				return receipt.toString();
 			}
 		}
-		
-		
-		//TODO: add voucher string to return as well
-		return "Refunded ticket: " + ticketId;
 	}
 
 	public FinanceController getFinanceController() {
