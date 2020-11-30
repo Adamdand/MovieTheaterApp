@@ -19,6 +19,7 @@ import RegisteredUserModel.*;
  * 3. double formatting for receipts/outputs/prices should only show 2 decimal places
  * 4. redeem voucher should output a display depending on what happened
  * 5. GUIs visibility (when you choose seats, search theaters should go away, when you go to payment, choose seats should go away etc.)
+ * 6. update cancel methods to only allow for >3day cancellation
  *
  */
 
