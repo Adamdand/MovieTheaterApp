@@ -73,7 +73,7 @@ public class ModelController {
 			int refundDay = Integer.parseInt(endDate.replace("-",""));
 			
 			if ((ticket.getMovieDate() <= refundDay)) {
-				response = "You can only refund within 72 hours";
+				response = "You can only refund before 72 hours of the movie date";
 				return response;
 			}
 			
@@ -109,7 +109,7 @@ public class ModelController {
 			int refundDay = Integer.parseInt(endDate.replace("-",""));
 			
 			if ((ticket.getMovieDate() <= refundDay)) {
-				response = "You can only refund within 72 hours";
+				response = "You can only refund before 72 hours of the movie date";
 				return response;
 			}
 			
