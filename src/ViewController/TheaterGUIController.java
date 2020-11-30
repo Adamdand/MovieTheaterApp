@@ -82,6 +82,12 @@ public class TheaterGUIController implements ActionListener, MouseListener {
 			//go to next GUI
 			SeatSelectionGUI seatView = new SeatSelectionGUI();
 			SeatGUIController seatController = new SeatGUIController(gui.getDataListBox().getSelectedValue(), seatView, model);
+			
+			if (model.getUser() == null) {
+				seatView.getA1().setEnabled(false);
+				seatView.getA2().setEnabled(false);
+			}
+			
 			seatView.setVisible(true);
 		}
 		

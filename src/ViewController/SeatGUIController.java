@@ -80,6 +80,12 @@ public void actionPerformed(ActionEvent e) {
 			model.checkoutSeats(selectedSeats);
 			PaymentGUI paymentView = new PaymentGUI(gui.getTotalCost());
 			PaymentGUIController paymentController = new PaymentGUIController(selectedSeats, paymentView, model);
+			
+			if (model.getUser() != null) {
+				paymentView.getCreditCardTxt().setText(model.getUser().getCreditCard());
+				paymentView.getEmailTxt().setText(model.getUser().getUserName());
+			}
+			
 			paymentView.setVisible(true); 
 		}
 	}
