@@ -1,5 +1,8 @@
 package RegisteredUserModel;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class RegisteredUser {
 	private String userName;
 	private String password;
@@ -13,6 +16,14 @@ public class RegisteredUser {
 		setCreditCard(creditCard);
 		setSubStart(subStart);
 		setSubEnd(subEnd);
+	}
+	
+	public void renewUser() {
+		String endDate = subEnd + "";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+		LocalDate date = LocalDate.parse(endDate, formatter);
+		endDate = date.plusDays(365).toString();
+		subEnd = Integer.parseInt(endDate.replace("-",""));
 	}
 
 	public String getUserName() {

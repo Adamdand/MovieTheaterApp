@@ -119,6 +119,21 @@ public class LoginGUIController implements ActionListener{
 			model.setUser(null);
 		}
 		
+		if (e.getSource() == gui.getRenewBtn()) {
+			String response = model.renewUser();
+			if (response.contains("extended")) {
+				int endDate = model.getUser().getSubEnd();
+				String year = Integer.toString(endDate).substring(0, 4);
+				String month = Integer.toString(endDate).substring(4, 6);
+				String day = Integer.toString(endDate).substring(6, 8);
+				String date = year + "-" + month + "-" + day;
+				gui.getMembershipEndDate().setText("Membership Expires: " + date);
+			}
+			
+			
+			gui.displayMessage(response);
+		}
+		
 	}
 
 	public ModelController getModel() {

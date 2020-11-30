@@ -153,6 +153,20 @@ public class ModelController {
 		
 	}
 	
+	public String renewUser() {
+		String response = "";
+		if (payment.payCard(user.getCreditCard(), 10)) {
+			user.renewUser();
+			payment.generateReceiptFee(10, user.getSubEnd(), user.getUserName());
+			
+			response = "Membership extended";
+		} else {
+			response = "Insufficient funds";
+		}
+		
+		return response;
+	}
+	
 	public boolean addNewVoucher(int id, double value) {
 		return payment.getVoucherIdentifier().addVoucher(id, value);
 	}

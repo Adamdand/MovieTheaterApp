@@ -20,7 +20,13 @@ public class PaymentReceiptFee {
 	
 	@Override
 	public String toString() {
-		return userName + " subscription extended until: " + endDate + "\n" +
+		int end = endDate;
+		String year = Integer.toString(end).substring(0, 4);
+		String month = Integer.toString(end).substring(4, 6);
+		String day = Integer.toString(end).substring(6, 8);
+		String endString = year + "-" + month + "-" + day;
+		
+		return userName + " subscription extended until: " + endString + "\n" +
 				"Paid: $" + pricePaid;
 	}
 	
