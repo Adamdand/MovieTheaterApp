@@ -24,7 +24,7 @@ public class MovieOffering {
 		this.ticketId = rand.nextInt(1000);
 	}
 	
-	public MovieOffering(Theater theater, Movie movie, String time, int ticketId) {
+	public MovieOffering(Theater theater, Movie movie, int movieDate, String time, int ticketId) {
 		Random rand = new Random();
 		this.theater = theater;
 		this.movie= movie;
@@ -36,7 +36,7 @@ public class MovieOffering {
 	
 	@Override
 	public String toString() {
-		return theater.getTheaterName() + " " + movie.toString() + " " + time;
+		return theater.getTheaterName() + " " + movie.toString() + " " + time + " " + movieDate;
 	}
 	
 	public String printTicket() {

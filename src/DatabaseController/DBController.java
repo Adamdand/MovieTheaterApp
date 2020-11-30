@@ -328,7 +328,7 @@ public class DBController {
 	//TODO: implement method
 	public ArrayList<MovieOffering> loadMovies() {
 		PreparedStatement getAllMovies = null;
-		String getAllMoviesString = "select * from registeredusers";
+		String getAllMoviesString = "select * from movieofferings";
 		ArrayList<MovieOffering> temp = new ArrayList<MovieOffering>();
 		try {
 			if (jdbc_connection != null) {
@@ -359,7 +359,7 @@ public class DBController {
 	
 	public ArrayList<MovieOffering> loadMoviesNoSeats() {
 		PreparedStatement getAllMovies = null;
-		String getAllMoviesString = "select * from registeredusers";
+		String getAllMoviesString = "select * from movieofferings";
 		ArrayList<MovieOffering> temp = new ArrayList<MovieOffering>();
 		try {
 			if (jdbc_connection != null) {
@@ -371,7 +371,7 @@ public class DBController {
 						Theater thisTheater = new Theater(rs.getString("theaterName"),rs.getString("theaterLoc"));
 						String thisTime = rs.getString("movieTime");
 							 
-						MovieOffering t = new MovieOffering(thisTheater,thisMovie, thisTime, rs.getInt("offeringID"));
+						MovieOffering t = new MovieOffering(thisTheater,thisMovie, rs.getInt("movieDate"), thisTime, rs.getInt("offeringID"));
 						temp.add(t);
 
 				}
@@ -394,7 +394,7 @@ public class DBController {
 				ResultSet rs = getAllUsers.executeQuery();
 
 				while (rs.next()) {
-					RegisteredUser t = new RegisteredUser(rs.getString("userName"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
+					RegisteredUser t = new RegisteredUser(rs.getString("email"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
 					//t.linkSupplier(rs.getString("supplier"));
 					//t.display();
 					temp.add(t);
