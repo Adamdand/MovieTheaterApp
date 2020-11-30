@@ -19,7 +19,8 @@ public class MovieOffering {
 		this.movie= movie;
 		this.setTime(time);
 		this.seating = seating;
-		this.price = (13.50)*1.05;
+//		this.price = (13.50)*1.05;
+		this.price = 14.18;
 		this.booked = false;
 		this.ticketId = rand.nextInt(1000);
 		this.ticketId = ticketId;
@@ -31,7 +32,8 @@ public class MovieOffering {
 		this.setMovieDate(movieDate);
 		this.movie= movie;
 		this.setTime(time);
-		this.price = (13.50)*1.05;
+//		this.price = (13.50)*1.05;
+		this.price = 14.18;
 		this.booked = false;
 //		this.ticketId = rand.nextInt(1000);
 		this.ticketId = ticketId;

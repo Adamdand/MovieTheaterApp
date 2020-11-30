@@ -1,5 +1,6 @@
 package Controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import DatabaseController.*;
@@ -71,8 +72,14 @@ public class ModelController {
 				return response;
 			}
 			
-			//need to add date to cancellation receipts
-			response = cancel.refundTicketRegistered(ticket.getPrice(), ticketId, cardNumber);
+			
+			double myNumber = ticket.getPrice();
+			DecimalFormat df = new DecimalFormat("####.##");
+			
+			String numberString = df.format(myNumber);
+			double myNumber2 = Double.parseDouble(numberString);
+			
+			response = cancel.refundTicketRegistered(myNumber2, ticketId, cardNumber);
 			if (response.contains("Refunded")) {
 				ticket.setBooked(false);
 			}
@@ -101,8 +108,13 @@ public class ModelController {
 				return response;
 			}
 			
-			//need to add date to cancellation receipts
-			response = cancel.refundTicketRegular(ticket.getPrice()*0.85, ticketId);
+			double myNumber = ticket.getPrice()*0.85;
+			DecimalFormat df = new DecimalFormat("####.##");
+			
+			String numberString = df.format(myNumber);
+			double myNumber2 = Double.parseDouble(numberString);
+			
+			response = cancel.refundTicketRegular(myNumber2, ticketId);
 			if (response.contains("Refunded")) {
 				ticket.setBooked(false);
 			}

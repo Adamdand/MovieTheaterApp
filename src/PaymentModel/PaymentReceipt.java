@@ -41,7 +41,7 @@ public class PaymentReceipt {
 		DecimalFormat df = new DecimalFormat("####.##");
 		
 		String numberString = df.format(myNumber);
-		Double myNumber2 = Double.parseDouble(numberString);
+		double myNumber2 = Double.parseDouble(numberString);
 		
 		this.pricePaid = myNumber2;
 	}
