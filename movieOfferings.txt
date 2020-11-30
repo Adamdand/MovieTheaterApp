@@ -86,4 +86,5 @@
 86;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;20201211;Vanguard;8:30 PM
 87;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;20201211;Mank;5:30 PM
 88;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;20201211;Mank;8:35 PM
+89;Market Mall Theater;3412 49 St NW Unit 150, Calgary, AB;20201202;Mank;8:35 PM
 
