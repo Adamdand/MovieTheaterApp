@@ -24,7 +24,17 @@ public class RegisteredUserList {
 		}
 		
 		return null;
-	} 
+	}
+	
+	public boolean userExists(String userName) {
+		for (RegisteredUser user: userList) {
+			if (user.getUserName().equals(userName)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 	
 	public void addUser(RegisteredUser user) {
 		userList.add(user);
