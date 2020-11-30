@@ -320,19 +320,6 @@ public class LoginGUI extends JFrame {
 	}
 
 
-
-	public boolean isLoggedin() {
-		return loggedin;
-	}
-
-
-
-	public void setLoggedin(boolean loggedin) {
-		this.loggedin = loggedin;
-	}
-
-
-
 	public JButton getRefundBtn() {
 		return refundBtn;
 	}
