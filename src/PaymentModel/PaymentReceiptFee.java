@@ -3,6 +3,7 @@ package PaymentModel;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class PaymentReceiptFee {
 	
@@ -26,8 +27,10 @@ public class PaymentReceiptFee {
 		String day = Integer.toString(end).substring(6, 8);
 		String endString = year + "-" + month + "-" + day;
 		
+		DecimalFormat df = new DecimalFormat("####.##");
+		
 		return userName + " subscription extended until: " + endString + "\n" +
-				"Paid: $" + pricePaid;
+				"Paid: $" +  df.format(pricePaid);
 	}
 	
 	private void generateReceipt() {
