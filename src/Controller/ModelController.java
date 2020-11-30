@@ -63,6 +63,14 @@ public class ModelController {
 				return response;
 			}
 			
+			//72 hrs refund requirement
+			String today = java.time.LocalDate.now().toString();
+			int date = Integer.parseInt(today.replace("-",""));
+			if ((ticket.getMovieDate() - date > 2)) {
+				response = "You can only refund within 72 hours";
+				return response;
+			}
+			
 			//need to add date to cancellation receipts
 			response = cancel.refundTicketRegistered(ticket.getPrice(), ticketId, cardNumber);
 			if (response.contains("Refunded")) {
@@ -82,6 +90,14 @@ public class ModelController {
 		if (ticket != null) {
 			if (!ticket.isBooked()) {
 				response = "Ticket has not been booked";
+				return response;
+			}
+			
+			//72 hrs refund requirement
+			String today = java.time.LocalDate.now().toString();
+			int date = Integer.parseInt(today.replace("-",""));
+			if ((ticket.getMovieDate() - date > 2)) {
+				response = "You can only refund within 72 hours";
 				return response;
 			}
 			
