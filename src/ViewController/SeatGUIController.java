@@ -60,7 +60,6 @@ public class SeatGUIController implements ActionListener {
 		for(MovieOffering o:model.viewAllOfferings()) {
 			if(o.getMovie().getMovieName().equals(offering.getMovie().getMovieName())&&o.getTheater().getTheaterName().equals(offering.getTheater().getTheaterName())&&o.getTime().equals(offering.getTime())&&o.getMovieDate() == offering.getMovieDate()) {
 				allSeats.add(o);
-				System.out.println(o);
 			}
 		}
 

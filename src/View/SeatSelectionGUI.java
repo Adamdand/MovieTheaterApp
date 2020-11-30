@@ -92,7 +92,6 @@ public class SeatSelectionGUI extends JFrame {
 		screen.add(screenDisplay,JLabel.CENTER);
 		add(screen);
 		
-		
 		JPanel leftPanel=new JPanel();
 		leftPanel.setLayout(null);
 		leftPanel.setBounds(0, 0, 1000, 561);
@@ -107,7 +106,6 @@ public class SeatSelectionGUI extends JFrame {
 		Balance.setBounds(250, 480, 400, 30);
 		leftPanel.add(Balance);
 		
-		
 		JLabel searchTip2=new JLabel("Preceed to Checkout: ");
 		searchTip2.setFont(new Font("Courier New", Font.BOLD, 16));
 		searchTip2.setBounds(250, 520, 400, 30);
@@ -117,14 +115,11 @@ public class SeatSelectionGUI extends JFrame {
 		checkOutBtn.setBounds(450, 525, 100, 20);
 		leftPanel.add(checkOutBtn);
 
-			
-		
 		resetBtn = new JButton("Reset");
 		resetBtn.setFont(new Font("RESET", Font.BOLD, 16));
 		resetBtn.setBounds(365, 370, 270, 30);
 		leftPanel.add(resetBtn);
 
-		
 		A1 = new JButton("A1");
 		A1.setBounds(365, 150, 50, 50);
 		leftPanel.add(A1);
@@ -213,8 +208,6 @@ public class SeatSelectionGUI extends JFrame {
 		D5.setBounds(585, 315, 50, 50);
 		leftPanel.add(D5);
 
-		
-
 		this.add(leftPanel);
 		
 		this.setResizable(false);
@@ -294,34 +287,7 @@ public class SeatSelectionGUI extends JFrame {
     	DecimalFormat df = new DecimalFormat("####.##");
     	thisText.setText("Current Cost = $" + df.format(getTotalCost()));
     }
-    
-    /**
-	protected void selectListItem(String desc) {
-		// TODO Displays the selected list data item to the right
-		Gson gson = new Gson();
-		Item item = null;
-		int index=21;
-		if(desc!=null) {
-			while(true) {
-				try {
-					StringBuffer buffer = GsonUtils.addDoubleQuotationMarks(desc, index);
-					item = gson.fromJson(buffer.toString(), Item.class);
-					break;
-				} catch (JsonSyntaxException e) {
-					index=index+20;
-				}
-			}
-		}
-		if(item!=null) {
-			this.itemIdTxt.setText(item.getItemId()+"");
-			this.toolNameTxt.setText(item.getItemName());
-			this.toolTypeTxt.setText(item.getType());
-			this.quantityTxt.setText(item.getItemQuantity()+"");
-			this.priceTxt.setText(item.getItemPrice()+"");
-			this.sidTxt.setText(item.getSupplierID()+"");
-		} 
-	}*/
-    
+     
     public JButton getCheckOutBtn() {
     	return checkOutBtn;
     }
@@ -345,31 +311,6 @@ public class SeatSelectionGUI extends JFrame {
 	public void setDataListBox(JList<String> dataListBox) {
 		this.dataListBox = dataListBox;
 	}
-/**
-	public JRadioButton getmovieNameAdo() {
-		return movieNameAdo;
-	}
-
-	public void setMovieNameAdo(JRadioButton movieNameAdo) {
-		this.movieNameAdo = movieNameAdo;
-	}
-
-	public JRadioButton getTheaterNameAdo() {
-		return theaterNameAdo;
-	}
-
-	public void setTheaterNameAdo(JRadioButton theaterNameAdo) {
-		this.theaterNameAdo = theaterNameAdo;
-	}
-	*/
-/**
-	public JTextField getSerachTxt() {
-		return serachTxt;
-	}
-
-	public void setSerachTxt(JTextField serachTxt) {
-		this.serachTxt = serachTxt;
-	}*/
 
 	public JTextField getTheaterName() {
 		return theaterName;
