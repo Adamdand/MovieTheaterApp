@@ -5,15 +5,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 
 import Controller.ModelController;
+import TicketReservationModel.MovieOffering;
 import View.SeatSelectionGUI;
 import View.TheaterGUI;
 
 
-public class TheaterGUIController implements ActionListener {
+public class TheaterGUIController implements ActionListener, MouseListener {
 	
 	private TheaterGUI gui;
 	private ModelController model;
@@ -23,9 +25,9 @@ public class TheaterGUIController implements ActionListener {
 		this.setGui(gui);
 		this.setModel(model);
 		
-		gui.getSearchClearBtn().addActionListener(this);
-		gui.getSearchBtn().addActionListener(this);
-		gui.getSelectBtn().addActionListener(this);
+		gui.searchListener(this);
+		gui.selectListener(this);
+		gui.addListListener(this);
 		//gui.getResultScroll().addActionListener(this); //can we put this in here?
 		
 		/*
@@ -43,10 +45,24 @@ public class TheaterGUIController implements ActionListener {
 
 	}
 	
-
-	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		gui.getTheaterTxt().setText(gui.getDataListBox().getSelectedValue().getTheater().getTheaterName());
+		gui.getMovieNameTxt().setText(gui.getDataListBox().getSelectedValue().getMovie().getMovieName());
+		gui.getTimeTxt().setText(gui.getDataListBox().getSelectedValue().getTime().getTime());
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {}
+	@Override
+	public void mouseReleased(MouseEvent e) {}
+	@Override
+	public void mouseEntered(MouseEvent e) {}
+	@Override
+	public void mouseExited(MouseEvent e) {}
+	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		/**
 		if(e.getSource() == gui.getResultScroll()) {
 			//TODO select movie from scroll pane
 			String desc = String.format("You clicked on the %d item，Data %s",
@@ -54,22 +70,39 @@ public class TheaterGUIController implements ActionListener {
 	        System.out.println(desc);
 	        //gui.selectListItem(gui.getDataListBox().getSelectedValue());
 		}
-		
+		*/
 		if(e.getSource() == gui.getSearchClearBtn()) {
 			//start up next GUI if clicked
-			gui.getSearchTime().setText("");
+			gui.getSearchParameter().setText("");
+			MovieOffering[] empty = new MovieOffering[0];
+			gui.getDataListBox().setListData(empty);
 		}
 		
 		if(e.getSource() == gui.getSelectBtn()) {
 			//go to next GUI
 			SeatSelectionGUI seatView = new SeatSelectionGUI();
-			SeatGUIController seatController = new SeatGUIController(seatView, model);
+			SeatGUIController seatController = new SeatGUIController(gui.getDataListBox().getSelectedValue(), seatView, model);
 			seatView.setVisible(true);
 		}
-
 		
 		if(e.getSource() == gui.getSearchBtn()) {
 			//TODO impliment searching my movie/theater/or time
+			String option = gui.searchSelection();
+			String parameter = gui.getSearchParameter().getText();
+			ArrayList<MovieOffering> results = null;
+			if(parameter.equals("")) {
+				results = model.viewAllUniqueOfferings();
+			}else {
+				if(option.equals("Theater")) {
+					results = model.viewTheater(parameter);
+				}else if(option.equals("Movie")) {
+					results = model.viewMovies(parameter);
+				}else {
+					//why is viewTimes taking a time object?
+					results = model.viewTimes(parameter);
+				}
+			}
+			gui.displayMovieOfferings(results);
 		}
 	}
 		
@@ -90,5 +123,6 @@ public class TheaterGUIController implements ActionListener {
 	public void setModel(ModelController model) {
 		this.model = model;
 	}
-
 }
+
+

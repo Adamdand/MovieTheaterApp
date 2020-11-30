@@ -2,8 +2,10 @@ package ViewController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import Controller.ModelController;
+import TicketReservationModel.MovieOffering;
 import View.PaymentGUI;
 
 
@@ -11,11 +13,12 @@ public class PaymentGUIController implements ActionListener {
 	
 	private PaymentGUI gui;
 	private ModelController model;
+	private ArrayList<MovieOffering> selectedSeats;
 	
-	public PaymentGUIController(PaymentGUI gui, ModelController model) {
+	public PaymentGUIController(ArrayList<MovieOffering> selectedSeats,PaymentGUI gui, ModelController model) {
 		this.setGui(gui);
 		this.setModel(model);
-		
+		this.setSelectedSeats(selectedSeats);
 		gui.getCancelBtn().addActionListener(this);
 		gui.getRedeemBtn().addActionListener(this);
 		gui.getCheckBox().addActionListener(this);
@@ -85,5 +88,13 @@ public class PaymentGUIController implements ActionListener {
 
 	public void setGui(PaymentGUI gui) {
 		this.gui = gui;
+	}
+
+	public ArrayList<MovieOffering> getSelectedSeats() {
+		return selectedSeats;
+	}
+
+	public void setSelectedSeats(ArrayList<MovieOffering> selectedSeats) {
+		this.selectedSeats = selectedSeats;
 	}
 }
