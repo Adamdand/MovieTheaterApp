@@ -22,6 +22,21 @@ public class MovieOffering {
 		this.ticketId = rand.nextInt(1000);
 	}
 	
+	public MovieOffering(Theater theater, Movie movie, String time, int ticketId) {
+		Random rand = new Random();
+		this.theater = theater;
+		this.movie= movie;
+		this.setTime(time);
+		this.price = (13.50)*1.05;
+		this.booked = true;
+		this.ticketId = rand.nextInt(1000);
+	}
+	
+	@Override
+	public String toString() {
+		return theater.toString() + " " + movie.toString() + " " + time;
+	}
+	
 	public String printTicket() {
 		return "The ticket is: " + theater + " " + movie + " " + seating + "for " + price + ". Ticket ID: " + ticketId;
 	}
