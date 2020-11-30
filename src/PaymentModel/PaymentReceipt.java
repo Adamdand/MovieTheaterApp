@@ -23,7 +23,7 @@ public class PaymentReceipt {
 			File name = new File("Receipt.txt");
 			FileWriter myWriter = new FileWriter(name);
 			for(MovieOffering m: soldTickets) {
-				myWriter.write(m + " Ticket id: " + m.getTicketId() +"\n");
+				myWriter.write(m + " Ticket id: " + m.getTicketId() + ", Seat: " + m.getSeating().toString() +"\n");
 			}
 			myWriter.write("Paid: $"+pricePaid);
 			myWriter.close();

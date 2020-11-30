@@ -27,6 +27,7 @@ public class MovieOffering {
 	public MovieOffering(Theater theater, Movie movie, int movieDate, String time, int ticketId) {
 		Random rand = new Random();
 		this.theater = theater;
+		this.setMovieDate(movieDate);
 		this.movie= movie;
 		this.setTime(time);
 		this.price = (13.50)*1.05;
