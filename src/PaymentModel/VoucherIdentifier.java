@@ -47,6 +47,7 @@ public class VoucherIdentifier {
 		
 		if(voucherMap.get(id).getExpirationDate()<=todayDateInt) {
 			System.out.println("This voucher is expired");
+			//voucherMap.remove(id);
 			return price;
 		}
 		//Ending here
