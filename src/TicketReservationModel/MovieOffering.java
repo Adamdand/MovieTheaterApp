@@ -9,10 +9,12 @@ public class MovieOffering {
 	private double price;
 	private int ticketId;
 	private boolean booked;
+	private int movieDate;
 	
 	
-	public MovieOffering(Theater theater, Movie movie, String time, Seats seating, int ticketId) {
+	public MovieOffering(Theater theater, Movie movie,  int movieDate, String time, Seats seating, int ticketId) {
 		Random rand = new Random();
+		this.setMovieDate(movieDate);
 		this.theater = theater;
 		this.movie= movie;
 		this.setTime(time);
@@ -87,6 +89,14 @@ public class MovieOffering {
 	
 	public double getPrice() {
 		return price;
+	}
+
+	public int getMovieDate() {
+		return movieDate;
+	}
+
+	public void setMovieDate(int movieDate) {
+		this.movieDate = movieDate;
 	}
 	
 

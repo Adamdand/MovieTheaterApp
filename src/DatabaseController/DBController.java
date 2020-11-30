@@ -133,12 +133,13 @@ public class DBController {
 			//create prepared statement
 			statement = jdbc_connection.prepareStatement(sql);
 			ResultSet theaters = statement.executeQuery(sql);
-			System.out.println("Tools:");
+			System.out.println("movies:");
 			while(theaters.next())
 			{
 				System.out.println(theaters.getInt("offeringID") + " " + 
 						theaters.getString("theaterName") + " " + 
 						theaters.getString("theaterLoc") + " " + 
+						theaters.getString("movieDate") + " " + 
 						theaters.getString("movieName") + " " + 
 						theaters.getString("movieTime"));
 			}
@@ -256,7 +257,7 @@ public class DBController {
 	 * Static Main
 	 * @param args
 	 */
-		/**
+		
 	public static void main(String args[])
 	{
 		DBController dataBase = new DBController();
@@ -267,26 +268,22 @@ public class DBController {
 		System.out.println("Reading all offerings from the table:");
 		dataBase.printTable();
 
+		/**
 		System.out.println("\nSearching table for tool 2: should return 'shawnacy theater - Freaky Movie'");
 		movieOfferingAdam searchResult = dataBase.searchOfferings("Shawnacy Theater","Freaky","6:30 PM");
 		if(searchResult == null)
 			System.out.println("Search Failed to find a tool matching ID: " + searchResult);
 		else
 			System.out.println("Search Result: " + searchResult.toString());
-
+*/
 
 		System.out.println("\nSearching table for tool 9000: should fail to find a tool");
-		toolID = 9000;
-		searchResult = inventory.searchTool(toolID);
-		if(searchResult == null)
-			System.out.println("Search Failed to find a tool matching ID: " + toolID);
-		else
-			System.out.println("Search Result: " + searchResult.toString());
-		*/
+
+		
 
 		
 		//TEST search for voucher in DB
-		/**
+		
 		System.out.println("\nSearching voucher codes for voucher 53398");
 		voucher myVoucher = dataBase.searchVouchers(53398);
 		if(myVoucher == null)
@@ -300,13 +297,13 @@ public class DBController {
 			System.out.println("Search Failed to a user with email junwoo@123.com and password 123");
 		else
 			System.out.println("Search Result: " + myUser.toString());
-		
+		/*
 		movieOfferingAdam thisOffering = dataBase.searchOfferings("Shawnacy Theater","Freaky","6:30 PM");
 		if(myUser == null)
 			System.out.println("Search Failed find movie offering");
 		else
 			System.out.println("Search Result: " + thisOffering.toString());
-
+*/
 
 		
 		try {
@@ -322,7 +319,7 @@ public class DBController {
 		
 	
 		
-	}*/
+	}
 	
 	
 
@@ -331,7 +328,7 @@ public class DBController {
 	//TODO: implement method
 	public ArrayList<MovieOffering> loadMovies() {
 		PreparedStatement getAllMovies = null;
-		String getAllMoviesString = "select * from movieofferings";
+		String getAllMoviesString = "select * from registeredusers";
 		ArrayList<MovieOffering> temp = new ArrayList<MovieOffering>();
 		try {
 			if (jdbc_connection != null) {
@@ -347,7 +344,7 @@ public class DBController {
 							 Theater thisTheater = new Theater(rs.getString("theaterName"),rs.getString("theaterLoc"));
 							 String thisTime = rs.getString("movieTime");
 							 
-							 MovieOffering t = new MovieOffering(thisTheater,thisMovie, thisTime, mySeat, rs.getInt("offeringID"));
+							 MovieOffering t = new MovieOffering(thisTheater,thisMovie,rs.getInt("movieDate"), thisTime, mySeat, rs.getInt("offeringID"));
 							 temp.add(t);
 							 }
 					    }
@@ -362,7 +359,7 @@ public class DBController {
 	
 	public ArrayList<MovieOffering> loadMoviesNoSeats() {
 		PreparedStatement getAllMovies = null;
-		String getAllMoviesString = "select * from movieofferings";
+		String getAllMoviesString = "select * from registeredusers";
 		ArrayList<MovieOffering> temp = new ArrayList<MovieOffering>();
 		try {
 			if (jdbc_connection != null) {
@@ -385,6 +382,7 @@ public class DBController {
 		}
 		return null;
 	}
+
 	
 	public ArrayList<RegisteredUser> loadUsers() {
 		PreparedStatement getAllUsers = null;
@@ -396,7 +394,7 @@ public class DBController {
 				ResultSet rs = getAllUsers.executeQuery();
 
 				while (rs.next()) {
-					RegisteredUser t = new RegisteredUser(rs.getString("email"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
+					RegisteredUser t = new RegisteredUser(rs.getString("userName"),rs.getString("password"), rs.getString("creditCard"), rs.getInt("startDate"),rs.getInt("endDate"));
 					//t.linkSupplier(rs.getString("supplier"));
 					//t.display();
 					temp.add(t);
@@ -408,6 +406,8 @@ public class DBController {
 		}
 		return null;
 	}
+	
+	
 	
 	public Hashtable<Integer, Voucher> loadVouchers() {
 		PreparedStatement getAllVouchers = null;
