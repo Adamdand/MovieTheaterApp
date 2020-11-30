@@ -115,6 +115,11 @@ public class ModelController {
 			return response;
 		}
 		
+		if (!userName.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+			response = "Email format is incorrect";
+			return response;
+		}
+		
 		//check if registered user exists
 		if (users.userExists(userName)) {
 			response = "User already exists";
