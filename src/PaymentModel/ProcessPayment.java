@@ -35,7 +35,9 @@ public class ProcessPayment {
 	public void generateReceiptFee(double pricePaid, int endDate, String userName) {
 		receiptFee = new PaymentReceiptFee(pricePaid, endDate, userName);
 	}
-	
+	public VoucherIdentifier getVoucherIdentifier() {
+		return voucherIdentifier;
+	}
 	public void setVoucherIdentifier(VoucherIdentifier voucherIdentifier) {
 		this.voucherIdentifier = voucherIdentifier;
 	}
