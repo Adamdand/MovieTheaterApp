@@ -192,38 +192,38 @@ public class DBEngine {
 			{
 				e.printStackTrace();
 			}
-		}
-	
-public void fillVoucherList() {
-		
+	}
+
+	public void fillVoucherList() {
+
 		PreparedStatement insertData = null;
 		String insertStatement = "INSERT INTO voucherList (voucherCode, endDate) VALUES(?,?);";
-		
-			try{
-				Scanner sc = new Scanner(new FileReader(voucherListFile));
-				while(sc.hasNext())
-				{
-					String userInfo[] = sc.nextLine().split(";");
-					insertData = jdbc_connection.prepareStatement(insertStatement);
-					insertData.setInt(1,Integer.parseInt(userInfo[0]));
-					insertData.setInt(2,Integer.parseInt(userInfo[1]));
-					insertData.executeUpdate();
-					//jdbc_connection.commit();
-				}
-				sc.close();
-				insertData.close();
-			}
-			catch(FileNotFoundException e)
-			{
-				System.err.println("File vouchers" + " Not Found!");
-			}
-			catch(Exception e)
-			{
-				e.printStackTrace();
-			}
-		}
 
-	
+		try{
+			Scanner sc = new Scanner(new FileReader(voucherListFile));
+			while(sc.hasNext())
+			{
+				String userInfo[] = sc.nextLine().split(";");
+				insertData = jdbc_connection.prepareStatement(insertStatement);
+				insertData.setInt(1,Integer.parseInt(userInfo[0]));
+				insertData.setInt(2,Integer.parseInt(userInfo[1]));
+				insertData.executeUpdate();
+				//jdbc_connection.commit();
+			}
+			sc.close();
+			insertData.close();
+		}
+		catch(FileNotFoundException e)
+		{
+			System.err.println("File vouchers" + " Not Found!");
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+
 	public static void main(String[] args) {
 		DBEngine db = new DBEngine();
 		db.createDB();
@@ -233,7 +233,7 @@ public void fillVoucherList() {
 		db.fillTable();
 		db.fillRegisteredUsersList();
 		db.fillVoucherList();
-		
+
 	}
 	
 }
