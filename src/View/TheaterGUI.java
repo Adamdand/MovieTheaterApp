@@ -30,11 +30,9 @@ public class TheaterGUI extends JFrame {
 	private JRadioButton searchMoviesAdo=null;
 	private JRadioButton searchTimesAdo=null;
 	private JButton searchBtn =null;
-	private JButton updateBtn =null;
 	private JButton queryAllBtn=null;
 	private JButton selectBtn=null;
 	private JButton searchClearBtn=null;
-	private JButton checkoutButton=null;
 	private JTextField theaterTxt=null;
 	private JTextField movieNameTxt=null;
 	private JTextField timeTxt=null;
@@ -81,9 +79,9 @@ public class TheaterGUI extends JFrame {
 		searchMoviesAdo.setFont(new Font("Courier New", Font.BOLD, 16));
 		searchMoviesAdo.setBounds(10, 110, 200, 30);
 		leftPanel.add(searchMoviesAdo);
-		searchTimesAdo = new JRadioButton("Search Times");
+		searchTimesAdo = new JRadioButton("Search Times (HH:MM AM/PM)");
 		searchTimesAdo.setFont(new Font("Courier New", Font.BOLD, 16));
-		searchTimesAdo.setBounds(10, 140, 200, 30);
+		searchTimesAdo.setBounds(10, 140, 400, 30);
 		leftPanel.add(searchTimesAdo);
 		
 		ButtonGroup radioGrupu = new ButtonGroup();
@@ -111,21 +109,7 @@ public class TheaterGUI extends JFrame {
 		
 		dataListBox = new JList<MovieOffering>();
 		dataListBox.setBounds(5, 0, 500, 237);
-		/**
-		dataListBox.addListSelectionListener(new ListSelectionListener() {
-			@Override
-			public void valueChanged(ListSelectionEvent e) { 
-		        String desc = String.format("You clicked on the %d item，Data %s",
-		        		dataListBox.getSelectedIndex(), dataListBox.getSelectedValue());
-		        System.out.println(desc);
-		        selectListItem(dataListBox.getSelectedValue());
-			}
-
-			private void selectListItem(String selectedValue) {
-				// TODO Auto-generated method stub
-				
-			}
-		});*/
+		
 		resultScroll.setViewportView(dataListBox);
 
 		getContentPane().add(leftPanel);
@@ -175,8 +159,7 @@ public class TheaterGUI extends JFrame {
 		getContentPane().add(rightPanel);
 		
 		this.setResizable(false);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
+		//this.setVisible(true);
 	}
 	public String searchSelection() {
 		if(searchTheatersAdo.isSelected()) {
@@ -205,33 +188,9 @@ public class TheaterGUI extends JFrame {
     public void addListListener(MouseListener listenForClick) {
     	dataListBox.addMouseListener(listenForClick);
 	}
-    
-/**
-	protected void selectListItem(String desc) {
-		// TODO Displays the selected list data item to the right
-		Gson gson = new Gson();
-		Item item = null;
-		int index=21;
-		if(desc!=null) {
-			while(true) {
-				try {
-					StringBuffer buffer = GsonUtils.addDoubleQuotationMarks(desc, index);
-					item = gson.fromJson(buffer.toString(), Item.class);
-					break;
-				} catch (JsonSyntaxException e) {
-					index=index+20;
-				}
-			}
-		}
-		if(item!=null) {
-			this.itemIdTxt.setText(item.getItemId()+"");
-			this.toolNameTxt.setText(item.getItemName());
-			this.toolTypeTxt.setText(item.getType());
-			this.quantityTxt.setText(item.getItemQuantity()+"");
-			this.priceTxt.setText(item.getItemPrice()+"");
-			this.sidTxt.setText(item.getSupplierID()+"");
-		} 
-	}*/
+    public void addSearchClearListener(ActionListener actionListener) {
+    	searchClearBtn.addActionListener(actionListener);
+    }
 
 	public JLabel getDataCountTip() {
 		return dataCountTip;
@@ -248,31 +207,6 @@ public class TheaterGUI extends JFrame {
 	public void setDataListBox(JList<MovieOffering> dataListBox) {
 		this.dataListBox = dataListBox;
 	}
-/**
-	public JRadioButton getToolIdAdo() {
-		return toolIdAdo;
-	}
-
-	public void setToolIdAdo(JRadioButton toolIdAdo) {
-		this.toolIdAdo = toolIdAdo;
-	}
-
-	public JRadioButton getToolNameAdo() {
-		return toolNameAdo;
-	}
-
-	public void setToolNameAdo(JRadioButton toolNameAdo) {
-		this.toolNameAdo = toolNameAdo;
-	}
-	*/
-/**
-	public JTextField getSerachTxt() {
-		return serachTxt;
-	}
-
-	public void setSerachTxt(JTextField serachTxt) {
-		this.serachTxt = serachTxt;
-	}*/
 
 	public JTextField getTheaterTxt() {
 		return theaterTxt;

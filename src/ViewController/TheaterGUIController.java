@@ -28,21 +28,7 @@ public class TheaterGUIController implements ActionListener, MouseListener {
 		gui.searchListener(this);
 		gui.selectListener(this);
 		gui.addListListener(this);
-		//gui.getResultScroll().addActionListener(this); //can we put this in here?
-		
-		/*
-		mouse = new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				if(e.getClickCount() ==1) {
-					movieOffering thisOffiering = gui.getMovieOffering().getSelectedValue();
-					gui.getMovieNameTxt().setText(thisOffering.getMovieName());
-					gui.getTheaterTxt().setText(thisOffering.getTheaterName());
-					gui.getTimeTxt().setText(thisOffering.getMovieTime());
-				}
-			}
-		}*/
-
-
+		gui.addSearchClearListener(this);
 	}
 	
 	@Override
@@ -62,15 +48,7 @@ public class TheaterGUIController implements ActionListener, MouseListener {
 	public void mouseExited(MouseEvent e) {}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		/**
-		if(e.getSource() == gui.getResultScroll()) {
-			//TODO select movie from scroll pane
-			String desc = String.format("You clicked on the %d item，Data %s",
-	        		gui.getDataListBox().getSelectedIndex(), gui.getDataListBox().getSelectedValue());
-	        System.out.println(desc);
-	        //gui.selectListItem(gui.getDataListBox().getSelectedValue());
-		}
-		*/
+
 		if(e.getSource() == gui.getSearchClearBtn()) {
 			//start up next GUI if clicked
 			gui.getSearchParameter().setText("");
@@ -82,13 +60,8 @@ public class TheaterGUIController implements ActionListener, MouseListener {
 			//go to next GUI
 			SeatSelectionGUI seatView = new SeatSelectionGUI();
 			SeatGUIController seatController = new SeatGUIController(gui.getDataListBox().getSelectedValue(), seatView, model);
-			
-			if (model.getUser() == null) {
-				seatView.getA1().setEnabled(false);
-				seatView.getA2().setEnabled(false);
-			}
-			
 			seatView.setVisible(true);
+			gui.dispose();
 		}
 		
 		if(e.getSource() == gui.getSearchBtn()) {
@@ -104,16 +77,16 @@ public class TheaterGUIController implements ActionListener, MouseListener {
 				}else if(option.equals("Movie")) {
 					results = model.viewMovies(parameter);
 				}else {
-					//why is viewTimes taking a time object?
 					results = model.viewTimes(parameter);
 				}
+			}
+			if(results.isEmpty()) {
+				gui.displayErrorMessage("No movie found");
 			}
 			gui.displayMovieOfferings(results);
 		}
 	}
 		
-	
-	
 	public TheaterGUI getGui() {
 		return gui;
 	}

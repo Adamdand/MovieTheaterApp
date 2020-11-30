@@ -43,10 +43,12 @@ public class PaymentGUI extends JFrame{
 		
 		setTotalCost(price);
 		
-		frame = new JFrame();
-		frame.getContentPane().setFont(new Font("Dialog", Font.PLAIN, 15));
-		frame.setBounds(100, 100, 980, 674);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame = new JFrame();
+		//frame.getContentPane().setFont(new Font("Dialog", Font.PLAIN, 15));
+		//frame.setBounds(100, 100, 980, 674);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getContentPane().setFont(new Font("Dialog", Font.PLAIN, 15));
+		setBounds(100, 100, 980, 674);
 		
 		payBtn = new JButton("Pay Now");
 		payBtn.setBounds(403, 400, 109, 23);
@@ -81,52 +83,52 @@ public class PaymentGUI extends JFrame{
 		voucherCodeLabel.setBounds(719, 357, 180, 20);
 		
 		
-		frame.getContentPane().setLayout(null);
-		frame.getContentPane().add(payBtn);
-		frame.getContentPane().add(cancelBtn);
-		frame.getContentPane().add(chckbxNewCheckBox);
-		frame.getContentPane().add(voucherTxt);
-		frame.getContentPane().add(totalCostLabel);
-		frame.getContentPane().add(voucherCodeLabel);
-		frame.getContentPane().add(redeemBtn);
+		getContentPane().setLayout(null);
+		getContentPane().add(payBtn);
+		getContentPane().add(cancelBtn);
+		getContentPane().add(chckbxNewCheckBox);
+		getContentPane().add(voucherTxt);
+		getContentPane().add(totalCostLabel);
+		getContentPane().add(voucherCodeLabel);
+		getContentPane().add(redeemBtn);
 		
 		JLabel lblNewLabel_2 = new JLabel("Payment Information");
 		lblNewLabel_2.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setBounds(350, 214, 180, 23);
-		frame.getContentPane().add(lblNewLabel_2);
+		getContentPane().add(lblNewLabel_2);
 		
 		creditCardTxt = new JTextField();
 		creditCardTxt.setBounds(372, 248, 134, 20);
-		frame.getContentPane().add(creditCardTxt);
+		getContentPane().add(creditCardTxt);
 		creditCardTxt.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Credit Card Number:");
 		lblNewLabel_3.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewLabel_3.setBounds(195, 251, 167, 17);
-		frame.getContentPane().add(lblNewLabel_3);
+		getContentPane().add(lblNewLabel_3);
 		
 		emailTxt = new JTextField();
 		emailTxt.setColumns(10);
 		emailTxt.setBounds(372, 282, 134, 19);
-		frame.getContentPane().add(emailTxt);
+		getContentPane().add(emailTxt);
 		
 		JLabel lblEmail = new JLabel("email:");
 		lblEmail.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblEmail.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblEmail.setBounds(239, 284, 125, 17);
-		frame.getContentPane().add(lblEmail);
+		getContentPane().add(lblEmail);
 		
 		JLabel lblNewLabel_4 = new JLabel("Almost There!");
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 30));
 		lblNewLabel_4.setBounds(139, 11, 665, 57);
-		frame.getContentPane().add(lblNewLabel_4);
+		getContentPane().add(lblNewLabel_4);
 		
 		updateTotalCost(totalCostLabel);
 		
-		this.frame.setVisible(true);
+		//this.setVisible(true);
 	}
 
 	public double getTotalCost() {

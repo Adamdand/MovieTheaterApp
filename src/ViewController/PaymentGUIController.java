@@ -22,9 +22,7 @@ public class PaymentGUIController implements ActionListener {
 		gui.getCancelBtn().addActionListener(this);
 		gui.getRedeemBtn().addActionListener(this);
 		gui.getCheckBox().addActionListener(this);
-		gui.getPayBtn().addActionListener(this);
-		
-			
+		gui.getPayBtn().addActionListener(this);	
 	}
 	
 	@Override
@@ -40,12 +38,16 @@ public class PaymentGUIController implements ActionListener {
 			String card = gui.getCreditCardTxt().getText();
 			String email = gui.getEmailTxt().getText();
 			boolean success = model.makeCardPayment(card, email, price);
-			if(!success) {
+			if(card.equals("")||email.equals("")) {
+				gui.displayMessage("Please fill out payment information");
+			}
+			else if(!success) {
 				gui.displayMessage("Payment with card not fullfilled");
 			}else {
 				gui.displayMessage("Payment successful");
 				gui.setTotalCost(0);
 				gui.updateTotalCost(gui.getTotalCostLabel());
+				gui.dispose();
 			}
 		}
 		
@@ -57,24 +59,25 @@ public class PaymentGUIController implements ActionListener {
 		}
 		
 		if(e.getSource() == gui.getRedeemBtn()) {
-			//give discount to totalcost (15%)
-			//gui.setTotalCost(gui.getTotalCost()*0.85);
-			//gui.updateTotalCost(gui.getTotalCostLabel());
-			int voucherId = Integer.parseInt(gui.getvoucherTxt().getText());
-			double price = gui.getTotalCost();
-			String email = gui.getEmailTxt().getText();
-			double remain = model.redeemVoucher(voucherId, email,price);
-			
-			if (!(price == remain)) {
-				gui.changeTextFieldVisibility(gui.getvoucherTxt());
-				gui.changeButtonVisibility(gui.getRedeemBtn());
-				gui.getCheckBox().setEnabled(false);
-			}
-			
-			gui.setTotalCost(remain);
-			gui.updateTotalCost(gui.getTotalCostLabel());
-			if(remain ==0) {
-				gui.displayMessage("Payment successful");
+			try {
+				int voucherId = Integer.parseInt(gui.getvoucherTxt().getText());
+				double price = gui.getTotalCost();
+				String email = gui.getEmailTxt().getText();
+				double remain = model.redeemVoucher(voucherId, email,price);
+				if (!(price == remain)) {
+					gui.changeTextFieldVisibility(gui.getvoucherTxt());
+					gui.changeButtonVisibility(gui.getRedeemBtn());
+					gui.getCheckBox().setEnabled(false);
+				}
+				
+				gui.setTotalCost(remain);
+				gui.updateTotalCost(gui.getTotalCostLabel());
+				if(remain ==0) {
+					gui.displayMessage("Payment successful");
+					gui.dispose();
+				}
+			}catch(NumberFormatException numEx) {
+				gui.displayMessage("Invalid Voucher");
 			}
 		}	
 

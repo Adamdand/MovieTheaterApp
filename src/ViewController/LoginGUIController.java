@@ -18,11 +18,9 @@ public class LoginGUIController implements ActionListener{
 	private ModelController model;
 	private RegisteredUserList userList;
 	
-	//make aggregation relationship
 	public LoginGUIController(LoginGUI gui, ModelController model) {
 		this.gui = gui;
 		this.setModel(model);
-		
 		
 		gui.getBrowseMovies().addActionListener(this);
 		gui.getCreateLoginBtn().addActionListener(this);
@@ -82,7 +80,6 @@ public class LoginGUIController implements ActionListener{
 			gui.displayMessage(response);
 		}
 		
-	
 		if(e.getSource() == gui.getVoucherBtn()) {
 			String ticketId = gui.getVoucherCodeInput().getText();
 			String response = "";

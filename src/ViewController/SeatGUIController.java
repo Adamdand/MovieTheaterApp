@@ -53,14 +53,17 @@ public class SeatGUIController implements ActionListener {
 		allSeats = new ArrayList<MovieOffering>();
 		getAllSeats();
 		selectedSeats = new ArrayList<MovieOffering>();
+		disableUnavailableSeats();
 	}
 	
 	public void getAllSeats() {
 		for(MovieOffering o:model.viewAllOfferings()) {
-			if(o.getMovie().getMovieName().equals(offering.getMovie().getMovieName())&&o.getTheater().getTheaterName().equals(offering.getTheater().getTheaterName())&&o.getTime().equals(offering.getTime())&&o.getMovieDate() == offering.getMovieDate())
+			if(o.getMovie().getMovieName().equals(offering.getMovie().getMovieName())&&o.getTheater().getTheaterName().equals(offering.getTheater().getTheaterName())&&o.getTime().equals(offering.getTime())&&o.getMovieDate() == offering.getMovieDate()) {
 				allSeats.add(o);
+				System.out.println(o);
+			}
 		}
-		System.out.println(allSeats.size());
+
 	}
 	public void selectSeat(char row, int col) {
 		for(MovieOffering o:allSeats) {
@@ -68,8 +71,60 @@ public class SeatGUIController implements ActionListener {
 				selectedSeats.add(o);
 			}
 		}
-		
-		System.out.println(selectedSeats.size());
+	}
+	public boolean checkSeat(char row, int col) {
+		for(MovieOffering o: allSeats) {
+			if(o.getSeating().getColumn()==col &&o.getSeating().getRow()==row &&o.isBooked()==true) {
+				return false;
+			}
+		}
+		return true;
+	}
+	public void disableUnavailableSeats() {
+		if(model.getUser()==null) {
+			gui.dissableButton(gui.getA1());
+			gui.dissableButton(gui.getA2());
+		}
+		if(!checkSeat('A',1))
+			gui.dissableButton(gui.getA1());
+		if(!checkSeat('A',2))
+			gui.dissableButton(gui.getA2());
+		if(!checkSeat('A',3))
+			gui.dissableButton(gui.getA3());
+		if(!checkSeat('A',4))
+			gui.dissableButton(gui.getA4());
+		if(!checkSeat('A',5))
+			gui.dissableButton(gui.getA5());
+		if(!checkSeat('B',1))
+			gui.dissableButton(gui.getB1());
+		if(!checkSeat('B',2))
+			gui.dissableButton(gui.getB2());
+		if(!checkSeat('B',3))
+			gui.dissableButton(gui.getB3());
+		if(!checkSeat('B',4))
+			gui.dissableButton(gui.getB4());
+		if(!checkSeat('B',5))
+			gui.dissableButton(gui.getB5());
+		if(!checkSeat('C',1))
+			gui.dissableButton(gui.getC1());
+		if(!checkSeat('C',2))
+			gui.dissableButton(gui.getC2());
+		if(!checkSeat('C',3))
+			gui.dissableButton(gui.getC3());
+		if(!checkSeat('C',4))
+			gui.dissableButton(gui.getC4());
+		if(!checkSeat('C',5))
+			gui.dissableButton(gui.getC5());
+		if(!checkSeat('D',1))
+			gui.dissableButton(gui.getD1());
+		if(!checkSeat('D',2))
+			gui.dissableButton(gui.getD2());
+		if(!checkSeat('D',3))
+			gui.dissableButton(gui.getD3());
+		if(!checkSeat('D',4))
+			gui.dissableButton(gui.getD4());
+		if(!checkSeat('D',5))
+			gui.dissableButton(gui.getD5());
 	}
 public void actionPerformed(ActionEvent e) {
 	
@@ -87,6 +142,7 @@ public void actionPerformed(ActionEvent e) {
 			}
 			
 			paymentView.setVisible(true); 
+			gui.dispose();
 		}
 	}
 	
@@ -94,6 +150,7 @@ public void actionPerformed(ActionEvent e) {
 		//start up next Payment GUI if clicked
 		gui.resetAllButtons();
 		selectedSeats.clear();
+		disableUnavailableSeats();
 	}
 	
 
