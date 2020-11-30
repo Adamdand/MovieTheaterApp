@@ -50,7 +50,11 @@ public class LoginGUIController implements ActionListener{
 			String response = model.register(userName, password, creditCard);
 			gui.displayMessage(response);
 			
-			
+			if (response.contains("successfully")) {
+				gui.getCreateUserNameInput().setText("");
+				gui.getCreatePasswordInput().setText("");
+				gui.getCreditCardInput().setText("");
+			}
 		}
 		
 		if(e.getSource() == gui.getLoginBtn()) {

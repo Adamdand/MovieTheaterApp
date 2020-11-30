@@ -91,6 +91,21 @@ public class ModelController {
 	public String register(String userName, String password, String creditCard) {
 		String response = "";
 		
+		if (userName.isEmpty()) {
+			response = "Username field is empty";
+			return response;
+		}
+		
+		if (password.isEmpty()) {
+			response = "Password field is empty";
+			return response;
+		}
+		
+		if (!creditCard.matches("[0-9]+") || creditCard.length() != 12) {
+			response = "Credit card format is incorrect";
+			return response;
+		}
+		
 		//check if registered user exists
 		if (users.userExists(userName)) {
 			response = "User already exists";

@@ -21,9 +21,6 @@ import javax.swing.event.ListSelectionListener;
 
 public class LoginGUI extends JFrame {
 	
-	private boolean loggedin = false;
-	
-	//need to update
 	
 	private static final long serialVersionUID = 1L;
 	private JTextField searchTime=null;
