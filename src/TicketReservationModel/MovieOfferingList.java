@@ -60,7 +60,7 @@ public class MovieOfferingList {
 	}
 	
 	public MovieOffering searchMovieOffering(String movieName, String theaterName, MovieTime time) {
-		for (MovieOffering i: movieOfferingList) {
+		for (MovieOffering i: movieOfferingListNoSeats) {
 			if (i.getMovie().getMovieName() == movieName && i.getTheater().getTheaterName() == theaterName && i.getTime().getTime() == time.getTime())
 				return i;
 		}
