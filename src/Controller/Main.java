@@ -14,13 +14,11 @@ import RegisteredUserModel.*;
 /**
  * 
  * TODO:
- * 1. voucher sql table needs "worths", registered user table needs credit cards in sql
- * 2. registered user 4 needs start date fixed
- * 3. implement methods to load from DB (in DBController)
- * 4. implement methods in model controller
- * 5. check if processpayment should hold an arraylist of payment receipts
- * 6. overloaded constructors in voucher and voucheridentifier for easier loading, Karlen double check if its ok
- * 7. should vouchers hold the id as well in an instance variable?
+ * 1. for redeem voucher on payment, needs a check if voucher is still valid
+ * 2. seats that are already booked should not be clickable
+ * 3. double formatting for receipts/outputs/prices should only show 2 decimal places
+ * 4. redeem voucher should output a display depending on what happened
+ * 5. GUIs visibility (when you choose seats, search theaters should go away, when you go to payment, choose seats should go away etc.)
  *
  */
 
