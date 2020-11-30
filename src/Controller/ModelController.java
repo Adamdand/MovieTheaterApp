@@ -1,5 +1,6 @@
 package Controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import DatabaseController.*;
@@ -63,16 +64,22 @@ public class ModelController {
 				return response;
 			}
 			
-			//72 hrs refund requirement
-			String today = java.time.LocalDate.now().toString();
-			int date = Integer.parseInt(today.replace("-",""));
-			if ((ticket.getMovieDate() - date > 2)) {
+			String endDate = java.time.LocalDate.now().plusDays(3).toString();
+			int refundDay = Integer.parseInt(endDate.replace("-",""));
+			
+			if ((ticket.getMovieDate() <= refundDay)) {
 				response = "You can only refund within 72 hours";
 				return response;
 			}
 			
-			//need to add date to cancellation receipts
-			response = cancel.refundTicketRegistered(ticket.getPrice(), ticketId, cardNumber);
+			
+			double myNumber = ticket.getPrice();
+			DecimalFormat df = new DecimalFormat("####.##");
+			
+			String numberString = df.format(myNumber);
+			double myNumber2 = Double.parseDouble(numberString);
+			
+			response = cancel.refundTicketRegistered(myNumber2, ticketId, cardNumber);
 			if (response.contains("Refunded")) {
 				ticket.setBooked(false);
 			}
@@ -93,16 +100,21 @@ public class ModelController {
 				return response;
 			}
 			
-			//72 hrs refund requirement
-			String today = java.time.LocalDate.now().toString();
-			int date = Integer.parseInt(today.replace("-",""));
-			if ((ticket.getMovieDate() - date > 2)) {
+			String endDate = java.time.LocalDate.now().plusDays(3).toString();
+			int refundDay = Integer.parseInt(endDate.replace("-",""));
+			
+			if ((ticket.getMovieDate() <= refundDay)) {
 				response = "You can only refund within 72 hours";
 				return response;
 			}
 			
-			//need to add date to cancellation receipts
-			response = cancel.refundTicketRegular(ticket.getPrice()*0.85, ticketId);
+			double myNumber = ticket.getPrice()*0.85;
+			DecimalFormat df = new DecimalFormat("####.##");
+			
+			String numberString = df.format(myNumber);
+			double myNumber2 = Double.parseDouble(numberString);
+			
+			response = cancel.refundTicketRegular(myNumber2, ticketId);
 			if (response.contains("Refunded")) {
 				ticket.setBooked(false);
 			}
