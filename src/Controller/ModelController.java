@@ -1,10 +1,15 @@
 package Controller;
 
+import java.util.ArrayList;
+
 import DatabaseController.DBController;
 import PaymentModel.ProcessCancellation;
 import PaymentModel.ProcessPayment;
 import RegisteredUserModel.RegisteredUserList;
+import TicketReservationModel.MovieOffering;
 import TicketReservationModel.MovieOfferingList;
+import TicketReservationModel.MovieTime;
+import TicketReservationModel.Seats;
 
 public class ModelController {
 	private MovieOfferingList movies;
@@ -19,6 +24,22 @@ public class ModelController {
 		setPayment(payment);
 		setUsers(users);
 		setDatabase(database);
+	}
+	
+	ArrayList<MovieOffering> viewTheater(String name){
+		return movies.searchTheater(name);
+	}
+	
+	ArrayList<MovieOffering> viewMovies(String name){
+		return movies.searchMovie(name);
+	}
+	
+	ArrayList<MovieOffering> viewTimes(MovieTime time){
+		return movies.searchTime(time);
+	}
+	
+	MovieOffering chooseSeat(String movieName, String theaterName, MovieTime time, Seats seat){
+		return movies.chooseOffering(movieName, theaterName, time, seat);
 	}
 	
 	//TODO: add necessary methods
