@@ -68,6 +68,9 @@ public class PaymentGUIController implements ActionListener {
 					gui.changeTextFieldVisibility(gui.getvoucherTxt());
 					gui.changeButtonVisibility(gui.getRedeemBtn());
 					gui.getCheckBox().setEnabled(false);
+					gui.displayMessage("Voucher applied");
+				} else {
+					gui.displayMessage("Voucher does not exist or has expired");
 				}
 				
 				gui.setTotalCost(remain);

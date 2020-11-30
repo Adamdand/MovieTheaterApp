@@ -44,11 +44,16 @@ public class VoucherIdentifier {
 		String dateString = year+""+month+""+day;
 		int todayDateInt = Integer.parseInt(dateString);
 		
+		Voucher v = voucherMap.get(id);
 		
-		if(voucherMap.get(id).getExpirationDate()<=todayDateInt) {
+		if (v == null) {
+			return remain;
+		}
+		
+		if(v.getExpirationDate()<=todayDateInt) {
 			System.out.println("This voucher is expired");
 			//voucherMap.remove(id);
-			return price;
+			return remain;
 		}
 		//Ending here
 		if(voucherMap.containsKey(id)) { 
