@@ -34,7 +34,7 @@ public class MovieOffering {
 	
 	@Override
 	public String toString() {
-		return theater.toString() + " " + movie.toString() + " " + time;
+		return theater.getTheaterName() + " " + movie.toString() + " " + time;
 	}
 	
 	public String printTicket() {
