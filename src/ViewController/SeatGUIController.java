@@ -83,7 +83,7 @@ public void actionPerformed(ActionEvent e) {
 	if(e.getSource() == gui.getResetBtn()) {
 		//start up next Payment GUI if clicked
 		gui.resetAllButtons();
-		
+		selectedSeats.clear();
 	}
 	
 

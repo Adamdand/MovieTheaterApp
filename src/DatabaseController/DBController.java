@@ -345,7 +345,7 @@ public class DBController {
 							 Seats mySeat = new Seats(row,col);
 							 Movie thisMovie = new Movie(rs.getString("movieName"));
 							 Theater thisTheater = new Theater(rs.getString("theaterName"),rs.getString("theaterLoc"));
-							 MovieTime thisTime = new MovieTime(rs.getString("movieTime"));
+							 String thisTime = rs.getString("movieTime");
 							 
 							 MovieOffering t = new MovieOffering(thisTheater,thisMovie, thisTime, mySeat, rs.getInt("offeringID"));
 							 temp.add(t);
@@ -359,7 +359,32 @@ public class DBController {
 		}
 		return null;
 	}
+	
+	public ArrayList<MovieOffering> loadMoviesNoSeats() {
+		PreparedStatement getAllMovies = null;
+		String getAllMoviesString = "select * from registeredusers";
+		ArrayList<MovieOffering> temp = new ArrayList<MovieOffering>();
+		try {
+			if (jdbc_connection != null) {
+				getAllMovies = jdbc_connection.prepareStatement(getAllMoviesString);
+				ResultSet rs = getAllMovies.executeQuery();
 
+				while (rs.next()) {
+						Movie thisMovie = new Movie(rs.getString("movieName"));
+						Theater thisTheater = new Theater(rs.getString("theaterName"),rs.getString("theaterLoc"));
+						String thisTime = rs.getString("movieTime");
+							 
+						MovieOffering t = new MovieOffering(thisTheater,thisMovie, thisTime, rs.getInt("offeringID"));
+						temp.add(t);
+
+				}
+				return temp;
+			}
+		} catch ( SQLException ex) {
+			ex.printStackTrace();
+		}
+		return null;
+	}
 	
 	public ArrayList<RegisteredUser> loadUsers() {
 		PreparedStatement getAllUsers = null;

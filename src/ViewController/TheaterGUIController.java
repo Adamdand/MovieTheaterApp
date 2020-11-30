@@ -50,7 +50,7 @@ public class TheaterGUIController implements ActionListener, MouseListener {
 		// TODO Auto-generated method stub
 		gui.getTheaterTxt().setText(gui.getDataListBox().getSelectedValue().getTheater().getTheaterName());
 		gui.getMovieNameTxt().setText(gui.getDataListBox().getSelectedValue().getMovie().getMovieName());
-		gui.getTimeTxt().setText(gui.getDataListBox().getSelectedValue().getTime().getTime());
+		gui.getTimeTxt().setText(gui.getDataListBox().getSelectedValue().getTime());
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {}

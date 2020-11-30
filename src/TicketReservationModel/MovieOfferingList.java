@@ -35,7 +35,7 @@ public class MovieOfferingList {
 	public ArrayList<MovieOffering> searchMovie(String name) {
 		ArrayList<MovieOffering> listOffering = new ArrayList<MovieOffering>();
 		for (MovieOffering i: movieOfferingListNoSeats) {
-			if (i.getMovie().getMovieName() == name)
+			if (i.getMovie().getMovieName().equals(name))
 				listOffering.add(i);
 		}
 		return listOffering;
@@ -44,24 +44,24 @@ public class MovieOfferingList {
 	public ArrayList<MovieOffering> searchTheater(String name) {
 		ArrayList<MovieOffering> listOffering = new ArrayList<MovieOffering>();
 		for (MovieOffering i: movieOfferingListNoSeats) {
-			if (i.getTheater().getTheaterName() == name)
+			if (i.getTheater().getTheaterName().equals(name))
 				listOffering.add(i);
 		}
 		return listOffering;
 	}
 	
-	public ArrayList<MovieOffering> searchTime(MovieTime time) {
+	public ArrayList<MovieOffering> searchTime(String time) {
 		ArrayList<MovieOffering> listOffering = new ArrayList<MovieOffering>();
 		for (MovieOffering i: movieOfferingListNoSeats) {
-			if (i.getTime().getTime() == time.getTime())
+			if (i.getTime().equals(time))
 				listOffering.add(i);
 		}
-		return null;
+		return listOffering;
 	}
 	
 	public MovieOffering searchMovieOffering(String movieName, String theaterName, MovieTime time) {
 		for (MovieOffering i: movieOfferingListNoSeats) {
-			if (i.getMovie().getMovieName() == movieName && i.getTheater().getTheaterName() == theaterName && i.getTime().getTime() == time.getTime())
+			if (i.getMovie().getMovieName().equals(movieName) && i.getTheater().getTheaterName().equals(theaterName) && i.getTime().equals(time.getTime()));
 				return i;
 		}
 		return null;
@@ -78,7 +78,7 @@ public class MovieOfferingList {
 	
 	public MovieOffering chooseOffering(String movieName, String theaterName, MovieTime time, Seats seat) {
 	for (MovieOffering i: movieOfferingList) {
-		if (i.getMovie().getMovieName() == movieName && i.getTheater().getTheaterName() == theaterName && i.getTime().getTime() == time.getTime() && i.getSeating().getColumn() == seat.getColumn() && i.getSeating().getRow() == seat.getRow())
+		if (i.getMovie().getMovieName().equals(movieName) && i.getTheater().getTheaterName().equals(theaterName) && i.getTime().equals(time.getTime()) && i.getSeating().getColumn()==seat.getColumn() && i.getSeating().getRow() == seat.getRow())
 			return i;
 	}
 	return null;
@@ -91,5 +91,7 @@ public class MovieOfferingList {
 		}
 		return null;
 	}
-	
+	public ArrayList<MovieOffering> getAllOfferings(){
+		return movieOfferingList;
+	}
 }
