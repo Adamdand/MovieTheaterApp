@@ -39,7 +39,11 @@ public class MovieOffering {
 	
 	@Override
 	public String toString() {
-		return theater.getTheaterName() + " " + movie.toString() + " " + time + " " + movieDate;
+		String year = Integer.toString(movieDate).substring(0, 4);
+		String month = Integer.toString(movieDate).substring(4, 6);
+		String day = Integer.toString(movieDate).substring(6, 8);
+		String date = year + "-" + month + "-" + day;
+		return theater.getTheaterName() + " " + movie.toString() + " " + time + " " + date;
 	}
 	
 	public String printTicket() {
