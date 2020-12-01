@@ -7,7 +7,7 @@ Dong Phuong
 
 How to Run
 ---
-1. Edit login.txt to match your MySQL environment/credentials
+1. Edit login.txt to match your MySQL environment/credentials (in both MovieTheaterApp and Database_Creation)
 2. Run CreateDB.jar using the following terminal command "java -jar CreateDB.jar". See 1.png for a successful output
 3. Run MovieTheaterApp.jar using the following terminal command "java -jar MovieTheaterApp.jar". See 2.png for a successful output
 
