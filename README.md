@@ -14,6 +14,7 @@ How to Run
 Notes About the Program
 ---
 0. Uses MySQL for the database
+1. Make sure login.txt is in the same directory as MovieTheaterApp.jar
 1. Make sure login.txt, movieOfferings.txt, registeredUsers.txt and voucherList.txt are all in the same directory as CreateDB.jar
 2. Alternatively you can create the database using the provided MySQL dump, make sure you have a database named "movietheaterdb"
 3. Source code files are provided in the .tar file

@@ -1,5 +1,7 @@
 package DatabaseController;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Scanner;
 
 import RegisteredUserModel.*;
 import PaymentModel.*;
@@ -16,15 +19,15 @@ import TicketReservationModel.*;
 
 public class DBController {
 	public String databaseName = "movieTheaterDB";
-	public String connectionInfo2 = "jdbc:mysql://localhost:3306/movieTheaterDB",  
-			login          = "root",
-			password       = "password";
-
+	public String connectionInfo2 = "/movieTheaterDB",  
+			login          = "",
+			password       = "";
+	public String loginFile = "login.txt";
 	public Connection jdbc_connection;
 	public Statement statement;
 
 	public DBController(){
-
+		setConnectionInfo();
 		try{
 			//try to connect to DataBase
 			jdbc_connection = DriverManager.getConnection(connectionInfo2, login, password);
@@ -35,6 +38,26 @@ public class DBController {
 		catch(Exception e) { e.printStackTrace(); }
 
 
+	}
+	
+	public void setConnectionInfo() {
+		String connection = "";
+		String login2 = "";
+		String password2 = "";
+		try {
+			Scanner sc = new Scanner(new FileReader(loginFile));
+			
+			connection = sc.nextLine().split("=")[1];
+			login2 = sc.nextLine().split("=")[1];
+			password2 = sc.nextLine().split("=")[1];
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		this.connectionInfo2 = connection + connectionInfo2;
+		this.login = login2;
+		this.password = password2;
 	}
 
 	/**
