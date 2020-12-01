@@ -34,8 +34,6 @@ public class VoucherIdentifier {
 	public double useVoucher(int id, double price) {
 		double remain = price;
 		
-		//Can probably move this into its own function
-		//Starting here
 		LocalDate today = LocalDate.now();
 		int year = today.getYear();
 		int month = today.getMonthValue();
@@ -51,11 +49,11 @@ public class VoucherIdentifier {
 		}
 		
 		if(v.getExpirationDate()<=todayDateInt) {
-			System.out.println("This voucher is expired");
+//			System.out.println("This voucher is expired");
 			//voucherMap.remove(id);
 			return remain;
 		}
-		//Ending here
+
 		if(voucherMap.containsKey(id)) { 
 			 remain = price - voucherMap.get(id).getWorth();
 			 if(remain<0) {

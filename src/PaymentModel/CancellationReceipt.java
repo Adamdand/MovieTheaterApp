@@ -23,8 +23,6 @@ public class CancellationReceipt {
 		setCreditCard(creditCard);
 		
 		Random rand = new Random();
-		
-		//TODO: change random int to some sort of hashing function or something that is not repeatable
 		int x = rand.nextInt(100);
 		
 		setReceiptNumber(today + "-" + x);
@@ -40,8 +38,6 @@ public class CancellationReceipt {
 		setVoucherId(voucherId);
 		
 		Random rand = new Random();
-		
-		//TODO: change random int to some sort of hashing function or something that is not repeatable
 		int x = rand.nextInt(100);
 		
 		setReceiptNumber(today + "-" + x);

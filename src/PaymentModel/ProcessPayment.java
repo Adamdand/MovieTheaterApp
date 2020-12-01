@@ -27,7 +27,7 @@ public class ProcessPayment {
 	public boolean fullfilledAmount(int id, double price) {
 		return payVoucher(id,price)<=0?true:false;
 	}
-	//potentially want to overload and receive a string instead of movieoffering, pass individual strings
+
 	public void generateReceipt(ArrayList<MovieOffering> soldTickets,String email, double pricePaid) {
 		receipt = new PaymentReceipt(soldTickets, email, pricePaid);
 	}

@@ -7,8 +7,6 @@ public class FinanceController {
 		setInstitute(institute);
 	}
 	
-	//TODO: add payment method
-	
 	public boolean makeCancellation(String cardNumber, double amount) {
 		return institute.refund(cardNumber, amount);
 	}

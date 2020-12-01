@@ -35,7 +35,7 @@ public class ModelController {
 			o.setBooked(true);
 		}
 	}
-	//TODO: add necessary methods
+
 	public boolean makeCardPayment(String card,String email,double price) {
 		boolean paymentFullfilled = payment.payCard(card, price);
 		if(paymentFullfilled) {
@@ -52,11 +52,9 @@ public class ModelController {
 		return remain;
 	}
 	public ArrayList<MovieOffering> viewAllUniqueOfferings(){
-		//need to be added to the MovieOfferingList()
 		return movies.getMovieOfferingListNoSeats();
 	}
 	public ArrayList<MovieOffering> viewAllOfferings(){
-		//need to be added to the MovieOfferingList()
 		return movies.getAllOfferings();
 	}
 	public String makeCancellationRegistered(int ticketId, String cardNumber) {
