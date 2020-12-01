@@ -38,6 +38,17 @@ public class PaymentGUIController implements ActionListener {
 			String card = gui.getCreditCardTxt().getText();
 			String email = gui.getEmailTxt().getText();
 			boolean success = model.makeCardPayment(card, email, price);
+			
+			if (!card.matches("[0-9]+") || card.length() != 16) {
+				gui.displayMessage("Credit card format is incorrect");
+				return;
+			}
+			
+			if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+				gui.displayMessage("Email format is incorrect");
+				return;
+			}
+			
 			if(card.equals("")||email.equals("")) {
 				gui.displayMessage("Please fill out payment information");
 			}
