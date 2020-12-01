@@ -18,3 +18,5 @@ Notes About the Program
 2. Alternatively you can create the database using the provided MySQL dump, make sure you have a database named "movietheaterdb"
 3. Source code files are provided in the .tar file
 4. Receipts are outputted as text files in the same directory of MovieTheaterApp.jar
+5. Main method for the GUI is located in Main (Controller package)
+6. Main method for the database creation is located in DBEngine (DatabaseController package)
