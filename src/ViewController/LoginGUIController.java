@@ -141,23 +141,4 @@ public class LoginGUIController implements ActionListener{
 		this.model = model;
 	}
 	
-//	public void createNewUser(String email, String password, String creditCard) {
-//		LocalDate today = LocalDate.now();
-//		
-//		int year = today.getYear();
-//		int month = today.getMonthValue();
-//		int day = today.getDayOfMonth();
-//		
-//		//System.out.println(year+ "" +month+""+day);
-//		String subStart = year+""+month+""+day;
-//		int subStartInt = Integer.parseInt(subStart);
-//		
-//		int year2 = today.getYear()+1;
-//		String subEnd = year2+""+month+""+day;
-//		int subEndInt = Integer.parseInt(subEnd);
-//
-//		RegisteredUser newUser = new RegisteredUser(email, password, creditCard,subStartInt, subEndInt);
-//		userList.addUser(newUser);	//not sure if I can do it this way ******
-//
-//	}
 }

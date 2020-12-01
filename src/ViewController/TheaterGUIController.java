@@ -2,12 +2,10 @@ package ViewController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import javax.swing.JButton;
 
 import Controller.ModelController;
 import TicketReservationModel.MovieOffering;
@@ -19,7 +17,6 @@ public class TheaterGUIController implements ActionListener, MouseListener {
 	
 	private TheaterGUI gui;
 	private ModelController model;
-	private MouseListener mouse;
 	
 	public TheaterGUIController (TheaterGUI gui, ModelController model) {
 		this.setGui(gui);
@@ -65,7 +62,6 @@ public class TheaterGUIController implements ActionListener, MouseListener {
 		}
 		
 		if(e.getSource() == gui.getSearchBtn()) {
-			//TODO impliment searching my movie/theater/or time
 			String option = gui.searchSelection();
 			String parameter = gui.getSearchParameter().getText();
 			ArrayList<MovieOffering> results = null;

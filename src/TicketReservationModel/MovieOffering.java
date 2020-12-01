@@ -1,5 +1,5 @@
 package TicketReservationModel;
-import java.util.Random;
+//import java.util.Random;
 
 public class MovieOffering {
 	private Theater theater;
@@ -13,7 +13,7 @@ public class MovieOffering {
 	
 	
 	public MovieOffering(Theater theater, Movie movie,  int movieDate, String time, Seats seating, int ticketId) {
-		Random rand = new Random();
+//		Random rand = new Random();
 		this.setMovieDate(movieDate);
 		this.theater = theater;
 		this.movie= movie;
@@ -22,12 +22,12 @@ public class MovieOffering {
 //		this.price = (13.50)*1.05;
 		this.price = 14.18;
 		this.booked = false;
-		this.ticketId = rand.nextInt(1000);
+//		this.ticketId = rand.nextInt(1000);
 		this.ticketId = ticketId;
 	}
 	
 	public MovieOffering(Theater theater, Movie movie, int movieDate, String time, int ticketId) {
-		Random rand = new Random();
+//		Random rand = new Random();
 		this.theater = theater;
 		this.setMovieDate(movieDate);
 		this.movie= movie;

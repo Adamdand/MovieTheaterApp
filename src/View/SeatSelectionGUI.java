@@ -2,25 +2,18 @@ package View;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 public class SeatSelectionGUI extends JFrame {
 	
@@ -31,43 +24,41 @@ public class SeatSelectionGUI extends JFrame {
 	private double priceOfSeat = 14.18;
 	
 	private static final long serialVersionUID = 1L;
-	private JTextField searchTime=null;
-	private JButton checkOutBtn =null;
-	private JButton updateBtn =null;
-	private JButton queryAllBtn=null;
-	private JButton resetBtn=null;
-	private JTextField theaterName=null;
-	private JTextField movieName=null;
-	private JTextField movieTime=null;
-	private JTextField quantityTxt=null;
-	private JTextField priceTxt=null;
-	private JLabel dataCountTip=null;
-	private JLabel Balance=null;
+	private JButton checkOutBtn;
+	private JButton updateBtn;
+	private JButton queryAllBtn;
+	private JButton resetBtn;
+	private JTextField theaterName;
+	private JTextField movieName;
+	private JTextField movieTime;
+	private JTextField priceTxt;
+	private JLabel dataCountTip;
+	private JLabel Balance;
 	private JList<String> dataListBox = null;
 	
-	private JButton A1 =null;
-	private JButton A2 =null;
-	private JButton A3 =null;
-	private JButton A4 =null;
-	private JButton A5 =null;
+	private JButton A1;
+	private JButton A2;
+	private JButton A3;
+	private JButton A4;
+	private JButton A5;
 	
-	private JButton B1 =null;
-	private JButton B2 =null;
-	private JButton B3 =null;
-	private JButton B4 =null;
-	private JButton B5 =null;
+	private JButton B1;
+	private JButton B2;
+	private JButton B3;
+	private JButton B4;
+	private JButton B5;
 	
-	private JButton C1 =null;
-	private JButton C2 =null;
-	private JButton C3 =null;
-	private JButton C4 =null;
-	private JButton C5 =null;
+	private JButton C1;
+	private JButton C2;
+	private JButton C3;
+	private JButton C4;
+	private JButton C5;
 	
-	private JButton D1 =null;
-	private JButton D2 =null;
-	private JButton D3 =null;
-	private JButton D4 =null;
-	private JButton D5 =null;
+	private JButton D1;
+	private JButton D2;
+	private JButton D3;
+	private JButton D4;
+	private JButton D5;
 	private ArrayList<JButton> testButton = new ArrayList<JButton>();
 
 
@@ -496,12 +487,4 @@ public class SeatSelectionGUI extends JFrame {
 		this.D5 = D5;
 	}
 	
-	
-	public static void main(String[] args) {
-		new SeatSelectionGUI();
-	}
-	
-	
-
-
 }
