@@ -15,22 +15,23 @@ public class DBEngine {
 	
 	public Connection jdbc_connection;
 	public Statement statement;
-	public String databaseName = "movieTheaterDB", tableName = "movieOfferings", dataFile = "movieOfferings.txt";
+	public String databaseName = "movieTheaterDB", tableName = "movieOfferings", dataFile = "movieOfferings.txt", loginFile = "login.txt";
 	public String voucherListFile = "voucherList.txt";
 	public String registeredUsers = "registeredUsers.txt";
 	
 	// Students should configure these variables for their own MySQL environment
 	// If you have not created your first database in mySQL yet, you can leave the 
 	// "[DATABASE NAME]" blank to get a connection and create one with the createDB() method.
-	public String connectionInfo = "jdbc:mysql://localhost:3306",  
-				  login          = "root",
-				  password       = "password";
+	public String connectionInfo = "",  
+				  login          = "",
+				  password       = "";
 
 	/**
 	 * connect to SQL
 	 */
 	public DBEngine()
 	{
+		setConnectionInfo();
 		try{
 			// If this throws an error, make sure you have added the mySQL connector JAR to the project
 			
@@ -42,6 +43,26 @@ public class DBEngine {
 		catch(Exception e) { e.printStackTrace(); }
 	}
 	
+	public void setConnectionInfo() {
+		String connection = "";
+		String login2 = "";
+		String password2 = "";
+		try {
+			Scanner sc = new Scanner(new FileReader(loginFile));
+			
+			connection = sc.nextLine().split("=")[1];
+			login2 = sc.nextLine().split("=")[1];
+			password2 = sc.nextLine().split("=")[1];
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		this.connectionInfo = connection;
+		this.login = login2;
+		this.password = password2;
+	}
+	
 	/**
 	 * Create a new SQL DataBase
 	 */
@@ -49,6 +70,7 @@ public class DBEngine {
 	{
 		try {
 			statement = jdbc_connection.createStatement();
+			statement.executeUpdate("DROP DATABASE IF EXISTS " + databaseName);
 			statement.executeUpdate("CREATE DATABASE " + databaseName);
 			statement.executeUpdate("USE " + databaseName);
 			System.out.println("Created Database " + databaseName);
@@ -61,7 +83,7 @@ public class DBEngine {
 			e.printStackTrace();
 		}
 	}
-
+	
 	/**
 	 * Create a new dataTable inside of SQL
 	 * This example creates the table "ToolTable"
