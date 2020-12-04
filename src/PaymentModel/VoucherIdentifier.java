@@ -34,13 +34,9 @@ public class VoucherIdentifier {
 	public double useVoucher(int id, double price) {
 		double remain = price;
 		
-		LocalDate today = LocalDate.now();
-		int year = today.getYear();
-		int month = today.getMonthValue();
-		int day = today.getDayOfMonth();
-		
-		String dateString = year+""+month+""+day;
-		int todayDateInt = Integer.parseInt(dateString);
+		String today = java.time.LocalDate.now().toString();
+		int todayDateInt = Integer.parseInt(today.replace("-",""));
+	
 		
 		Voucher v = voucherMap.get(id);
 		
